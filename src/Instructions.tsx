@@ -3,44 +3,32 @@ import { Button, Checkbox, List, ListItem, ListItemText } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import wattpadLogo from './resources/Wattpad-logo.svg';
 
-const Instructions = () => {
+const Instructions = ({onStartTask}) => {
   const [isChecked, setIsChecked] = useState(false);
   function handleCheckboxChange() {
     setIsChecked(prevValue => !prevValue)
   }
-
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsAnimating(true);
-  };
   
   const customTheme = createTheme({
     palette: {
       primary: {
-        main: '#004F59', // Use your custom color here
-        contrastText: '#FFFFFF', // Optional: Set text color for better contrast
+        main: '#004F59',
+        contrastText: '#FFFFFF',
       },
     },
   });
 
   return (
-    <div className="relative h-screen flex items-center">
-    <div className={`bg-vibrantOrange px-[30%] h-screen w-screen flex justify-center`}>
-      <ThemeProvider theme={customTheme}>
-        <div></div>
-        <div
-          className={`bg-warmWhite transform transition-transform duration-500 ${
-            isAnimating ? 'translate-x-[75%]' : 'translate-x-0'
-          }`}
-        >
+        <div>
+          <ThemeProvider theme={customTheme}>
           <img src={wattpadLogo} alt="Wattpad Logo" />
 
-          <div className="justify-items-center w-full overflow-y-auto">
-            <p className="text-vibrantOrange font-bold text-[45px] text-center">
+          <div className='justify-items-center'>
+          <p className="text-vibrantOrange font-bold text-[40px] text-center px-10">
               Welcome to the Wattpad User Feedback Task!
-            </p>
-            <div className="px-20 pt-10 text-charcoalGrey">
+          </p>
+
+          <div className="px-20 pt-10 text-charcoalGrey">
               <p>
                 This study is aimed on gaining insight on what areas of our application's chapter reading page can be
                 improved for. During this task, we will only focus on the desktop view. By completing this, your
@@ -77,16 +65,14 @@ const Instructions = () => {
                 variant="contained"
                 color="primary"
                 disabled={!isChecked}
-                onClick={handleButtonClick}
+                onClick={onStartTask}
               >
                 Start task
               </Button>
             </div>
           </div>
+          </ThemeProvider>  
         </div>
-      </ThemeProvider>
-    </div>
-  </div>
   );
 };
 
