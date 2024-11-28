@@ -5,13 +5,13 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Layout from './Layout';
-import Instructions from './Instructions';
+import Container from './Container';
 import Experiment from './Experiment';
 
 const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route index element={<Instructions />} />
+      <Route index element={<Container />} />
       <Route path="experiment" element={<Experiment />} />
       <Route path="*" element={<div>404</div>} />
     </Route>,
