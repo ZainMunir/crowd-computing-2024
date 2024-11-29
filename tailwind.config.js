@@ -11,8 +11,11 @@ export default {
         lightGray: '#E5E5E5',
         charcoalGrey: '#2C2C2C',
         goldenYellow: '#FFA834',
-        coralPink: '#FF745A'
-      }
+        coralPink: '#FF745A',
+      },
+      fontFamily: {
+        quicksand: ['Quicksand', 'sans-serif'], // Add the Quicksand font
+      },
     },
   },
   plugins: [],
