@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Checkbox, MobileStepper } from '@mui/material';
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
-import wattpadLogo from './resources/Wattpad-logo.png';
+import wattpadLogo from './resources/wattpad-logo.png';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
