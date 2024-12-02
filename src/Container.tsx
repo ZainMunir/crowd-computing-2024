@@ -1,10 +1,11 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Instructions from './Instructions'
+import Instructions from './Instructions';
+import Question from './Question';
 
 const Container = () => {
   const [startTask, setStartTask] = useState(false);
-  
+
   const customTheme = createTheme({
     palette: {
       primary: {
@@ -15,20 +16,30 @@ const Container = () => {
   });
 
   return (
-    <div className="bg-vibrantOrange grid grid-cols-[2fr_1fr] overflow-x-hidden">
+    <div className="grid w-full grid-cols-[2fr_1fr]">
       <ThemeProvider theme={customTheme}>
-        <div className={`${
+        <div
+          className={`${
             startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
-          }`}> 
+          }`}
+        >
           Application
         </div>
-        <div className={`bg-warmWhite transform transition-transform duration-500 ${
+        <div
+          className={`transform bg-warmWhite px-[2rem] py-[1rem] font-quicksand transition-transform duration-500 ${
             startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
-          }`}>
-            <Instructions onStartTask={() => setStartTask(true)} />
+          }`}
+        >
+          <div className="w-full">
+            {!startTask? (
+              <Instructions onStartTask={() => setStartTask(true)} />
+            ) : (
+              <Question />
+            )}
+          </div>
         </div>
       </ThemeProvider>
-  </div>
+    </div>
   );
 };
 

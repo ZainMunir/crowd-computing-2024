@@ -1,14 +1,16 @@
-import React, { useState} from 'react';
-import { Button, Checkbox, List, ListItem, ListItemText } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import wattpadLogo from './resources/Wattpad-logo.svg';
+import React, { useState } from 'react';
+import { Button, Checkbox, MobileStepper } from '@mui/material';
+import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
+import wattpadLogo from './resources/wattpad-logo.png';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
-const Instructions = ({onStartTask}) => {
+const Instructions = ({ onStartTask }) => {
   const [isChecked, setIsChecked] = useState(false);
   function handleCheckboxChange() {
-    setIsChecked(prevValue => !prevValue)
+    setIsChecked((prevValue) => !prevValue);
   }
-  
+
   const customTheme = createTheme({
     palette: {
       primary: {
@@ -17,6 +19,35 @@ const Instructions = ({onStartTask}) => {
       },
     },
   });
+  const theme = useTheme();
+
+  const instructions = [
+    [
+      `We’re on a mission to make Wattpad a more delightful, intuitive, and enjoyable platform for everyone. 
+      Your input is invaluable to us as we seek to enhance the desktop version of our application.`,
+      `By sharing your insights and feedback, you will play a key role in helping us craft a better reading experience for our entire community.
+      Your thoughtful responses will directly contribute to making Wattpad a more user-friendly and enjoyable space for readers and writers alike.`,
+    ],
+    [
+      `On the left side of the screen, you will be presented with a demo of a Wattpad book's reading page. Along with this, you will see a series of questions displayed one at a time on the right side.`,
+      `Read the prompt and respond to each question based on your own preferences or experience. Throughout the questionnaire, you will be asked to explore and interact with specific aspects of the application, such as analyzing the layout or trying out some customizations.`
+    ],
+    [
+      `Your honesty is greatly valued. We thank you for your time and contribution to making our webpage more accessible and enjoyable for everyone!`,
+      `Let's bring people the best space to express their incredible stories!`,
+    ],
+  ];
+
+  const [activeStep, setActiveStep] = React.useState(0);
+  const maxSteps = instructions.length;
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
 
   return (
         <div>
@@ -24,52 +55,65 @@ const Instructions = ({onStartTask}) => {
           <img src={wattpadLogo} alt="Wattpad Logo" />
 
           <div className='justify-items-center'>
-          <p className="text-vibrantOrange font-bold text-[40px] text-center px-10">
+          <p className="text-deepTeal font-bold text-[32px] text-center">
               Welcome to the Wattpad User Feedback Task!
           </p>
 
-          <div className="px-20 pt-10 text-charcoalGrey">
-              <p>
-                This study is aimed on gaining insight on what areas of our application's chapter reading page can be
-                improved for. During this task, we will only focus on the desktop view. By completing this, your
-                insight will help make Wattpad more user-friendly and enjoyable for both readers and writers.
-              </p>
-
-              <List>
-                <ListItem>
-                  <ListItemText
-                    primary="1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                  />
-                </ListItem>
-
-                <ListItem>
-                  <ListItemText
-                    primary="2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                  />
-                </ListItem>
-              </List>
-
-              <div className="flex pt-20 pb-10">
-                <Checkbox
-                  checked={isChecked}
-                  onChange={handleCheckboxChange}
-                  inputProps={{ 'aria-label': 'controlled' }}
-                />
-                <div className="text-[12px]">
-                  I have read and understood the instructions provided above, and I acknowledge the work I am expected
-                  to complete.
+          <div className="px-[1rem] pt-20 text-charcoalGrey">
+              <div className='h-[350px] flex flex-col justify-between'>
+                <div>
+                  {instructions[activeStep].map((paragraph) => (<p className='pt-[10px] indent-2.5 text-justify'>{paragraph}</p>))}
                 </div>
+
+                {activeStep === maxSteps - 1 && (
+                  <div className="flex items-center pt-[20px]">
+                    <Checkbox
+                    checked={isChecked}
+                    onChange={handleCheckboxChange}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                  />
+                  <div className="text-[12px]">
+                    I have read and understood the instructions provided above, and I acknowledge the work I am expected to complete.
+                  </div>
+              </div>
+              )}
               </div>
 
-              <Button
-                variant="contained"
-                color="primary"
-                disabled={!isChecked}
-                onClick={onStartTask}
-              >
-                Start task
-              </Button>
-            </div>
+                <MobileStepper
+                  style={{ backgroundColor: '#FFF6F1', background: '#FFF6F1', color: '#004F59' }}
+                  variant="text"
+                  steps={maxSteps}
+                  position="static"
+                  activeStep={activeStep}
+                  nextButton={
+                    activeStep === maxSteps - 1 ? (
+                      <Button size="small" onClick={onStartTask} disabled={!isChecked}>
+                        Start Task
+                        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                      </Button>
+                    ) : (
+                      <Button
+                    size="small"
+                    onClick={handleNext}
+                    disabled={activeStep === maxSteps - 1}
+                  >
+                    Next
+                  {theme.direction === 'rtl' ? (
+                    <KeyboardArrowLeft />
+                  ) : (
+                    <KeyboardArrowRight />
+                  )}
+                  </Button>
+                    )
+                  }     
+                  backButton={
+                  <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                    {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                    Back
+                  </Button>
+              }              
+              />
+          </div>
           </div>
           </ThemeProvider>  
         </div>
