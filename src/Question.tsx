@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, MobileStepper } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import QuestionCheckbox from './QuestionCheckbox';
+import QuestionSlider from './QuestionSlider';
 
 const Question = () => {
   const questionType = {
     CHECKBOX: 'checkbox',
-    SELECT: 'select',
     SLIDER: 'slider',
-    TYPE: 'type'
   };
 
   const questions = [
     {
-        "title": "Let's get to know you a bit!",
-        "type": questionType.CHECKBOX,
-        "body": ""
+      title: "Let's get to know you a bit!",
+      type: questionType.CHECKBOX,
+      options: ["I never used wattpad", "I have heard of it and wanted to use it", "I did use wattpad before"],
+    },
+    {
+      title: "Choose a font size:",
+      type: questionType.SLIDER,
+      min: 10,
+      max:20
     }
   ];
   const maxQuestions = questions.length;
@@ -74,7 +80,22 @@ const Question = () => {
         }
       />
       <div>
-        <h3>{questions[activeQuestion].title}</h3>
+        {
+          questions[activeQuestion].type === 'checkbox' ? (
+            <QuestionCheckbox
+              id={activeQuestion}
+              title={questions[activeQuestion].title}
+              options={questions[activeQuestion].options}
+            />
+          ) : (
+            <QuestionSlider
+              id={activeQuestion}
+              title={questions[activeQuestion].title}
+              min={questions[activeQuestion].min}
+              max={questions[activeQuestion].max}
+            />
+          )
+}
       </div>
     </div>
   );
