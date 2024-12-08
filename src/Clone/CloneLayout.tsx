@@ -7,7 +7,7 @@ const CloneLayout = () => {
   return (
     <div className="flex h-full w-full flex-col bg-white">
       <Header />
-      <Body data={placeholderData} />
+      <Body data={placeholderData} chapterIndex={0} />
     </div>
   );
 };
