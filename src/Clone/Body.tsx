@@ -44,13 +44,13 @@ const Body = ({ data, chapterIndex: chapterNo }: Props) => {
               <div className="flex-grow text-white">
                 <p className="text-[15px] font-semibold">YOU ARE READING</p>
                 <p className="text-[24px]">{data.title}</p>
-                <p className="text-[12px]">{data.genre.toUpperCase()}</p>
+                <p className="text-[12px] hover:underline cursor-pointer">{data.genre.toUpperCase()}</p>
                 <p className="max-h-[95px] overflow-hidden text-[16px]">
                   {data.description}
                 </p>
                 <p className="flex flex-row gap-4 text-[15px] font-bold">
                   {data.tags.map((tag) => (
-                    <span id={tag}>#{tag.toLowerCase()}</span>
+                    <span id={tag} className='hover:underline cursor-pointer'>#{tag.toLowerCase()}</span>
                   ))}
                 </p>
               </div>
