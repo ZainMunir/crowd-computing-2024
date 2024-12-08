@@ -56,7 +56,7 @@ const community_options = [
 
 const Header = () => {
   return (
-    <div className="fixed flex w-full flex-col">
+    <div className="sticky flex w-full flex-col bg-white">
       <div className="flex h-[54px] gap-4">
         <img src={wattPadLogo} alt="wattpad logo" className="h-12" />
         <Menu buttonVal="Browse">
@@ -158,7 +158,10 @@ const Header = () => {
           <Divider orientation="vertical" flexItem />
           <AccountModal
             buttonComponent={
-              <IoMdStar className="ml-2 text-xl text-gray-500" />
+              <div className="mx-4 flex flex-row">
+                <IoMdStar className="mr-2 text-xl text-gray-500" />
+                <div className="font-semibold text-vibrantOrange">Vote</div>
+              </div>
             }
             flavourText="to vote or add stories to your library and receive updates"
             isSignUp={true}

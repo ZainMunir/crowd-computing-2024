@@ -17,7 +17,8 @@ export default {
       fontFamily: {
         quicksand: ['Quicksand', 'sans-serif'], // Add the Quicksand font
       },
-      keyframes: { // https://pagedone.io/docs/animation
+      keyframes: {
+        // https://pagedone.io/docs/animation
         'fade-in-down': {
           '0%': {
             opacity: 0,
