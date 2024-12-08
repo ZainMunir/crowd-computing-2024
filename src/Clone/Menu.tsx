@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { FaCaretDown } from 'react-icons/fa';
 
 // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
 // https://stackoverflow.com/questions/73275316/tailwinds-box-shadow
@@ -41,10 +42,10 @@ const Menu = ({ children, buttonVal }: MenuProps) => {
     <div className="relative inline-block">
       <button
         onClick={handleClick}
-        className="h-full cursor-pointer align-middle"
+        className="h-full cursor-pointer flex items-center gap-1 font-semibold"
         ref={buttonRef}
       >
-        {buttonVal}
+        {buttonVal}<FaCaretDown />
       </button>
       {isShown && (
         <div
