@@ -1,6 +1,11 @@
 import React from 'react';
 import wattPadLogo from '../resources/wattpad-logo.png';
 import Menu from './Menu';
+import Modal from './Modal';
+import { Divider } from '@mui/material';
+import createStory from '../resources/create-story.png';
+import { FaSearch } from 'react-icons/fa';
+import { HiLightningBolt } from 'react-icons/hi';
 
 const browse_options = [
   [
@@ -78,7 +83,7 @@ const Header = () => {
                 {wattpad_picks.map((option, index) => (
                   <div
                     key={index}
-                    className="cursor-pointer whitespace-nowrap py-[6px] hover:bg-inherit hover:font-bold overflow-hidden overflow-ellipsis w-full"
+                    className="w-full cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap py-[6px] hover:bg-inherit hover:font-bold"
                   >
                     {option}
                   </div>
@@ -87,6 +92,46 @@ const Header = () => {
             </div>
           </div>
         </Menu>
+        <Menu buttonVal="Community">
+          <div className="w-52 px-3 py-2">
+            {community_options.map((option, index) => (
+              <div
+                key={index}
+                className="cursor-pointer py-[6px] hover:bg-inherit hover:underline"
+              >
+                {option}
+              </div>
+            ))}
+          </div>{' '}
+        </Menu>
+        <div className="flex items-center">
+          <FaSearch />
+          <input
+            type="text"
+            placeholder="Search"
+            className="mx-2 w-fit border-none px-2 placeholder:text-black focus:outline-none"
+          />
+        </div>
+        <Menu buttonVal="Write">
+          <div className="w-[280px] px-3 py-2">
+            <div className="flex">
+              <img src={createStory} alt="create story" className="h-8" />
+              <div className="py-[6px]">Create a new story</div>
+            </div>
+            <div className="py-[6px]">My Stories</div>
+            <Divider variant="middle" className="m-4" />
+            <div className="py-[6px]">Helpful writer resources</div>
+            <div className="py-[6px]">Wattpad programs & opportunities</div>
+            <div className="py-[6px]">Writing contests</div>
+          </div>
+        </Menu>
+        <button className="flex h-10 items-center self-center rounded-[32px] bg-indigo-950 px-4 font-bold text-white">
+          <HiLightningBolt className="mr-1 text-rose-600" />
+          Try Premium
+        </button>
+        <Modal buttonComponent={<p>Open Modal</p>}>
+          <p>Modal Content</p>
+        </Modal>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ type MenuProps = {
   buttonVal: string;
 };
 
-function useOutsideAlerter(wrapperRef, buttonRef, onClickOutside) {
+function useOutsideClick(wrapperRef, buttonRef, onClickOutside) {
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -32,7 +32,7 @@ const Menu = ({ children, buttonVal }: MenuProps) => {
   const [isShown, setIsShown] = useState(false);
   const wrapperRef = useRef(null);
   const buttonRef = useRef(null);
-  useOutsideAlerter(wrapperRef, buttonRef, () => setIsShown(false));
+  useOutsideClick(wrapperRef, buttonRef, () => setIsShown(false));
 
   const handleClick = () => {
     setIsShown(!isShown);
@@ -42,14 +42,15 @@ const Menu = ({ children, buttonVal }: MenuProps) => {
     <div className="relative inline-block">
       <button
         onClick={handleClick}
-        className="h-full cursor-pointer flex items-center gap-1 font-semibold"
+        className="flex h-full cursor-pointer items-center gap-1 font-semibold"
         ref={buttonRef}
       >
-        {buttonVal}<FaCaretDown />
+        {buttonVal}
+        <FaCaretDown />
       </button>
       {isShown && (
         <div
-          className="absolute left-0 top-full z-50 mt-2 border border-gray-300 bg-white drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)]"
+          className="absolute left-0 top-[90%] z-50 mt-2 border border-gray-300 bg-white drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)]"
           ref={wrapperRef}
         >
           {children}
