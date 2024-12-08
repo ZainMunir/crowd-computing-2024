@@ -6,6 +6,7 @@ import { Divider } from '@mui/material';
 import createStory from '../resources/create-story.png';
 import { FaSearch } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
+import AccountModal from './AccountModal';
 
 const browse_options = [
   [
@@ -129,9 +130,16 @@ const Header = () => {
           <HiLightningBolt className="mr-1 text-rose-600" />
           Try Premium
         </button>
-        <Modal buttonComponent={<p>Open Modal</p>}>
-          <p>Modal Content</p>
-        </Modal>
+        <AccountModal
+          buttonComponent={<p className="font-bold">Log In</p>}
+          flavourText="to join the largest storytelling community"
+          isSignUp={false}
+        />
+        <AccountModal
+          buttonComponent={<p className="font-bold">Sign Up</p>}
+          isSignUp={true}
+          flavourText="to join the largest storytelling community"
+        />
       </div>
     </div>
   );
