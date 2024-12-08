@@ -5,6 +5,9 @@ import { IoMdEye } from 'react-icons/io';
 import { IoMdStar } from 'react-icons/io';
 import { FaComment } from 'react-icons/fa';
 import { Divider } from '@mui/material';
+import { MdPersonAddAlt1 } from 'react-icons/md';
+import AccountModal from './AccountModal';
+import ShareButtons from './ShareButtons';
 
 type Props = {
   data: StoryData;
@@ -55,8 +58,10 @@ const Body = ({ data, chapterIndex: chapterNo }: Props) => {
           </div>
         </div>
       </div>
-      <div className="mx-auto pt-24 flex h-[250px] flex-col justify-center w-[580px]">
-        <div className="text-[32px] font-semibold mb-5 text-center">{chapter.title}</div>
+      <div className="mx-auto flex h-[250px] w-[580px] flex-col justify-center pt-24">
+        <div className="mb-5 text-center text-[32px] font-semibold">
+          {chapter.title}
+        </div>
         <div className="flex flex-row justify-center gap-4">
           <div className="flex items-center gap-1">
             <IoMdEye className="text-gray-500" />
@@ -71,11 +76,35 @@ const Body = ({ data, chapterIndex: chapterNo }: Props) => {
             {transformNumber(chapter.numComments)}
           </div>
         </div>
-        <Divider orientation='horizontal' className='mt-auto'/>
+        <Divider orientation="horizontal" className="mt-auto" />
       </div>
-      <div>
-        <div>Left sidebar</div>
-        <div>Text + comments</div>
+      <div className="grid w-full grid-cols-[1fr_625px_1fr]">
+        <div className="col-start-1 flex w-[260px] flex-col gap-2 justify-self-end">
+          <img
+            src={data.author.profilePic}
+            className="mx-auto h-[72px] w-[72px] cursor-pointer rounded-full"
+            alt="{data.author.username}"
+          />
+          <div className="w-fit cursor-pointer self-center hover:underline">
+            by <span className="font-semibold">{data.author.username}</span>
+          </div>
+          <AccountModal
+            buttonComponent={
+              <div className="flex cursor-pointer items-center gap-2 self-center border border-gray-100 px-4 py-1 font-semibold text-gray-500 hover:bg-gray-100">
+                <MdPersonAddAlt1 className="text-teal-500" />
+                Follow
+              </div>
+            }
+            isSignUp={true}
+            flavourText={`to follow ${data.author.username} and receive updates`}
+          />
+          <div className="mt-8 self-center font-semibold text-gray-500">
+            Share
+          </div>
+          <ShareButtons flexVal="flex-col self-center" />
+        </div>
+        <div className="col-start-2">Text + comments</div>
+        <div className="col-start-3"></div>
       </div>
       <div>You'll also like</div>
       <div>Footer</div>
