@@ -6,6 +6,7 @@ import createStory from '../resources/create-story.png';
 import { FaSearch } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
 import AccountModal from './AccountModal';
+import { IoMdStar } from 'react-icons/io';
 
 const browse_options = [
   [
@@ -55,7 +56,7 @@ const community_options = [
 
 const Header = () => {
   return (
-    <div className="fixed w-full">
+    <div className="fixed flex w-full flex-col">
       <div className="flex h-[54px] gap-4">
         <img src={wattPadLogo} alt="wattpad logo" className="h-12" />
         <Menu buttonVal="Browse">
@@ -104,7 +105,7 @@ const Header = () => {
             ))}
           </div>{' '}
         </Menu>
-        <div className="flex items-center ml-10 mr-auto flex-grow">
+        <div className="ml-10 mr-auto flex flex-grow items-center">
           <FaSearch />
           <input
             type="text"
@@ -112,7 +113,7 @@ const Header = () => {
             className="mx-2 w-full border-none px-2 placeholder:text-black focus:outline-none"
           />
         </div>
-        <div className='flex flex-row'>
+        <div className="flex flex-row">
           <Menu buttonVal="Write">
             <div className="w-[280px] px-3 py-2">
               <div className="flex">
@@ -126,7 +127,7 @@ const Header = () => {
               <div className="py-[6px]">Writing contests</div>
             </div>
           </Menu>
-          <button className="flex h-10 items-center self-center rounded-[32px] bg-indigo-950 px-6 font-bold text-white mx-4">
+          <button className="mx-4 flex h-10 items-center self-center rounded-[32px] bg-indigo-950 px-6 font-bold text-white">
             <HiLightningBolt className="mr-1 text-rose-600" />
             Try Premium
           </button>
@@ -136,9 +137,31 @@ const Header = () => {
             isSignUp={false}
           />
           <AccountModal
-            buttonComponent={<p className="font-semibold mx-8">Sign Up</p>}
+            buttonComponent={<p className="mx-8 font-semibold">Sign Up</p>}
             isSignUp={true}
             flavourText="to join the largest storytelling community"
+          />
+        </div>
+      </div>
+      <div className="flex h-[54px] items-center justify-between px-4">
+        <div className="">Placeholder for chapters</div>
+        <div className="g-1 flex items-center gap-2">
+          <AccountModal
+            buttonComponent={
+              <div className="items-center rounded-md bg-vibrantOrange px-3 py-1 text-white">
+                +
+              </div>
+            }
+            flavourText="to vote or add stories to your library and receive updates"
+            isSignUp={true}
+          />
+          <Divider orientation="vertical" flexItem />
+          <AccountModal
+            buttonComponent={
+              <IoMdStar className="ml-2 text-xl text-gray-500" />
+            }
+            flavourText="to vote or add stories to your library and receive updates"
+            isSignUp={true}
           />
         </div>
       </div>
