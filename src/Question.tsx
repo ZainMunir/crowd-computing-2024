@@ -9,15 +9,15 @@ const Question = () => {
     CHECKBOX: 'checkbox',
     SELECT: 'select',
     SLIDER: 'slider',
-    TYPE: 'type'
+    TYPE: 'type',
   };
 
   const questions = [
     {
-        "title": "Let's get to know you a bit!",
-        "type": questionType.CHECKBOX,
-        "body": ""
-    }
+      title: "Let's get to know you a bit!",
+      type: questionType.CHECKBOX,
+      body: '',
+    },
   ];
   const maxQuestions = questions.length;
   const [activeQuestion, setActiveQuestion] = React.useState(0);

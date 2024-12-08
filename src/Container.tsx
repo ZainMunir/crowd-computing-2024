@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Instructions from './Instructions';
 import Question from './Question';
+import CloneLayout from './Clone/CloneLayout';
 
 const Container = () => {
-  const [startTask, setStartTask] = useState(false);
+  const [startTask, setStartTask] = useState(true);
 
   const customTheme = createTheme({
     palette: {
@@ -23,7 +24,7 @@ const Container = () => {
             startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
           }`}
         >
-          Application
+          <CloneLayout />
         </div>
         <div
           className={`transform bg-warmWhite px-[2rem] py-[1rem] font-quicksand transition-transform duration-500 ${
@@ -31,7 +32,7 @@ const Container = () => {
           }`}
         >
           <div className="w-full">
-            {!startTask? (
+            {!startTask ? (
               <Instructions onStartTask={() => setStartTask(true)} />
             ) : (
               <Question />
