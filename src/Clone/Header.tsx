@@ -1,7 +1,6 @@
 import React from 'react';
 import wattPadLogo from '../resources/wattpad-logo.png';
 import Menu from './Menu';
-import Modal from './Modal';
 import { Divider } from '@mui/material';
 import createStory from '../resources/create-story.png';
 import { FaSearch } from 'react-icons/fa';
@@ -57,7 +56,7 @@ const community_options = [
 const Header = () => {
   return (
     <div className="fixed w-full">
-      <div className="flex h-[54px]">
+      <div className="flex h-[54px] gap-4">
         <img src={wattPadLogo} alt="wattpad logo" className="h-12" />
         <Menu buttonVal="Browse">
           <div className="flex h-[390px] w-[750px]">
@@ -105,41 +104,43 @@ const Header = () => {
             ))}
           </div>{' '}
         </Menu>
-        <div className="flex items-center">
+        <div className="flex items-center ml-10 mr-auto flex-grow">
           <FaSearch />
           <input
             type="text"
             placeholder="Search"
-            className="mx-2 w-fit border-none px-2 placeholder:text-black focus:outline-none"
+            className="mx-2 w-full border-none px-2 placeholder:text-black focus:outline-none"
           />
         </div>
-        <Menu buttonVal="Write">
-          <div className="w-[280px] px-3 py-2">
-            <div className="flex">
-              <img src={createStory} alt="create story" className="h-8" />
-              <div className="py-[6px]">Create a new story</div>
+        <div className='flex flex-row'>
+          <Menu buttonVal="Write">
+            <div className="w-[280px] px-3 py-2">
+              <div className="flex">
+                <img src={createStory} alt="create story" className="h-8" />
+                <div className="py-[6px]">Create a new story</div>
+              </div>
+              <div className="py-[6px]">My Stories</div>
+              <Divider variant="middle" className="m-4" />
+              <div className="py-[6px]">Helpful writer resources</div>
+              <div className="py-[6px]">Wattpad programs & opportunities</div>
+              <div className="py-[6px]">Writing contests</div>
             </div>
-            <div className="py-[6px]">My Stories</div>
-            <Divider variant="middle" className="m-4" />
-            <div className="py-[6px]">Helpful writer resources</div>
-            <div className="py-[6px]">Wattpad programs & opportunities</div>
-            <div className="py-[6px]">Writing contests</div>
-          </div>
-        </Menu>
-        <button className="flex h-10 items-center self-center rounded-[32px] bg-indigo-950 px-4 font-bold text-white">
-          <HiLightningBolt className="mr-1 text-rose-600" />
-          Try Premium
-        </button>
-        <AccountModal
-          buttonComponent={<p className="font-bold">Log In</p>}
-          flavourText="to join the largest storytelling community"
-          isSignUp={false}
-        />
-        <AccountModal
-          buttonComponent={<p className="font-bold">Sign Up</p>}
-          isSignUp={true}
-          flavourText="to join the largest storytelling community"
-        />
+          </Menu>
+          <button className="flex h-10 items-center self-center rounded-[32px] bg-indigo-950 px-6 font-bold text-white mx-4">
+            <HiLightningBolt className="mr-1 text-rose-600" />
+            Try Premium
+          </button>
+          <AccountModal
+            buttonComponent={<p className="font-semibold">Log In</p>}
+            flavourText="to join the largest storytelling community"
+            isSignUp={false}
+          />
+          <AccountModal
+            buttonComponent={<p className="font-semibold mx-8">Sign Up</p>}
+            isSignUp={true}
+            flavourText="to join the largest storytelling community"
+          />
+        </div>
       </div>
     </div>
   );
