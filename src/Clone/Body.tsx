@@ -107,16 +107,20 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
           <div className="mt-8 self-center font-semibold text-gray-500">
             Share
           </div>
-          <ShareButtons flexVal="flex-col self-center" positionVertical='top' />
+          <ShareButtons flexVal="flex-col self-center" positionVertical="top" />
         </div>
         <div className="col-start-2 mt-8 flex flex-col">
           {chapter.paragraphs.map((paragraph, index) => (
-            <div key={index} className="mb-5 flex">
-              <div className="">{paragraph.text}</div>
-              <div className="flex w-1/12 items-center justify-center self-end">
-                <BiSolidComment className="size-10 text-gray-500" />
+            <div key={index} className="group/para mb-5 flex">
+              <div className="w-11/12">{paragraph.text}</div>
+              <div
+                className={`group/comment flex w-1/12 cursor-pointer items-center justify-center self-end ${paragraph.num_comments == 0 ? 'hidden group-hover/para:inline-flex' : ''}`}
+              >
+                <BiSolidComment className="size-10 text-gray-500 group-hover/comment:text-gray-300" />
                 <div className="absolute w-10 -translate-y-1 transform text-center text-white">
-                  {transformNumber(paragraph.num_comments)}
+                  {paragraph.num_comments == 0
+                    ? '+'
+                    : transformNumber(paragraph.num_comments)}
                 </div>
               </div>
             </div>
@@ -154,7 +158,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
                 isSignUp={true}
               />
             </div>
-            <ShareButtons flexVal="flex-row" positionHorizontal='right' />
+            <ShareButtons flexVal="flex-row" positionHorizontal="right" />
           </div>
         </div>
         <div className="col-start-3"></div>
