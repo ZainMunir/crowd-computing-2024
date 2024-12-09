@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormControlLabel, Checkbox } from '@mui/material';
 
-const QuestionCheckbox = ({ id, title, options }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+const QuestionCheckbox = ({ id, title, options, value, updateAnswer }) => {
 
   const handleCheckboxChange = (index) => {
-    setSelectedOption(index === selectedOption ? null : index);
+    updateAnswer(index)
   };
 
   return (
@@ -17,7 +16,7 @@ const QuestionCheckbox = ({ id, title, options }) => {
             key={index}
             control={
               <Checkbox
-                checked={selectedOption === index}
+                checked={value === index}
                 onChange={() => handleCheckboxChange(index)}
               />
             }

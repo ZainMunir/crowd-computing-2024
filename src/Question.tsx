@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, MobileStepper } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -12,19 +12,21 @@ const Question = () => {
     SLIDER: 'slider',
   };
 
-  const questions = [
+  const [questions, setQuestions] = useState([
     {
       title: "Let's get to know you a bit!",
       type: questionType.CHECKBOX,
       options: ["I never used wattpad", "I have heard of it and wanted to use it", "I did use wattpad before"],
+      answer: null
     },
     {
       title: "Choose a font size:",
       type: questionType.SLIDER,
       min: 10,
-      max:20
+      max:20,
+      answer: null
     }
-  ];
+  ]);
   const maxQuestions = questions.length;
   const [activeQuestion, setActiveQuestion] = React.useState(0);
 
@@ -36,6 +38,14 @@ const Question = () => {
 
   const handleBack = () => {
     setActiveQuestion((prevActiveQuestion) => prevActiveQuestion - 1);
+  };
+
+  const updateAnswer = (newAnswer) => {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((q, index) =>
+        index === activeQuestion ? { ...q, answer: newAnswer } : q
+      )
+    );
   };
 
   return (
@@ -86,6 +96,8 @@ const Question = () => {
               id={activeQuestion}
               title={questions[activeQuestion].title}
               options={questions[activeQuestion].options}
+              value={questions[activeQuestion].answer}
+              updateAnswer={(value) => updateAnswer(value)}
             />
           ) : (
             <QuestionSlider
@@ -93,6 +105,8 @@ const Question = () => {
               title={questions[activeQuestion].title}
               min={questions[activeQuestion].min}
               max={questions[activeQuestion].max}
+              value={questions[activeQuestion].answer || (questions[activeQuestion].min + questions[activeQuestion].max) / 2 + 1}
+              updateAnswer={(value) => updateAnswer(value)}
             />
           )
 }
