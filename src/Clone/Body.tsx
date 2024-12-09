@@ -111,7 +111,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
         </div>
         <div className="col-start-2 mt-8 flex flex-col">
           {chapter.paragraphs.map((paragraph, index) => (
-            <div key={index} className="flex mb-5">
+            <div key={index} className="mb-5 flex">
               <div className="">{paragraph.text}</div>
               <div className="flex w-1/12 items-center justify-center self-end">
                 <BiSolidComment className="size-10 text-gray-500" />
@@ -123,7 +123,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
           ))}
 
           {chapterIndex == data.chapters.length - 1 ? (
-            <div className="text-bold mx-auto mt-20 h-12 w-11/12 text-[22px] text-center font-bold">
+            <div className="text-bold mx-auto mt-20 h-12 w-11/12 text-center text-[22px] font-bold">
               🎉You've finished reading{' '}
               <span className="text-orange-800">{data.title}</span>
               🎉
@@ -136,6 +136,26 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
               Continue to next part
             </button>
           )}
+          <div className="mx-auto mt-8 flex w-11/12 justify-between">
+            <div className="g-1 flex items-center gap-2">
+              <AccountModal
+                buttonComponent={<div className="text-black">+ Add</div>}
+                flavourText="to vote or add stories to your library and receive updates"
+                isSignUp={true}
+              />
+              <AccountModal
+                buttonComponent={
+                  <div className="flex flex-row">
+                    <IoMdStar className="mr-1 self-center text-black" />
+                    <div className="">Vote</div>
+                  </div>
+                }
+                flavourText="to vote or add stories to your library and receive updates"
+                isSignUp={true}
+              />
+            </div>
+            <ShareButtons flexVal="flex-row" />
+          </div>
         </div>
         <div className="col-start-3"></div>
       </div>
