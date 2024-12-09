@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
+import useOutsideClick from './useOutsideClick';
 
 type MenuProps = {
   children: React.ReactNode;
@@ -8,25 +9,6 @@ type MenuProps = {
   positionVertical?: 'top' | 'bottom';
   positionHorizontal?: 'left' | 'right';
 };
-
-function useOutsideClick(wrapperRef, buttonRef, onClickOutside) {
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(event.target) &&
-        buttonRef.current &&
-        !buttonRef.current.contains(event.target)
-      ) {
-        onClickOutside();
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [wrapperRef, buttonRef, onClickOutside]);
-}
 
 const Menu = ({
   children,
@@ -38,7 +20,7 @@ const Menu = ({
   const [isShown, setIsShown] = useState(false);
   const wrapperRef = useRef(null);
   const buttonRef = useRef(null);
-  useOutsideClick(wrapperRef, buttonRef, () => setIsShown(false));
+  useOutsideClick([wrapperRef, buttonRef], () => setIsShown(false));
 
   const handleClick = () => {
     setIsShown(!isShown);

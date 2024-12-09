@@ -10,6 +10,8 @@ import { MdEmail } from 'react-icons/md';
 import { FaExclamationCircle } from 'react-icons/fa';
 import Menu from './Menu';
 import { Divider } from '@mui/material';
+import AccountModal from './AccountModal';
+import ReportModal from './ReportModal';
 
 type Props = {
   flexVal: string;
@@ -54,18 +56,32 @@ const ShareButtons = ({
         positionVertical={positionVertical}
         positionHorizontal={positionHorizontal}
       >
-        <div className="w-44 p-2 text-neutral-500">
-          <div className="flex flex-row items-center gap-2">
-            <FaUserAlt /> Post to Your Profile
+        <div className="w-44 cursor-pointer text-neutral-500">
+          <AccountModal
+            buttonComponent={
+              <div className="group flex flex-row items-center gap-2 px-2 py-1 hover:bg-gray-200">
+                <FaUserAlt className="group-hover:text-cyan-700" />
+                <div>Post to Your Profile</div>
+              </div>
+            }
+            flavourText="to vote or add stories to your library and receive updates"
+            isSignUp={true}
+          />
+          <Divider className="" />
+          <div className="group flex flex-row items-center gap-2 px-2 py-1 hover:bg-gray-200">
+            <MdEmail className="group-hover:text-cyan-700" />
+            <div>Share via Email</div>
           </div>
-          <Divider className="my-1" />
-          <div className="flex flex-row items-center gap-2">
-            <MdEmail /> Share via Email
-          </div>
-          <Divider className="my-1" />
-          <div className="flex flex-row items-center gap-2">
-            <FaExclamationCircle /> Report Story
-          </div>
+          <Divider className="" />
+          <ReportModal
+            buttonComponent={
+              <div className="group flex flex-row items-center gap-2 px-2 py-1 hover:bg-gray-200 w-full">
+                <FaExclamationCircle className="group-hover:text-cyan-700" />
+                <div>Report Story</div>
+              </div>
+            }
+            isStory={true}
+          />
         </div>
       </Menu>
     </div>
