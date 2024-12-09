@@ -28,7 +28,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
 
   const chapter = data.chapters[chapterIndex];
   return (
-    <div className="flex w-full flex-grow flex-col overflow-y-auto">
+    <div className="flex w-full flex-grow flex-col">
       <div>
         <div className="h-[340px] w-full overflow-hidden">
           <div

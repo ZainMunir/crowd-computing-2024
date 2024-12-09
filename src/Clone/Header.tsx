@@ -56,7 +56,7 @@ const community_options = [
 
 const Header = () => {
   return (
-    <div className="flex w-full flex-col bg-white">
+    <div className="sticky flex w-full flex-col bg-white top-0 z-20">
       <div className="flex h-[54px] gap-4 items-center">
         <img src={wattPadLogo} alt="wattpad logo" className="h-12" />
         <Menu buttonVal="Browse">
