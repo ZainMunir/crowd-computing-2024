@@ -107,7 +107,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
           <div className="mt-8 self-center font-semibold text-gray-500">
             Share
           </div>
-          <ShareButtons flexVal="flex-col self-center" />
+          <ShareButtons flexVal="flex-col self-center" positionVertical='top' />
         </div>
         <div className="col-start-2 mt-8 flex flex-col">
           {chapter.paragraphs.map((paragraph, index) => (
@@ -154,7 +154,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
                 isSignUp={true}
               />
             </div>
-            <ShareButtons flexVal="flex-row" />
+            <ShareButtons flexVal="flex-row" positionHorizontal='right' />
           </div>
         </div>
         <div className="col-start-3"></div>

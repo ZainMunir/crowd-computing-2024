@@ -13,9 +13,15 @@ import { Divider } from '@mui/material';
 
 type Props = {
   flexVal: string;
+  positionVertical?: 'top' | 'bottom';
+  positionHorizontal?: 'left' | 'right';
 };
 
-const ShareButtons = ({ flexVal }: Props) => {
+const ShareButtons = ({
+  flexVal,
+  positionVertical = 'bottom',
+  positionHorizontal = 'left',
+}: Props) => {
   const icons = [
     { icon: <RiFacebookFill className="text-white" />, color: 'bg-indigo-800' },
     { icon: <FaTwitter className="text-white" />, color: 'bg-blue-400' },
@@ -42,7 +48,12 @@ const ShareButtons = ({ flexVal }: Props) => {
   return (
     <div className={`flex ${flexVal} gap-2`}>
       {circles.slice(0, -1)}
-      <Menu buttonVal={circles[circles.length - 1]} isElement={true}>
+      <Menu
+        buttonVal={circles[circles.length - 1]}
+        isElement={true}
+        positionVertical={positionVertical}
+        positionHorizontal={positionHorizontal}
+      >
         <div className="w-44 p-2 text-neutral-500">
           <div className="flex flex-row items-center gap-2">
             <FaUserAlt /> Post to Your Profile
