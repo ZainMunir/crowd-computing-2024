@@ -17,12 +17,12 @@ const Container = () => {
   });
 
   return (
-    <div className="grid w-full grid-cols-[2fr_1fr]">
+    <div className="grid w-full grid-cols-[2fr_1fr] h-screen">
       <ThemeProvider theme={customTheme}>
         <div
           className={`${
             startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
-          }`}
+          } h-full overflow-y-auto`}
         >
           <CloneLayout />
         </div>

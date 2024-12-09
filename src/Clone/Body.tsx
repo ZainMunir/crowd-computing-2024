@@ -111,13 +111,13 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
         </div>
         <div className="col-start-2 mt-8 flex flex-col">
           {chapter.paragraphs.map((paragraph, index) => (
-            <div key={index} className="group/para mb-5 flex">
+            <div key={index} className="group/para mb-5 flex relative">
               <div className="w-11/12">{paragraph.text}</div>
               <div
                 className={`group/comment flex w-1/12 cursor-pointer items-center justify-center self-end ${paragraph.num_comments == 0 ? 'hidden group-hover/para:inline-flex' : ''}`}
               >
-                <BiSolidComment className="size-10 text-gray-500 group-hover/comment:text-gray-300" />
-                <div className="absolute w-10 -translate-y-1 transform text-center text-white">
+                <BiSolidComment className="size-8 text-gray-500 group-hover/comment:text-gray-300" />
+                <div className="absolute w-10 -translate-y-1 transform text-center text-xs font-semibold text-white">
                   {paragraph.num_comments == 0
                     ? '+'
                     : transformNumber(paragraph.num_comments)}
@@ -134,7 +134,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
             </div>
           ) : (
             <button
-              className="mx-auto mt-20 h-12 w-11/12 rounded-full bg-black text-white hover:bg-gray-900"
+              className="mx-auto mt-20 h-12 w-11/12 rounded-full bg-black text-white hover:bg-gray-800"
               onClick={() => setChapterIndex((prev) => prev + 1)}
             >
               Continue to next part

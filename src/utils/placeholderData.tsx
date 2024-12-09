@@ -88,10 +88,27 @@ const placeholderData: StoryData = {
           ],
           num_comments: 0,
         },
+
+        {
+          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
+          comments: [
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(Date.now()),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+          ],
+          num_comments: 0,
+        },
       ],
     },
     {
-      title: "2",
+      title: '2',
       views: 19000443,
       stars: 53493,
       numComments: 999,
