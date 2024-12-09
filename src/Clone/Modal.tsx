@@ -6,8 +6,8 @@ import useOutsideClick from './useOutsideClick';
 type ModalProps = {
   children: React.ReactNode;
   buttonComponent: React.ReactNode;
-  fadeInFrom?: 'top' | 'center';
-  position?: 'top' | 'center';
+  fadeInFrom?: 'top' | 'center' | 'right';
+  position?: 'top' | 'center' | 'right';
 };
 
 const Modal = ({
@@ -37,15 +37,27 @@ const Modal = ({
   };
 
   const fadeInClass =
-    fadeInFrom === 'top' ? 'animate-fadeindown' : 'animate-fadein';
+    fadeInFrom === 'top'
+      ? 'animate-fadeindown'
+      : fadeInFrom === 'right'
+        ? 'animate-fadeinright'
+        : 'animate-fadein';
   const fadeOutClass =
-    fadeInFrom === 'top' ? 'animate-fadeoutup' : 'animate-fadeout';
+    fadeInFrom === 'top'
+      ? 'animate-fadeoutup'
+      : fadeInFrom === 'right'
+        ? 'animate-fadeoutright'
+        : 'animate-fadeout';
   const positionClass =
-    position === 'top' ? 'mt-10 self-start' : 'items-center';
+    position === 'top'
+      ? 'mt-10 self-start'
+      : position === 'right'
+        ? 'ml-auto h-full rounded-none max-w-[460px]'
+        : 'items-center';
 
   const modalContent = (
     <div
-      className={`fixed inset-0 z-50 flex w-2/3 items-center justify-center bg-black bg-opacity-50 ${
+      className={`items- fixed inset-0 z-40 flex w-2/3 items-center justify-center bg-black bg-opacity-50 ${
         isClosing ? 'animate-fadeout' : 'animate-fadein'
       }`}
     >

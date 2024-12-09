@@ -54,12 +54,33 @@ export default {
             opacity: 0,
           },
         },
+        'fade-in-right': {
+          '0%': {
+            opacity: 0,
+            transform: 'translate3d(100%, 0, 0)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translate3d(0, 0, 0)',
+          },
+        },
+        'fade-out-right': {
+          '0%': {
+            opacity: 1,
+          },
+          '100%': {
+            opacity: 0,
+            transform: 'translate3d(100%, 0, 0)',
+          },
+        },
       },
       animation: {
         fadeindown: 'fade-in-down 0.5s ease-in 0s 1',
         fadeoutup: 'fade-out-up 0.5s ease-in-out 0s 1',
         fadein: 'fade-in 0.5s ease-in 0s 1',
         fadeout: 'fade-out 0.5s ease-in-out 0s 1',
+        fadeinright: 'fade-in-right 0.5s ease-in-out 0.0s 1',
+        fadeoutright: 'fade-out-right 0.5s ease-in-out 0.0s 1',
       },
     },
   },

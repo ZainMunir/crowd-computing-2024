@@ -9,6 +9,7 @@ import { MdPersonAddAlt1 } from 'react-icons/md';
 import AccountModal from './AccountModal';
 import ShareButtons from './ShareButtons';
 import { BiSolidComment } from 'react-icons/bi';
+import CommentModal from './CommentModal';
 
 type Props = {
   data: StoryData;
@@ -111,18 +112,22 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
         </div>
         <div className="col-start-2 mt-8 flex flex-col">
           {chapter.paragraphs.map((paragraph, index) => (
-            <div key={index} className="group/para mb-5 flex relative">
+            <div key={index} className="group/para relative mb-5 flex">
               <div className="w-11/12">{paragraph.text}</div>
-              <div
-                className={`group/comment flex w-1/12 cursor-pointer items-center justify-center self-end ${paragraph.num_comments == 0 ? 'hidden group-hover/para:inline-flex' : ''}`}
-              >
-                <BiSolidComment className="size-8 text-gray-500 group-hover/comment:text-gray-300" />
-                <div className="absolute w-10 -translate-y-1 transform text-center text-xs font-semibold text-white">
-                  {paragraph.num_comments == 0
-                    ? '+'
-                    : transformNumber(paragraph.num_comments)}
-                </div>
-              </div>
+              <CommentModal
+                buttonComponent={
+                  <div
+                    className={`group/comment flex  cursor-pointer items-center justify-center self-end ${paragraph.num_comments == 0 ? 'hidden group-hover/para:inline-flex' : ''}`}
+                  >
+                    <BiSolidComment className="size-8 text-gray-500 group-hover/comment:text-gray-300" />
+                    <div className="absolute w-10 -translate-y-1 transform text-center text-xs font-semibold text-white">
+                      {paragraph.num_comments == 0
+                        ? '+'
+                        : transformNumber(paragraph.num_comments)}
+                    </div>
+                  </div>
+                }
+              />
             </div>
           ))}
 

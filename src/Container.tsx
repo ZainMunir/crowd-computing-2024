@@ -31,7 +31,7 @@ const Container = () => {
             startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
           }`}
         >
-          <div className="w-full">
+          <div className="w-full z-50">
             {!startTask ? (
               <Instructions onStartTask={() => setStartTask(true)} />
             ) : (
