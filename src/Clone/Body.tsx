@@ -8,13 +8,15 @@ import { Divider } from '@mui/material';
 import { MdPersonAddAlt1 } from 'react-icons/md';
 import AccountModal from './AccountModal';
 import ShareButtons from './ShareButtons';
+import { BiSolidComment } from 'react-icons/bi';
 
 type Props = {
   data: StoryData;
   chapterIndex: number;
+  setChapterIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Body = ({ data, chapterIndex: chapterNo }: Props) => {
+const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
   function transformNumber(num: number): string {
     if (num < 1000) {
       return num.toString();
@@ -24,7 +26,7 @@ const Body = ({ data, chapterIndex: chapterNo }: Props) => {
     return `${(num / 1000000).toFixed(1)}M`;
   }
 
-  const chapter = data.chapters[chapterNo];
+  const chapter = data.chapters[chapterIndex];
   return (
     <div className="flex w-full flex-grow flex-col overflow-y-auto">
       <div>
@@ -44,13 +46,17 @@ const Body = ({ data, chapterIndex: chapterNo }: Props) => {
               <div className="flex-grow text-white">
                 <p className="text-[15px] font-semibold">YOU ARE READING</p>
                 <p className="text-[24px]">{data.title}</p>
-                <p className="text-[12px] hover:underline cursor-pointer">{data.genre.toUpperCase()}</p>
+                <p className="cursor-pointer text-[12px] hover:underline">
+                  {data.genre.toUpperCase()}
+                </p>
                 <p className="max-h-[95px] overflow-hidden text-[16px]">
                   {data.description}
                 </p>
                 <p className="flex flex-row gap-4 text-[15px] font-bold">
                   {data.tags.map((tag) => (
-                    <span id={tag} className='hover:underline cursor-pointer'>#{tag.toLowerCase()}</span>
+                    <span id={tag} className="cursor-pointer hover:underline">
+                      #{tag.toLowerCase()}
+                    </span>
                   ))}
                 </p>
               </div>
@@ -103,7 +109,34 @@ const Body = ({ data, chapterIndex: chapterNo }: Props) => {
           </div>
           <ShareButtons flexVal="flex-col self-center" />
         </div>
-        <div className="col-start-2">Text + comments</div>
+        <div className="col-start-2 mt-8 flex flex-col">
+          {chapter.paragraphs.map((paragraph, index) => (
+            <div key={index} className="flex mb-5">
+              <div className="">{paragraph.text}</div>
+              <div className="flex w-1/12 items-center justify-center self-end">
+                <BiSolidComment className="size-10 text-gray-500" />
+                <div className="absolute w-10 -translate-y-1 transform text-center text-white">
+                  {transformNumber(paragraph.num_comments)}
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {chapterIndex == data.chapters.length - 1 ? (
+            <div className="text-bold mx-auto mt-20 h-12 w-11/12 text-[22px] text-center font-bold">
+              🎉You've finished reading{' '}
+              <span className="text-orange-800">{data.title}</span>
+              🎉
+            </div>
+          ) : (
+            <button
+              className="mx-auto mt-20 h-12 w-11/12 rounded-full bg-black text-white hover:bg-gray-900"
+              onClick={() => setChapterIndex((prev) => prev + 1)}
+            >
+              Continue to next part
+            </button>
+          )}
+        </div>
         <div className="col-start-3"></div>
       </div>
       <div>You'll also like</div>

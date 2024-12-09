@@ -22,11 +22,12 @@ export type ChapterData = {
 export type ParagraphData = {
   text: string;
   comments: CommentData[];
+  num_comments: number;
 };
 
 export type CommentData = {
   user: UserData;
-  date: string;
+  date: Date;
   text: string;
   likes: number;
   replies: CommentData[];
@@ -54,6 +55,80 @@ const placeholderData: StoryData = {
       views: 19000443,
       stars: 53493,
       numComments: 999,
+      paragraphs: [
+        {
+          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
+          comments: [
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(Date.now()),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+          ],
+          num_comments: 1000,
+        },
+        {
+          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
+          comments: [
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(Date.now()),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+          ],
+          num_comments: 0,
+        },
+      ],
+    },
+    {
+      title: "2",
+      views: 19000443,
+      stars: 53493,
+      numComments: 999,
+      paragraphs: [
+        {
+          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
+          comments: [
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(Date.now()),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+          ],
+          num_comments: 1000,
+        },
+        {
+          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
+          comments: [
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(Date.now()),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+          ],
+          num_comments: 0,
+        },
+      ],
     },
   ],
 };
