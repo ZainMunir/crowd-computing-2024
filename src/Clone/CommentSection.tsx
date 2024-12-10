@@ -2,6 +2,8 @@ import React from 'react';
 import { CommentData } from '../utils/placeholderData';
 import { FiSend } from 'react-icons/fi';
 import Comment from './Comment';
+import noComments from '../resources/no-comments.png';
+import { FaRegComment } from 'react-icons/fa';
 
 type Props = {
   comments: CommentData[];
@@ -41,9 +43,18 @@ const CommentSection = ({ comments, defaultLoad }: Props) => {
           <FiSend className="mx-auto text-white" />
         </button>
       </div>
-      {sortedComments.slice(0, load).map((comment, index) => (
-        <Comment key={index} comment={comment} />
-      ))}
+      {sortedComments.length == 0 ? (
+        <div className="mx-auto mt-10 w-56">
+          <img src={noComments} className="" />
+          <div className="flex items-center justify-center gap-2 text-[14px] font-bold">
+            Be the first to comment <FaRegComment />
+          </div>
+        </div>
+      ) : (
+        sortedComments
+          .slice(0, load)
+          .map((comment, index) => <Comment key={index} comment={comment} />)
+      )}
       {load < sortedComments.length && (
         <button
           onClick={handleShowMore}
