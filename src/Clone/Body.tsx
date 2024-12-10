@@ -76,7 +76,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
           </div>
           <div className="flex items-center gap-1">
             <FaComment className="text-gray-500" />
-            {transformNumber(chapter.numComments)}
+            {transformNumber(allChapterComments.length)}
           </div>
         </div>
         <Divider orientation="horizontal" className="mt-auto" />
@@ -91,16 +91,18 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
           <div className="w-fit cursor-pointer self-center hover:underline">
             by <span className="font-semibold">{data.author.username}</span>
           </div>
-          <AccountModal
-            buttonComponent={
-              <div className="flex cursor-pointer items-center gap-2 self-center border border-gray-100 px-4 py-1 font-semibold text-gray-500 hover:bg-gray-100">
-                <MdPersonAddAlt1 className="text-teal-500" />
-                Follow
-              </div>
-            }
-            isSignUp={true}
-            flavourText={`to follow ${data.author.username} and receive updates`}
-          />
+          <div className="mx-auto">
+            <AccountModal
+              buttonComponent={
+                <div className="flex cursor-pointer items-center gap-2 self-center border border-gray-100 px-4 py-1 font-semibold text-gray-500 hover:bg-gray-100">
+                  <MdPersonAddAlt1 className="text-teal-500" />
+                  Follow
+                </div>
+              }
+              isSignUp={true}
+              flavourText={`to follow ${data.author.username} and receive updates`}
+            />
+          </div>
           <div className="mt-8 self-center font-semibold text-gray-500">
             Share
           </div>
@@ -113,20 +115,21 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
               <CommentModal
                 buttonComponent={
                   <div
-                    className={`group/comment flex cursor-pointer items-center justify-center self-end ${paragraph.num_comments == 0 ? 'hidden group-hover/para:inline-flex' : ''}`}
+                    className={`group/comment flex cursor-pointer items-center justify-center self-end ${paragraph.comments.length == 0 ? 'hidden group-hover/para:inline-flex' : ''}`}
                   >
                     <BiSolidComment className="size-8 text-gray-500 group-hover/comment:text-gray-300" />
                     <div className="absolute w-10 -translate-y-1 transform text-center text-xs font-semibold text-white">
-                      {paragraph.num_comments == 0
+                      {paragraph.comments.length == 0
                         ? '+'
-                        : transformNumber(paragraph.num_comments)}
+                        : transformNumber(paragraph.comments.length)}
                     </div>
                   </div>
                 }
+                comments={paragraph.comments}
               />
             </div>
           ))}
-          <div className="mx-auto mt-20 flex w-11/12 flex-col">
+          <div className="mx-auto mt-10 flex w-11/12 flex-col">
             {chapterIndex == data.chapters.length - 1 ? (
               <div className="text-boldh-12 text-center text-[22px] font-bold">
                 🎉You've finished reading{' '}
@@ -135,7 +138,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
               </div>
             ) : (
               <button
-                className="h-12 rounded-full bg-black text-white hover:bg-gray-800"
+                className="h-12 rounded-full bg-black font-bold text-white hover:bg-gray-800"
                 onClick={() => setChapterIndex((prev) => prev + 1)}
               >
                 Continue to next part
@@ -161,7 +164,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
               </div>
               <ShareButtons flexVal="flex-row" positionHorizontal="right" />
             </div>
-            <CommentSection comments={allChapterComments} />
+            <CommentSection comments={allChapterComments} defaultLoad={2} />
           </div>
         </div>
         <div className="col-start-3"></div>

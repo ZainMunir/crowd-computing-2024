@@ -15,14 +15,12 @@ export type ChapterData = {
   title: string;
   views: number;
   stars: number;
-  numComments: number;
   paragraphs?: ParagraphData[];
 };
 
 export type ParagraphData = {
   text: string;
   comments: CommentData[];
-  num_comments: number;
 };
 
 export type CommentData = {
@@ -54,7 +52,6 @@ const placeholderData: StoryData = {
       title: "Author's Note",
       views: 19000443,
       stars: 53493,
-      numComments: 999,
       paragraphs: [
         {
           text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
@@ -64,13 +61,12 @@ const placeholderData: StoryData = {
                 username: 'Username',
                 profilePic: placeholderPerson,
               },
-              date: new Date(Date.now()),
+              date: new Date(1733832642 * 1000),
               text: 'Comment text',
               likes: 999,
               replies: [],
             },
           ],
-          num_comments: 1000,
         },
         {
           text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
@@ -80,13 +76,12 @@ const placeholderData: StoryData = {
                 username: 'Username',
                 profilePic: placeholderPerson,
               },
-              date: new Date(Date.now()),
+              date: new Date(1731237006 * 1000),
               text: 'Comment text',
-              likes: 999,
+              likes: 1000,
               replies: [],
             },
           ],
-          num_comments: 0,
         },
 
         {
@@ -97,13 +92,12 @@ const placeholderData: StoryData = {
                 username: 'Username',
                 profilePic: placeholderPerson,
               },
-              date: new Date(Date.now()),
+              date: new Date(1696932606 * 1000),
               text: 'Comment text',
               likes: 999,
               replies: [],
             },
           ],
-          num_comments: 0,
         },
       ],
     },
@@ -111,7 +105,6 @@ const placeholderData: StoryData = {
       title: '2',
       views: 19000443,
       stars: 53493,
-      numComments: 999,
       paragraphs: [
         {
           text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
@@ -127,7 +120,6 @@ const placeholderData: StoryData = {
               replies: [],
             },
           ],
-          num_comments: 1000,
         },
         {
           text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
@@ -143,7 +135,6 @@ const placeholderData: StoryData = {
               replies: [],
             },
           ],
-          num_comments: 0,
         },
       ],
     },
