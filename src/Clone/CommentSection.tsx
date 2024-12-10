@@ -20,6 +20,10 @@ const CommentSection = ({ comments, defaultLoad }: Props) => {
     setLoad((prevLoad) => prevLoad + 10);
   }
 
+  const sortedComments = comments.sort(
+    (x, y) => y.date.getTime() - x.date.getTime(),
+  );
+
   return (
     <div className="flex w-full flex-col">
       <div className="relative my-2 w-full">
@@ -37,10 +41,10 @@ const CommentSection = ({ comments, defaultLoad }: Props) => {
           <FiSend className="mx-auto text-white" />
         </button>
       </div>
-      {comments.slice(0, load).map((comment, index) => (
+      {sortedComments.slice(0, load).map((comment, index) => (
         <Comment key={index} comment={comment} />
       ))}
-      {load < comments.length && (
+      {load < sortedComments.length && (
         <button
           onClick={handleShowMore}
           className="mt-2 h-12 rounded-full border border-black font-bold hover:bg-gray-200"
