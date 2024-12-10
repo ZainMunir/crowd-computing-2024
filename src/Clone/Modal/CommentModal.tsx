@@ -23,11 +23,16 @@ const CommentModal = ({
       fadeInFrom="right"
       maxW="max-w-[460px]"
     >
-      <div className="flex flex-col h-full">
+      <div className="flex h-full flex-col">
         <div className="p-4 text-center font-semibold">{title}</div>
-        <div className='pb-2 px-2 overflow-y-auto'>
-        <div className="bg-gray-100 p-4">{paragraph}</div>
-          <CommentSection comments={comments} defaultLoad={10} isInModal={true} />
+        <div className="overflow-y-auto px-2 pb-2">
+          <div className="bg-gray-100 p-4">{paragraph}</div>
+          <CommentSection
+            ref={null}
+            comments={comments}
+            defaultLoad={10}
+            isInModal={true}
+          />
         </div>
       </div>
     </Modal>

@@ -27,6 +27,12 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
     .map((para) => para.comments)
     .flat();
 
+  const commentSectionRef = React.useRef<HTMLDivElement>(null);
+
+  function scrollToComments() {
+    commentSectionRef.current?.scrollIntoView();
+  }
+
   const relatedStories = [
     data,
     data,
@@ -84,7 +90,12 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
           <ViewStar views={chapter.views} stars={chapter.stars} />
           <div className="flex items-center gap-1">
             <FaComment />
-            {transformNumber(allChapterComments.length)}
+            <div
+              className="cursor-pointer text-black hover:underline"
+              onClick={scrollToComments}
+            >
+              {transformNumber(allChapterComments.length)}
+            </div>
           </div>
         </div>
         <Divider orientation="horizontal" className="mt-auto" />
@@ -174,7 +185,11 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
               </div>
               <ShareButtons flexVal="flex-row" positionHorizontal="right" />
             </div>
-            <CommentSection comments={allChapterComments} defaultLoad={2} />
+            <CommentSection
+              ref={commentSectionRef}
+              comments={allChapterComments}
+              defaultLoad={2}
+            />
           </div>
         </div>
         <div className="col-start-3"></div>
