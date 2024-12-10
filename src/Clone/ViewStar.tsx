@@ -11,11 +11,11 @@ const ViewStar = ({ views, stars }: Props) => {
   return (
     <>
       <div className="flex items-center gap-1">
-        <IoMdEye className="text-gray-500" />
+        <IoMdEye />
         {transformNumber(views)}
       </div>
       <div className="flex items-center gap-1">
-        <IoMdStar className="text-gray-500" />
+        <IoMdStar />
         {transformNumber(stars)}
       </div>
     </>

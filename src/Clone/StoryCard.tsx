@@ -20,7 +20,7 @@ const StoryCard = ({ story }: Props) => {
             <div className="text-xl font-semibold group-hover:underline">
               {story.title}
             </div>
-            <div className="flex gap-2 text-sm">
+            <div className="flex gap-2 text-sm text-gray-500">
               <ViewStar views={views} stars={stars} />
             </div>
             <div className="max-h-24 overflow-hidden text-gray-700">

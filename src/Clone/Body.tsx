@@ -80,10 +80,10 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
         <div className="mb-5 text-center text-[32px] font-semibold">
           {chapter.title}
         </div>
-        <div className="flex flex-row justify-center gap-4">
+        <div className="flex flex-row justify-center gap-4 text-gray-500">
           <ViewStar views={chapter.views} stars={chapter.stars} />
           <div className="flex items-center gap-1">
-            <FaComment className="text-gray-500" />
+            <FaComment />
             {transformNumber(allChapterComments.length)}
           </div>
         </div>
