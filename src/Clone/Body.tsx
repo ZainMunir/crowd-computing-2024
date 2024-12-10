@@ -10,6 +10,8 @@ import AccountModal from './AccountModal';
 import ShareButtons from './ShareButtons';
 import { BiSolidComment } from 'react-icons/bi';
 import CommentModal from './CommentModal';
+import CommentSection from './CommentSection';
+import { transformNumber } from '../utils/util';
 
 type Props = {
   data: StoryData;
@@ -18,16 +20,10 @@ type Props = {
 };
 
 const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
-  function transformNumber(num: number): string {
-    if (num < 1000) {
-      return num.toString();
-    } else if (num < 1000000) {
-      return `${(num / 1000).toFixed(1)}K`;
-    }
-    return `${(num / 1000000).toFixed(1)}M`;
-  }
-
   const chapter = data.chapters[chapterIndex];
+  const allChapterComments = chapter.paragraphs
+    .map((para) => para.comments)
+    .flat();
   return (
     <div className="flex w-full flex-grow flex-col">
       <div>
@@ -117,7 +113,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
               <CommentModal
                 buttonComponent={
                   <div
-                    className={`group/comment flex  cursor-pointer items-center justify-center self-end ${paragraph.num_comments == 0 ? 'hidden group-hover/para:inline-flex' : ''}`}
+                    className={`group/comment flex cursor-pointer items-center justify-center self-end ${paragraph.num_comments == 0 ? 'hidden group-hover/para:inline-flex' : ''}`}
                   >
                     <BiSolidComment className="size-8 text-gray-500 group-hover/comment:text-gray-300" />
                     <div className="absolute w-10 -translate-y-1 transform text-center text-xs font-semibold text-white">
@@ -130,40 +126,42 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
               />
             </div>
           ))}
-
-          {chapterIndex == data.chapters.length - 1 ? (
-            <div className="text-bold mx-auto mt-20 h-12 w-11/12 text-center text-[22px] font-bold">
-              🎉You've finished reading{' '}
-              <span className="text-orange-800">{data.title}</span>
-              🎉
+          <div className="mx-auto mt-20 flex w-11/12 flex-col">
+            {chapterIndex == data.chapters.length - 1 ? (
+              <div className="text-boldh-12 text-center text-[22px] font-bold">
+                🎉You've finished reading{' '}
+                <span className="text-orange-800">{data.title}</span>
+                🎉
+              </div>
+            ) : (
+              <button
+                className="h-12 rounded-full bg-black text-white hover:bg-gray-800"
+                onClick={() => setChapterIndex((prev) => prev + 1)}
+              >
+                Continue to next part
+              </button>
+            )}
+            <div className="mt-8 flex justify-between">
+              <div className="g-1 flex items-center gap-2">
+                <AccountModal
+                  buttonComponent={<div className="text-black">+ Add</div>}
+                  flavourText="to vote or add stories to your library and receive updates"
+                  isSignUp={true}
+                />
+                <AccountModal
+                  buttonComponent={
+                    <div className="flex flex-row">
+                      <IoMdStar className="mr-1 self-center text-black" />
+                      <div className="">Vote</div>
+                    </div>
+                  }
+                  flavourText="to vote or add stories to your library and receive updates"
+                  isSignUp={true}
+                />
+              </div>
+              <ShareButtons flexVal="flex-row" positionHorizontal="right" />
             </div>
-          ) : (
-            <button
-              className="mx-auto mt-20 h-12 w-11/12 rounded-full bg-black text-white hover:bg-gray-800"
-              onClick={() => setChapterIndex((prev) => prev + 1)}
-            >
-              Continue to next part
-            </button>
-          )}
-          <div className="mx-auto mt-8 flex w-11/12 justify-between">
-            <div className="g-1 flex items-center gap-2">
-              <AccountModal
-                buttonComponent={<div className="text-black">+ Add</div>}
-                flavourText="to vote or add stories to your library and receive updates"
-                isSignUp={true}
-              />
-              <AccountModal
-                buttonComponent={
-                  <div className="flex flex-row">
-                    <IoMdStar className="mr-1 self-center text-black" />
-                    <div className="">Vote</div>
-                  </div>
-                }
-                flavourText="to vote or add stories to your library and receive updates"
-                isSignUp={true}
-              />
-            </div>
-            <ShareButtons flexVal="flex-row" positionHorizontal="right" />
+            <CommentSection comments={allChapterComments} />
           </div>
         </div>
         <div className="col-start-3"></div>

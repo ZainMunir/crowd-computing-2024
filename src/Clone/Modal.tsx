@@ -79,7 +79,7 @@ const Modal = ({
   );
 
   return (
-    <div className="relative inline self-center">
+    <div className="relative inline self-center flex-grow">
       <button onClick={handleOpen} ref={buttonRef} className="w-full">
         {buttonComponent}
       </button>
