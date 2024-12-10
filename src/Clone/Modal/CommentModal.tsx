@@ -21,6 +21,7 @@ const CommentModal = ({
       buttonComponent={buttonComponent}
       position="right"
       fadeInFrom="right"
+      maxW="max-w-[460px]"
     >
       <div className="flex flex-col h-full">
         <div className="p-4 text-center font-semibold">{title}</div>

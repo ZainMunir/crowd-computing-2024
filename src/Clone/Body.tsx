@@ -12,6 +12,8 @@ import { BiSolidComment } from 'react-icons/bi';
 import CommentModal from './Modal/CommentModal';
 import CommentSection from './CommentSection';
 import { transformNumber } from '../utils/util';
+import StoryCard from './StoryCard';
+import ViewStar from './ViewStar';
 
 type Props = {
   data: StoryData;
@@ -24,6 +26,19 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
   const allChapterComments = chapter.paragraphs
     .map((para) => para.comments)
     .flat();
+
+  const relatedStories = [
+    data,
+    data,
+    data,
+    data,
+    data,
+    data,
+    data,
+    data,
+    data,
+    data,
+  ];
   return (
     <div className="flex w-full flex-grow flex-col">
       <div>
@@ -50,7 +65,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
                   {data.description}
                 </p>
                 <p className="flex flex-row gap-4 text-[15px] font-bold">
-                  {data.tags.map((tag) => (
+                  {data.tags.slice(0, 5).map((tag) => (
                     <span id={tag} className="cursor-pointer hover:underline">
                       #{tag.toLowerCase()}
                     </span>
@@ -66,14 +81,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
           {chapter.title}
         </div>
         <div className="flex flex-row justify-center gap-4">
-          <div className="flex items-center gap-1">
-            <IoMdEye className="text-gray-500" />
-            {transformNumber(chapter.views)}
-          </div>
-          <div className="flex items-center gap-1">
-            <IoMdStar className="text-gray-500" />
-            {transformNumber(chapter.stars)}
-          </div>
+          <ViewStar views={chapter.views} stars={chapter.stars} />
           <div className="flex items-center gap-1">
             <FaComment className="text-gray-500" />
             {transformNumber(allChapterComments.length)}
@@ -171,7 +179,19 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
         </div>
         <div className="col-start-3"></div>
       </div>
-      <div>You'll also like</div>
+      <div className="grid w-full grid-cols-[1fr_866px_1fr]">
+        <div></div>
+        <div>
+          <Divider orientation="horizontal" className="mt-8" />
+          <div className="p-4 text-2xl text-neutral-800">You'll also like</div>
+          <div className="flex flex-row justify-between gap-2">
+            {relatedStories.slice(0, 2).map((story, index) => (
+              <StoryCard key={index} story={story} />
+            ))}
+          </div>
+        </div>
+        <div></div>
+      </div>
       <div>Footer</div>
     </div>
   );

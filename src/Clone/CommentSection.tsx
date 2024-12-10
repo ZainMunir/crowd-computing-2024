@@ -9,7 +9,7 @@ import AccountModal from './Modal/AccountModal';
 type Props = {
   comments: CommentData[];
   defaultLoad: number;
-  isInModal: boolean;
+  isInModal?: boolean;
 };
 
 const CommentSection = ({

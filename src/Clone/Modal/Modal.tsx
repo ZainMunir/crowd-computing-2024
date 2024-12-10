@@ -6,6 +6,7 @@ import useOutsideClick from '../useOutsideClick';
 type ModalProps = {
   children: React.ReactNode;
   buttonComponent: React.ReactNode;
+  maxW?: string;
   fadeInFrom?: 'top' | 'center' | 'right';
   position?: 'top' | 'center' | 'right';
 };
@@ -13,6 +14,7 @@ type ModalProps = {
 const Modal = ({
   children,
   buttonComponent,
+  maxW = 'max-w-[400px]',
   fadeInFrom = 'top',
   position = 'top',
 }: ModalProps) => {
@@ -52,20 +54,20 @@ const Modal = ({
     position === 'top'
       ? 'mt-10 self-start'
       : position === 'right'
-        ? 'ml-auto h-full rounded-none max-w-[460px]'
+        ? 'ml-auto h-full rounded-none'
         : 'items-center';
 
   const modalContent = (
     <div
       className={`items- fixed inset-0 z-40 flex w-2/3 items-center justify-center bg-black bg-opacity-50 ${
         isClosing ? 'animate-fadeout' : 'animate-fadein'
-      }`}
+      } `}
     >
       <div
         ref={modalRef}
-        className={`relative w-full max-w-[400px] rounded-md bg-white drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)] ${positionClass} ${
+        className={`relative w-full rounded-md bg-white drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)] ${maxW} ${positionClass} ${
           isClosing ? fadeOutClass : fadeInClass
-        }`}
+        } `}
       >
         <button
           onClick={handleClose}
