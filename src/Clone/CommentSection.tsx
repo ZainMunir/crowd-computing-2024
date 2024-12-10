@@ -4,13 +4,19 @@ import { FiSend } from 'react-icons/fi';
 import Comment from './Comment';
 import noComments from '../resources/no-comments.png';
 import { FaRegComment } from 'react-icons/fa';
+import AccountModal from './Modal/AccountModal';
 
 type Props = {
   comments: CommentData[];
   defaultLoad: number;
+  isInModal: boolean;
 };
 
-const CommentSection = ({ comments, defaultLoad }: Props) => {
+const CommentSection = ({
+  comments,
+  defaultLoad,
+  isInModal = false,
+}: Props) => {
   const [inputVal, setInputVal] = React.useState('');
   const [load, setLoad] = React.useState(defaultLoad);
 
@@ -28,20 +34,29 @@ const CommentSection = ({ comments, defaultLoad }: Props) => {
 
   return (
     <div className="flex w-full flex-col">
-      <div className="relative my-2 w-full">
+      <div
+        className={`relative mt-2 w-full ${isInModal ? 'sticky top-0 z-10 bg-white' : ''}`}
+      >
         <input
           value={inputVal}
           placeholder="Write a comment..."
           onChange={handleInputChange}
           className="h-12 w-full rounded-full border border-gray-200 py-3 pl-4 pr-12 focus:border-indigo-800 focus:outline-none"
         />
-        <button
-          className={`absolute right-2 top-2 flex h-8 w-8 items-center rounded-full ${
-            inputVal === '' ? 'bg-violet-200' : 'bg-indigo-800'
-          }`}
-        >
-          <FiSend className="mx-auto text-white" />
-        </button>
+        <AccountModal
+          buttonComponent={
+            <button
+              className={`absolute -top-10 right-2 flex h-8 w-8 items-center rounded-full disabled:cursor-pointer ${
+                inputVal === '' ? 'bg-violet-200' : 'bg-indigo-800'
+              }`}
+              disabled={inputVal === ''}
+            >
+              <FiSend className="mx-auto text-white" />
+            </button>
+          }
+          flavourText="to comment and interact with the largest storytelling community"
+          isSignUp={true}
+        />
       </div>
       {sortedComments.length == 0 ? (
         <div className="mx-auto mt-10 w-56">

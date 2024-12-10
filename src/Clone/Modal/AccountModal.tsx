@@ -43,8 +43,8 @@ const AccountModal = ({ buttonComponent, isSignUp, flavourText }: Props) => {
             className="flex h-12 w-full items-center justify-center self-center rounded-[32px] font-bold hover:bg-gray-50"
           >
             {type
-              ? "Don't have an account? Sign up"
-              : 'I already have an account'}
+              ? 'I already have an account'
+              : "Don't have an account? Sign up"}
           </button>
         </div>
       </div>

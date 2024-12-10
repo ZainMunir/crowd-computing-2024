@@ -10,6 +10,7 @@ import { FiInfo } from 'react-icons/fi';
 import { timeAgo, transformNumber } from '../utils/util';
 import Menu from './Menu';
 import ReportModal from './Modal/ReportModal';
+import AccountModal from './Modal/AccountModal';
 
 type Props = {
   comment: CommentData;
@@ -17,7 +18,7 @@ type Props = {
 
 const Comment = ({ comment }: Props) => {
   return (
-    <div className="grid w-full grid-cols-[40px_1fr_32px] gap-2 px-3 py-2 text-[14px]">
+    <div className="grid w-full grid-cols-[40px_1fr_32px] gap-2 px-3 pb-4 text-[14px]">
       <img
         src={comment.user.profilePic}
         className="mx-auto size-10 cursor-pointer rounded-full"
@@ -34,32 +35,41 @@ const Comment = ({ comment }: Props) => {
         </div>
       </div>
       <div className="flex flex-col items-center text-gray-700">
-        <Menu buttonVal={<FaEllipsisH className="size-5" />} isElement={true} positionHorizontal='right'>
+        <Menu
+          buttonVal={<FaEllipsisH className="size-5" />}
+          isElement={true}
+          positionHorizontal="right"
+        >
           <div className="w-52 px-4 py-3 text-[14px] font-semibold">
             <ReportModal
               buttonComponent={
-                <div className="py-2 flex cursor-pointer gap-2 hover:underline">
+                <div className="flex cursor-pointer gap-2 py-2 hover:underline">
                   <IoFlagOutline className="size-5" />
                   Report Comment
                 </div>
               }
               isStory={false}
             />
-            <div className="py-2 flex cursor-pointer gap-2 hover:underline">
+            <div className="flex cursor-pointer gap-2 py-2 hover:underline">
               <IoShareSocialOutline className="size-5" />
               Link to Comment
             </div>
-            <div className="py-2 flex cursor-pointer gap-2 hover:underline">
+            <div className="flex cursor-pointer gap-2 py-2 hover:underline">
               <IoIosLink className="size-5" />
               Code of Conduct
             </div>
-            <div className="py-2 flex cursor-pointer gap-2 hover:underline">
+            <div className="flex cursor-pointer gap-2 py-2 hover:underline">
               <FiInfo className="size-5" />
               Wattpad Safety Portal
             </div>
           </div>
         </Menu>
-        <BsSuitHeart className="mt-2 size-5" />
+        <AccountModal
+          buttonComponent={<BsSuitHeart className="mt-2 size-5" />}
+          flavourText="to comment and interact with the largest storytelling community"
+          isSignUp={true}
+        />
+
         <div className="">{transformNumber(comment.likes)}</div>
       </div>
     </div>

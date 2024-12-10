@@ -66,6 +66,166 @@ const placeholderData: StoryData = {
               likes: 999,
               replies: [],
             },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
+            {
+              user: {
+                username: 'Username',
+                profilePic: placeholderPerson,
+              },
+              date: new Date(1731237006 * 1000),
+              text: 'Comment text',
+              likes: 999,
+              replies: [],
+            },
           ],
         },
         {

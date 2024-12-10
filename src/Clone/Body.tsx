@@ -125,6 +125,8 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
                     </div>
                   </div>
                 }
+                title={chapter.title}
+                paragraph={paragraph.text}
                 comments={paragraph.comments}
               />
             </div>
