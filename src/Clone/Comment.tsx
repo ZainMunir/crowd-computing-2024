@@ -2,7 +2,14 @@ import React from 'react';
 import { CommentData } from '../utils/placeholderData';
 import { BsSuitHeart } from 'react-icons/bs';
 import { FaEllipsisH } from 'react-icons/fa';
+import { IoFlagOutline } from 'react-icons/io5';
+import { IoShareSocialOutline } from 'react-icons/io5';
+import { IoIosLink } from 'react-icons/io';
+import { FiInfo } from 'react-icons/fi';
+
 import { timeAgo, transformNumber } from '../utils/util';
+import Menu from './Menu';
+import ReportModal from './Modal/ReportModal';
 
 type Props = {
   comment: CommentData;
@@ -27,7 +34,31 @@ const Comment = ({ comment }: Props) => {
         </div>
       </div>
       <div className="flex flex-col items-center text-gray-700">
-        <FaEllipsisH className="size-5" />
+        <Menu buttonVal={<FaEllipsisH className="size-5" />} isElement={true} positionHorizontal='right'>
+          <div className="w-52 px-4 py-3 text-[14px] font-semibold">
+            <ReportModal
+              buttonComponent={
+                <div className="py-2 flex cursor-pointer gap-2 hover:underline">
+                  <IoFlagOutline className="size-5" />
+                  Report Comment
+                </div>
+              }
+              isStory={false}
+            />
+            <div className="py-2 flex cursor-pointer gap-2 hover:underline">
+              <IoShareSocialOutline className="size-5" />
+              Link to Comment
+            </div>
+            <div className="py-2 flex cursor-pointer gap-2 hover:underline">
+              <IoIosLink className="size-5" />
+              Code of Conduct
+            </div>
+            <div className="py-2 flex cursor-pointer gap-2 hover:underline">
+              <FiInfo className="size-5" />
+              Wattpad Safety Portal
+            </div>
+          </div>
+        </Menu>
         <BsSuitHeart className="mt-2 size-5" />
         <div className="">{transformNumber(comment.likes)}</div>
       </div>

@@ -6,10 +6,10 @@ import { IoMdStar } from 'react-icons/io';
 import { FaComment } from 'react-icons/fa';
 import { Divider } from '@mui/material';
 import { MdPersonAddAlt1 } from 'react-icons/md';
-import AccountModal from './AccountModal';
+import AccountModal from './Modal/AccountModal';
 import ShareButtons from './ShareButtons';
 import { BiSolidComment } from 'react-icons/bi';
-import CommentModal from './CommentModal';
+import CommentModal from './Modal/CommentModal';
 import CommentSection from './CommentSection';
 import { transformNumber } from '../utils/util';
 

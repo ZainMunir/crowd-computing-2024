@@ -10,8 +10,8 @@ import { MdEmail } from 'react-icons/md';
 import { FaExclamationCircle } from 'react-icons/fa';
 import Menu from './Menu';
 import { Divider } from '@mui/material';
-import AccountModal from './AccountModal';
-import ReportModal from './ReportModal';
+import AccountModal from './Modal/AccountModal';
+import ReportModal from './Modal/ReportModal';
 
 type Props = {
   flexVal: string;

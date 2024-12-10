@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { IoCloseOutline } from 'react-icons/io5';
 import { createPortal } from 'react-dom';
-import useOutsideClick from './useOutsideClick';
+import useOutsideClick from '../useOutsideClick';
 
 type ModalProps = {
   children: React.ReactNode;
@@ -63,7 +63,7 @@ const Modal = ({
     >
       <div
         ref={modalRef}
-        className={`relative w-full max-w-[400px] rounded-md bg-white px-6 py-16 drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)] ${positionClass} ${
+        className={`relative w-full max-w-[400px] rounded-md bg-white drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)] ${positionClass} ${
           isClosing ? fadeOutClass : fadeInClass
         }`}
       >
@@ -79,7 +79,7 @@ const Modal = ({
   );
 
   return (
-    <div className="relative inline self-center flex-grow">
+    <div className="relative inline flex-grow self-center">
       <button onClick={handleOpen} ref={buttonRef} className="w-full">
         {buttonComponent}
       </button>

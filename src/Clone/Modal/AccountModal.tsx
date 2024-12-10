@@ -16,7 +16,7 @@ const AccountModal = ({ buttonComponent, isSignUp, flavourText }: Props) => {
 
   return (
     <Modal buttonComponent={buttonComponent}>
-      <div className="flex flex-col gap-6 px-6">
+      <div className="flex flex-col gap-6 px-10 py-16">
         <div className="mb-4 text-center text-2xl font-bold">
           {typeString} {type ? flavourText : 'to Wattpad'}
         </div>

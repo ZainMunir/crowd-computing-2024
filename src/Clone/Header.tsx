@@ -5,7 +5,7 @@ import { Divider } from '@mui/material';
 import createStory from '../resources/create-story.png';
 import { FaSearch } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
-import AccountModal from './AccountModal';
+import AccountModal from './Modal/AccountModal';
 import { IoMdStar } from 'react-icons/io';
 
 const browse_options = [
@@ -56,8 +56,8 @@ const community_options = [
 
 const Header = () => {
   return (
-    <div className="sticky flex w-full flex-col bg-white top-0 z-20">
-      <div className="flex h-[54px] gap-4 items-center">
+    <div className="sticky top-0 z-20 flex w-full flex-col bg-white">
+      <div className="flex h-[54px] items-center gap-4">
         <img src={wattPadLogo} alt="wattpad logo" className="h-12" />
         <Menu buttonVal="Browse">
           <div className="flex h-[390px] w-[750px]">
@@ -103,7 +103,7 @@ const Header = () => {
                 {option}
               </div>
             ))}
-          </div>{' '}
+          </div>
         </Menu>
         <div className="ml-10 mr-auto flex flex-grow items-center">
           <FaSearch />
