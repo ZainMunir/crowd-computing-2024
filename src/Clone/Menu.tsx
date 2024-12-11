@@ -41,7 +41,7 @@ const Menu = ({
       </button>
       {isShown && (
         <div
-          className={`absolute ${verticalClass} ${horizontalClass} z-40 mt-2 border border-gray-300 bg-white drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)]`}
+          className={`absolute ${verticalClass} ${horizontalClass} z-40 mt-2  bg-white drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)]`}
           ref={wrapperRef}
         >
           {children}

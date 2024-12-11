@@ -7,6 +7,8 @@ import { FaSearch } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
 import AccountModal from './Modal/AccountModal';
 import { IoMdStar } from 'react-icons/io';
+import { StoryData } from '../utils/placeholderData';
+import { RxCaretDown } from 'react-icons/rx';
 
 const browse_options = [
   [
@@ -54,7 +56,13 @@ const community_options = [
   'Wattpad Ambassadors',
 ];
 
-const Header = () => {
+type Props = {
+  data: StoryData;
+  chapterIndex: number;
+  setChapterIndex: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const Header = ({ data, chapterIndex, setChapterIndex }: Props) => {
   return (
     <div className="sticky top-0 z-20 flex w-full flex-col bg-white">
       <div className="flex h-[54px] items-center gap-4">
@@ -143,8 +151,50 @@ const Header = () => {
           />
         </div>
       </div>
-      <div className="flex h-[54px] items-center justify-between px-4">
-        <div className="">Placeholder for chapters</div>
+      <div className="flex h-[54px] items-center justify-between">
+        <Menu
+          buttonVal={
+            <div className="group relative ml-5 flex h-full w-[350px] flex-row items-center gap-4 border-r border-gray-200 px-1 text-left hover:bg-gray-200">
+              <img src={data.image} alt={data.title} className="h-10" />
+              <div className="">
+                <div className="-mb-1 text-lg font-semibold">{data.title}</div>
+                <div className="text-sm text-gray-700">
+                  by {data.author.username}
+                </div>
+              </div>
+              <RxCaretDown className="absolute right-2 top-0 size-10 text-gray-400 group-hover:text-gray-600" />
+            </div>
+          }
+          isElement={true}
+          positionHorizontal="right"
+        >
+          <div className="max-h-[480px] w-[350px]">
+            <div className="p-2">
+              <div className="text-center text-base font-semibold">
+                {data.title}
+              </div>
+              <div className="text-center text-sm text-gray-600">
+                Table of Contents
+              </div>
+            </div>
+            <div className="overflow-y-scroll">
+              {data.chapters.map((chapter, index) => (
+                <div
+                  key={index}
+                  onClick={() => setChapterIndex(index)}
+                  className={`cursor-pointer border-l-4 border-transparent pb-3 pl-3 pr-5 pt-2 font-semibold hover:bg-gray-200 text-sm ${
+                    chapterIndex === index
+                      ? 'border-vibrantOrange bg-gray-100 text-vibrantOrange'
+                      : ''
+                  }`}
+                >
+                  {chapter.title}
+                </div>
+              ))}
+            </div>
+          </div>
+        </Menu>
+
         <div className="g-1 flex items-center gap-2">
           <AccountModal
             buttonComponent={
