@@ -27,21 +27,21 @@ function timeAgo(date: Date): string {
 
   const diffInDays = Math.floor(diffInHours / 24);
   if (diffInDays < 7) {
-    return `${diffInDays}d`;
+    return `${diffInDays}d ago`;
   }
 
   const diffInWeeks = Math.floor(diffInDays / 7);
   if (diffInWeeks < 4) {
-    return `${diffInWeeks}w`;
+    return `${diffInWeeks}w ago`;
   }
 
   const diffInMonths = Math.floor(diffInDays / 30);
   if (diffInMonths < 12) {
-    return `${diffInMonths}mo`;
+    return `${diffInMonths}mo ago`;
   }
 
   const diffInYears = Math.floor(diffInDays / 365);
-  return `${diffInYears}y`;
+  return `${diffInYears}y ago`;
 }
 
 export { transformNumber, timeAgo };
