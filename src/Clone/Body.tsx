@@ -1,9 +1,7 @@
 import React from 'react';
-import placeholderPoster from '../resources/placeholder_poster.jpg';
 import { StoryData } from '../utils/placeholderData';
-import { IoMdEye } from 'react-icons/io';
 import { IoMdStar } from 'react-icons/io';
-import { FaComment } from 'react-icons/fa';
+import { FaComment, FaPinterest } from 'react-icons/fa';
 import { Divider } from '@mui/material';
 import { MdPersonAddAlt1 } from 'react-icons/md';
 import AccountModal from './Modal/AccountModal';
@@ -14,6 +12,8 @@ import CommentSection from './CommentSection';
 import { transformNumber } from '../utils/util';
 import StoryCard from './StoryCard';
 import ViewStar from './ViewStar';
+import { RiFacebookFill } from 'react-icons/ri';
+import { IoFlagSharp } from 'react-icons/io5';
 
 const footer_p1 = [
   'Wattpad Originals',
@@ -65,7 +65,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
   ];
   return (
     <div className="flex w-full flex-grow flex-col">
-      <div>
+      <div className="group">
         <div className="h-[340px] w-full overflow-hidden">
           <div
             style={
@@ -97,6 +97,23 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="invisible mx-20 mt-1 flex flex-row gap-10 group-hover:visible">
+          <div
+            className={`mr-auto flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-neutral-500 text-2xl`}
+          >
+            <IoFlagSharp className="size-4 text-white" />
+          </div>
+          <div
+            className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-indigo-800 text-2xl`}
+          >
+            <RiFacebookFill className="size-4 text-white" />
+          </div>
+          <div
+            className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-red-700 text-2xl`}
+          >
+            <FaPinterest className="size-4 text-white" />
           </div>
         </div>
       </div>
