@@ -34,7 +34,7 @@ const Menu = ({
     <div className="relative inline-block">
       <button
         onClick={handleClick}
-        className="flex h-full cursor-pointer items-center gap-1 font-semibold"
+        className="text-semibold text-dark text-medium flex h-full cursor-pointer items-center gap-1"
         ref={buttonRef}
       >
         {buttonVal}
@@ -42,7 +42,7 @@ const Menu = ({
       </button>
       {isShown && (
         <div
-          className={`absolute ${verticalClass} ${horizontalClass} z-40 mt-2 bg-white drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)]`}
+          className={`absolute ${verticalClass} ${horizontalClass} bg-light z-40 mt-2 drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)]`}
           ref={wrapperRef}
         >
           {children}

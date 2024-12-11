@@ -6,13 +6,15 @@
   --text-small: 0.813rem;
   --text-medium: 1rem;
   --text-large: 1.5rem;
-  --text-xlarge: 2rem;
+  --text-xlarge: 1.75rem;
+  --text-2xlarge: 2rem;
   --text-normalbold: 400;
   --text-semibold: 600;
   --text-bold: 700;
-  --text-light: #6f6f6f;
-  --text-white: #ffffff;
+  --text-middle: #6f6f6f;
+  --text-light: #ffffff;
   --text-dark: #222222;
+  --bg-light: #ffffff;
   --bg-gray-1: #f6f6f6;
   --bg-gray-2: #eeeeee;
   --bg-gray-3: #6f6f6f;
@@ -28,6 +30,7 @@
   --bg-many-orange: #ff6122;
   --text-many-orange: #ff6122;
   --bg-facebook-blue: #3b5998;
+  --text-facebook-blue: #3b5998;
   --bg-twitter-blue: #55acee;
   --bg-pinterest-red: #bd081c;
   --bg-tumblr-blue: #35465d;
@@ -50,6 +53,9 @@
   .text-xlarge {
     font-size: var(--text-xlarge);
   }
+  .text-2xlarge {
+    font-size: var(--text-2xlarge);
+  }
   .text-normalbold {
     font-weight: var(--text-normalbold);
   }
@@ -59,14 +65,17 @@
   .text-bold {
     font-weight: var(--text-bold);
   }
+  .text-middle {
+    color: var(--text-middle);
+  }
   .text-light {
     color: var(--text-light);
   }
-  .text-white {
-    color: var(--text-white);
-  }
   .text-dark {
     color: var(--text-dark);
+  }
+  .bg-light {
+    background-color: var(--bg-light);
   }
   .bg-gray-1 {
     background-color: var(--bg-gray-1);
@@ -109,6 +118,9 @@
   }
   .bg-facebook-blue {
     background-color: var(--bg-facebook-blue);
+  }
+  .text-facebook-blue {
+    color: var(--text-facebook-blue);
   }
   .bg-twitter-blue {
     background-color: var(--bg-twitter-blue);

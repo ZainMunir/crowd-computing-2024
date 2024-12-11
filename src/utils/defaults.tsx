@@ -5,6 +5,15 @@ import { StoryData } from './storyTypes';
 
 export const defaultEnabledElements: EnabledElements = {
   header: true,
+  headerNav: true,
+  headerNavLogo: true,
+  headerNavBrowse: true,
+  headerNavCommunity: true,
+  headerNavSearch: true,
+  headerNavWrite: true,
+  headerNavPremium: true,
+  headerNavLogin: true,
+  headerNavSignup: true,
 };
 
 export const defaultStyling: Styling = {
