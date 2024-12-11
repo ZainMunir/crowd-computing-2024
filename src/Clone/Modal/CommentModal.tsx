@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
-import { CommentData } from '../../utils/placeholderData';
+import { CommentData } from '../../utils/storyTypes';
 import CommentSection from '../CommentSection';
 
 type Props = {

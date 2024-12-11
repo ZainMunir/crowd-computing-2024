@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { CommentData } from '../utils/placeholderData';
+import { CommentData } from '../utils/storyTypes';
 import { FiSend } from 'react-icons/fi';
 import Comment from './Comment';
 import noComments from '../resources/no-comments.png';

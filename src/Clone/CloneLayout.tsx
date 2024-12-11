@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Body from './Body';
-import placeholderData from '../utils/placeholderData';
+import { placeholderData } from '../utils/defaults';
 import { useScroll, useSpring } from 'framer-motion';
 
 const CloneLayout = () => {

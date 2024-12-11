@@ -7,7 +7,7 @@ import { FaSearch } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
 import AccountModal from './Modal/AccountModal';
 import { IoMdStar } from 'react-icons/io';
-import { StoryData } from '../utils/placeholderData';
+import { StoryData } from '../utils/storyTypes';
 import { RxCaretDown } from 'react-icons/rx';
 import { motion, MotionValue } from 'framer-motion';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryData } from '../../utils/placeholderData';
+import { StoryData } from '../../utils/storyTypes';
 import Modal from './Modal';
 import ViewStar from '../ViewStar';
 import { Divider } from '@mui/material';

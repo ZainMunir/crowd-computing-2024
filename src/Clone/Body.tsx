@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryData } from '../utils/placeholderData';
+import { StoryData } from '../utils/storyTypes';
 import { IoMdStar } from 'react-icons/io';
 import { FaComment, FaPinterest } from 'react-icons/fa';
 import { Divider } from '@mui/material';

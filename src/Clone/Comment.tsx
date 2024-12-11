@@ -1,5 +1,5 @@
 import React from 'react';
-import { CommentData } from '../utils/placeholderData';
+import { CommentData } from '../utils/storyTypes';
 import { BsSuitHeart } from 'react-icons/bs';
 import { FaEllipsisH } from 'react-icons/fa';
 import { IoFlagOutline } from 'react-icons/io5';
