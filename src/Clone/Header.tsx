@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { useEffect } from 'react';
 import wattPadLogo from '../resources/wattpad-logo.png';
 import Menu from './Menu';
 import { Divider } from '@mui/material';
@@ -9,7 +9,7 @@ import AccountModal from './Modal/AccountModal';
 import { IoMdStar } from 'react-icons/io';
 import { StoryData } from '../utils/placeholderData';
 import { RxCaretDown } from 'react-icons/rx';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, MotionValue, useScroll, useSpring } from 'framer-motion';
 
 const browse_options = [
   [
@@ -61,22 +61,10 @@ type Props = {
   data: StoryData;
   chapterIndex: number;
   setChapterIndex: React.Dispatch<React.SetStateAction<number>>;
-  scrollContainerRef: React.RefObject<HTMLDivElement>;
+  scaleX: MotionValue<number>;
 };
 
-const Header = ({
-  data,
-  chapterIndex,
-  setChapterIndex,
-  scrollContainerRef,
-}: Props) => {
-  const { scrollYProgress } = useScroll({ container: scrollContainerRef });
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
+const Header = ({ data, chapterIndex, setChapterIndex, scaleX }: Props) => {
   return (
     <div className="sticky top-0 z-20 flex w-full flex-col bg-white">
       <div className="flex h-[54px] items-center gap-4">
@@ -172,7 +160,7 @@ const Header = ({
               <img src={data.image} alt={data.title} className="h-10" />
               <div className="">
                 <div className="-mb-1 text-lg font-semibold">{data.title}</div>
-                <div className="text-sm text-gray-700">
+                <div className="text-sm text-gray-400">
                   by {data.author.username}
                 </div>
               </div>
@@ -232,7 +220,7 @@ const Header = ({
           />
         </div>
       </div>
-      <motion.div className="h-1 bg-teal-500 origin-left" style={{ scaleX }} />
+      <motion.div className="h-1 origin-left bg-teal-500" style={{ scaleX }} />
     </div>
   );
 };

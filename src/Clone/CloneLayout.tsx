@@ -2,10 +2,19 @@ import React from 'react';
 import Header from './Header';
 import Body from './Body';
 import placeholderData from '../utils/placeholderData';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 const CloneLayout = () => {
   const [chapterIndex, setChapterIndex] = React.useState(0);
   const ref = React.useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({ container: ref });
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
 
   return (
     <div className="flex h-full w-full flex-col bg-white">
@@ -14,7 +23,7 @@ const CloneLayout = () => {
           data={placeholderData}
           chapterIndex={chapterIndex}
           setChapterIndex={setChapterIndex}
-          scrollContainerRef={ref}
+          scaleX={scaleX}
         />
         <Body
           data={placeholderData}
