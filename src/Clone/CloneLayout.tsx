@@ -19,13 +19,13 @@ const CloneLayout = () => {
     <div className="flex h-full w-full flex-col bg-white">
       <div className="flex-1 overflow-y-auto" ref={ref}>
         <Header
-          data={placeholderData}
+          story={placeholderData}
           chapterIndex={chapterIndex}
           setChapterIndex={setChapterIndex}
           scaleX={scaleX}
         />
         <Body
-          data={placeholderData}
+          story={placeholderData}
           chapterIndex={chapterIndex}
           setChapterIndex={setChapterIndex}
         />

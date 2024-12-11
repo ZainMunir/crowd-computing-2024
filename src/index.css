@@ -27,13 +27,15 @@
 
   --text-lightning-red: #e81249;
   --bg-button-purple: #21164c;
-  --bg-many-orange: #ff6122;
-  --text-many-orange: #ff6122;
+  --bg-orange: #ff6122;
+  --text-orange: #ff6122;
+  --border-orange: #ff6122;
   --bg-facebook-blue: #3b5998;
   --text-facebook-blue: #3b5998;
   --bg-twitter-blue: #55acee;
   --bg-pinterest-red: #bd081c;
   --bg-tumblr-blue: #35465d;
+  --bg-progress-teal: #00b2b2;
 
   --bg-post-button-inactive: #d7caff;
   --bg-post-button-active: #3b19a9;
@@ -110,11 +112,14 @@
   .bg-button-purple {
     background-color: var(--bg-button-purple);
   }
-  .bg-many-orange {
-    background-color: var(--bg-many-orange);
+  .bg-orange {
+    background-color: var(--bg-orange);
   }
-  .text-many-orange {
-    color: var(--text-many-orange);
+  .text-orange {
+    color: var(--text-orange);
+  }
+  .border-orange {
+    border-left-color: var(--border-orange);
   }
   .bg-facebook-blue {
     background-color: var(--bg-facebook-blue);
@@ -130,6 +135,9 @@
   }
   .bg-tumblr-blue {
     background-color: var(--bg-tumblr-blue);
+  }
+  .bg-progress-teal {
+    background-color: var(--bg-progress-teal);
   }
   .bg-post-button-inactive {
     background-color: var(--bg-post-button-inactive);

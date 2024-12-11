@@ -34,13 +34,13 @@ const footer_p3 = [
 ];
 
 type Props = {
-  data: StoryData;
+  story: StoryData;
   chapterIndex: number;
   setChapterIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
-  const chapter = data.chapters[chapterIndex];
+const Body = ({ story, chapterIndex, setChapterIndex }: Props) => {
+  const chapter = story.chapters[chapterIndex];
   const allChapterComments = chapter.paragraphs
     .map((para) => para.comments)
     .flat();
@@ -52,16 +52,16 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
   }
 
   const relatedStories = [
-    data,
-    data,
-    data,
-    data,
-    data,
-    data,
-    data,
-    data,
-    data,
-    data,
+    story,
+    story,
+    story,
+    story,
+    story,
+    story,
+    story,
+    story,
+    story,
+    story,
   ];
   return (
     <div className="flex w-full flex-grow flex-col">
@@ -71,25 +71,25 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
             style={
               // https://stackoverflow.com/questions/70805041/background-image-in-tailwindcss-using-dynamic-url-react-js
               {
-                '--image-url': `url(${data.image})`,
+                '--image-url': `url(${story.image})`,
               } as React.CSSProperties
             }
             className={`h-full w-full scale-110 bg-[image:var(--image-url)] bg-cover bg-center bg-no-repeat blur-xl`}
           ></div>
           <div className="mt-[-340px] flex h-full w-full flex-col justify-center">
             <div className="z-10 mx-auto flex h-[245px] w-[625px] flex-row gap-3">
-              <img src={data.image} />
+              <img src={story.image} />
               <div className="flex-grow text-white">
                 <p className="text-[15px] font-semibold">YOU ARE READING</p>
-                <p className="text-[24px]">{data.title}</p>
+                <p className="text-[24px]">{story.title}</p>
                 <p className="cursor-pointer text-[12px] hover:underline">
-                  {data.genre.toUpperCase()}
+                  {story.genre.toUpperCase()}
                 </p>
                 <p className="max-h-[95px] overflow-hidden text-[16px]">
-                  {data.description}
+                  {story.description}
                 </p>
                 <p className="flex flex-row gap-4 text-[15px] font-bold">
-                  {data.tags.slice(0, 5).map((tag) => (
+                  {story.tags.slice(0, 5).map((tag) => (
                     <span id={tag} className="cursor-pointer hover:underline">
                       #{tag.toLowerCase()}
                     </span>
@@ -138,12 +138,12 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
       <div className="grid w-full grid-cols-[1fr_625px_1fr]">
         <div className="col-start-1 flex w-[260px] flex-col gap-2 justify-self-end">
           <img
-            src={data.author.profilePic}
+            src={story.author.profilePic}
             className="mx-auto h-[72px] w-[72px] cursor-pointer rounded-full"
             alt="{data.author.username}"
           />
           <div className="w-fit cursor-pointer self-center hover:underline">
-            by <span className="font-semibold">{data.author.username}</span>
+            by <span className="font-semibold">{story.author.username}</span>
           </div>
           <div className="mx-auto">
             <AccountModal
@@ -154,7 +154,7 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
                 </div>
               }
               isSignUp={true}
-              flavourText={`to follow ${data.author.username} and receive updates`}
+              flavourText={`to follow ${story.author.username} and receive updates`}
             />
           </div>
           <div className="mt-8 self-center font-semibold text-gray-500">
@@ -186,10 +186,10 @@ const Body = ({ data, chapterIndex, setChapterIndex }: Props) => {
             </div>
           ))}
           <div className="mx-auto mt-10 flex w-11/12 flex-col">
-            {chapterIndex == data.chapters.length - 1 ? (
+            {chapterIndex == story.chapters.length - 1 ? (
               <div className="text-boldh-12 text-center text-[22px] font-bold">
                 🎉You've finished reading{' '}
-                <span className="text-orange-800">{data.title}</span>
+                <span className="text-orange-800">{story.title}</span>
                 🎉
               </div>
             ) : (

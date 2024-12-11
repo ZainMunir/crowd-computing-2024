@@ -61,7 +61,7 @@ const BrowseMenu = () => {
                 {options.map((option, index) => (
                   <div
                     key={`browse-${index}`}
-                    className="hover:text-bold text-dark text-medium cursor-pointer py-[6px] hover:bg-inherit"
+                    className="hover:text-bold text-dark text-medium text-normalbold cursor-pointer py-[6px] hover:bg-inherit"
                   >
                     {option}
                   </div>
@@ -78,7 +78,7 @@ const BrowseMenu = () => {
             {wattpad_picks.map((option, index) => (
               <div
                 key={`wattpad-picks-${index}`}
-                className="text-medium text-dark text-medium hover:text-bold w-full cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap py-[6px]"
+                className="text-medium text-dark text-medium hover:text-bold text-normalbold w-full cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap py-[6px]"
               >
                 {option}
               </div>

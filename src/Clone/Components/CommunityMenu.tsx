@@ -19,7 +19,7 @@ const CommunityMenu = () => {
         {community_options.map((option, index) => (
           <div
             key={index}
-            className="text-dark text-medium cursor-pointer py-[6px] hover:underline"
+            className="text-dark text-medium text-normalbold cursor-pointer py-[6px] hover:underline"
           >
             {option}
           </div>

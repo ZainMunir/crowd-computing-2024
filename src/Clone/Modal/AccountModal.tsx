@@ -28,7 +28,7 @@ const AccountModal = ({ buttonComponent, isSignUp, flavourText }: Props) => {
           <AiFillFacebook className="text-large text-facebook-blue" />
           {typeString} with Facebook
         </button>
-        <Divider className="text-small text-middle" flexItem>
+        <Divider className="text-small text-middle text-normalbold" flexItem>
           or
         </Divider>
         <button className="border-dark text-bold text-light text-medium bg-dark flex h-12 w-full items-center justify-center gap-2 self-center rounded-full border-2">

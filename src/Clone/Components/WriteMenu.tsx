@@ -14,21 +14,21 @@ const WriteMenu = () => {
       <div className="w-[280px] px-3 py-2">
         <div className="flex">
           <img src={createStory} alt="create story" className="h-8" />
-          <div className="text-dark text-medium cursor-pointer py-[6px] hover:underline">
+          <div className="text-dark text-medium text-normalbold cursor-pointer py-[6px] hover:underline">
             Create a new story
           </div>
         </div>
-        <div className="text-dark text-medium cursor-pointer py-[6px] hover:underline">
+        <div className="text-dark text-medium text-normalbold cursor-pointer py-[6px] hover:underline">
           My Stories
         </div>
         <Divider variant="middle" className="bg-gray-1 m-4" />
-        <div className="text-dark text-medium cursor-pointer py-[6px] hover:underline">
+        <div className="text-dark text-medium text-normalbold cursor-pointer py-[6px] hover:underline">
           Helpful writer resources
         </div>
-        <div className="text-dark text-medium cursor-pointer py-[6px] hover:underline">
+        <div className="text-dark text-medium text-normalbold cursor-pointer py-[6px] hover:underline">
           Wattpad programs & opportunities
         </div>
-        <div className="text-dark text-medium cursor-pointer py-[6px] hover:underline">
+        <div className="text-dark text-medium text-normalbold cursor-pointer py-[6px] hover:underline">
           Writing contests
         </div>
       </div>

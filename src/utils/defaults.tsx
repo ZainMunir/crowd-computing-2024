@@ -14,6 +14,11 @@ export const defaultEnabledElements: EnabledElements = {
   headerNavPremium: true,
   headerNavLogin: true,
   headerNavSignup: true,
+  headerStory: true,
+  headerStoryChapterPicker: true,
+  headerStoryAdd: true,
+  headerStoryVote: true,
+  headerProgressBar: true,
 };
 
 export const defaultStyling: Styling = {
