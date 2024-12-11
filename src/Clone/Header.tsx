@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import wattPadLogo from '../resources/wattpad-logo.png';
 import Menu from './Menu';
 import { Divider } from '@mui/material';
@@ -9,6 +9,7 @@ import AccountModal from './Modal/AccountModal';
 import { IoMdStar } from 'react-icons/io';
 import { StoryData } from '../utils/placeholderData';
 import { RxCaretDown } from 'react-icons/rx';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 const browse_options = [
   [
@@ -60,9 +61,22 @@ type Props = {
   data: StoryData;
   chapterIndex: number;
   setChapterIndex: React.Dispatch<React.SetStateAction<number>>;
+  scrollContainerRef: React.RefObject<HTMLDivElement>;
 };
 
-const Header = ({ data, chapterIndex, setChapterIndex }: Props) => {
+const Header = ({
+  data,
+  chapterIndex,
+  setChapterIndex,
+  scrollContainerRef,
+}: Props) => {
+  const { scrollYProgress } = useScroll({ container: scrollContainerRef });
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
     <div className="sticky top-0 z-20 flex w-full flex-col bg-white">
       <div className="flex h-[54px] items-center gap-4">
@@ -182,7 +196,7 @@ const Header = ({ data, chapterIndex, setChapterIndex }: Props) => {
                 <div
                   key={index}
                   onClick={() => setChapterIndex(index)}
-                  className={`cursor-pointer border-l-4 border-transparent pb-3 pl-3 pr-5 pt-2 font-semibold hover:bg-gray-200 text-sm ${
+                  className={`cursor-pointer border-l-4 border-transparent pb-3 pl-3 pr-5 pt-2 text-sm font-semibold hover:bg-gray-200 ${
                     chapterIndex === index
                       ? 'border-vibrantOrange bg-gray-100 text-vibrantOrange'
                       : ''
@@ -218,6 +232,7 @@ const Header = ({ data, chapterIndex, setChapterIndex }: Props) => {
           />
         </div>
       </div>
+      <motion.div className="h-1 bg-teal-500 origin-left" style={{ scaleX }} />
     </div>
   );
 };

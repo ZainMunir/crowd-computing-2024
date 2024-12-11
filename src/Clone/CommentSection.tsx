@@ -16,7 +16,6 @@ const CommentSection = forwardRef<HTMLDivElement, Props>(
   ({ comments, defaultLoad, isInModal = false }, ref) => {
     const [inputVal, setInputVal] = React.useState('');
     const [load, setLoad] = React.useState(defaultLoad);
-    const containerRef = useRef<HTMLDivElement>(null);
 
     function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
       setInputVal(e.target.value);
