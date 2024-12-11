@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Body from './Body';
 import placeholderData from '../utils/placeholderData';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { useScroll, useSpring } from 'framer-motion';
 
 const CloneLayout = () => {
   const [chapterIndex, setChapterIndex] = React.useState(0);
@@ -14,7 +14,6 @@ const CloneLayout = () => {
     damping: 30,
     restDelta: 0.001,
   });
-
 
   return (
     <div className="flex h-full w-full flex-col bg-white">

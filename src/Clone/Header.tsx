@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import wattPadLogo from '../resources/wattpad-logo.png';
 import Menu from './Menu';
 import { Divider } from '@mui/material';
@@ -9,7 +9,7 @@ import AccountModal from './Modal/AccountModal';
 import { IoMdStar } from 'react-icons/io';
 import { StoryData } from '../utils/placeholderData';
 import { RxCaretDown } from 'react-icons/rx';
-import { motion, MotionValue, useScroll, useSpring } from 'framer-motion';
+import { motion, MotionValue } from 'framer-motion';
 
 const browse_options = [
   [

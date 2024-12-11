@@ -8,7 +8,7 @@ import { transformNumber } from '../../utils/util';
 import AccountModal from './AccountModal';
 import { FaCheck } from 'react-icons/fa6';
 import { FaEllipsisH } from 'react-icons/fa';
-import { AiFillInfoCircle } from "react-icons/ai";
+import { AiFillInfoCircle } from 'react-icons/ai';
 
 type Props = {
   buttonComponent: React.ReactNode;

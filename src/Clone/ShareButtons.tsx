@@ -75,7 +75,7 @@ const ShareButtons = ({
           <Divider className="" />
           <ReportModal
             buttonComponent={
-              <div className="group flex flex-row items-center gap-2 px-2 py-1 hover:bg-gray-200 w-full">
+              <div className="group flex w-full flex-row items-center gap-2 px-2 py-1 hover:bg-gray-200">
                 <FaExclamationCircle className="group-hover:text-cyan-700" />
                 <div>Report Story</div>
               </div>

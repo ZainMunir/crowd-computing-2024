@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { forwardRef } from 'react';
 import { CommentData } from '../utils/placeholderData';
 import { FiSend } from 'react-icons/fi';
 import Comment from './Comment';

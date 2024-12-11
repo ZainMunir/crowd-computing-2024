@@ -1,3 +1,131 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --text-small: 0.813rem;
+  --text-medium: 1rem;
+  --text-large: 1.5rem;
+  --text-xlarge: 2rem;
+  --text-normalbold: 400;
+  --text-semibold: 600;
+  --text-bold: 700;
+  --text-light: #6f6f6f;
+  --text-white: #ffffff;
+  --text-dark: #222222;
+  --bg-gray-1: #f6f6f6;
+  --bg-gray-2: #eeeeee;
+  --bg-gray-3: #6f6f6f;
+  --bg-dark: #121212;
+  --border-light: #eeeeee;
+  --border-dark: #121212;
+  --description-line-height: 1.5rem;
+  --paragraph-line-height: 1.875rem;
+  --comment-line-height: 1.25rem;
+
+  --text-lightning-red: #e81249;
+  --bg-button-purple: #21164c;
+  --bg-many-orange: #ff6122;
+  --text-many-orange: #ff6122;
+  --bg-facebook-blue: #3b5998;
+  --bg-twitter-blue: #55acee;
+  --bg-pinterest-red: #bd081c;
+  --bg-tumblr-blue: #35465d;
+
+  --bg-post-button-inactive: #d7caff;
+  --bg-post-button-active: #3b19a9;
+  --border-text-area-active: #5c10ff;
+}
+
+@layer utilities {
+  .text-small {
+    font-size: var(--text-small);
+  }
+  .text-medium {
+    font-size: var(--text-medium);
+  }
+  .text-large {
+    font-size: var(--text-large);
+  }
+  .text-xlarge {
+    font-size: var(--text-xlarge);
+  }
+  .text-normalbold {
+    font-weight: var(--text-normalbold);
+  }
+  .text-semibold {
+    font-weight: var(--text-semibold);
+  }
+  .text-bold {
+    font-weight: var(--text-bold);
+  }
+  .text-light {
+    color: var(--text-light);
+  }
+  .text-white {
+    color: var(--text-white);
+  }
+  .text-dark {
+    color: var(--text-dark);
+  }
+  .bg-gray-1 {
+    background-color: var(--bg-gray-1);
+  }
+  .bg-gray-2 {
+    background-color: var(--bg-gray-2);
+  }
+  .bg-gray-3 {
+    background-color: var(--bg-gray-3);
+  }
+  .bg-dark {
+    background-color: var(--bg-dark);
+  }
+  .border-light {
+    border-color: var(--border-light);
+  }
+  .border-dark {
+    border-color: var(--border-dark);
+  }
+  .description-line-height {
+    line-height: var(--description-line-height);
+  }
+  .paragraph-line-height {
+    line-height: var(--paragraph-line-height);
+  }
+  .comment-line-height {
+    line-height: var(--comment-line-height);
+  }
+  .text-lightning-red {
+    color: var(--text-lightning-red);
+  }
+  .bg-button-purple {
+    background-color: var(--bg-button-purple);
+  }
+  .bg-many-orange {
+    background-color: var(--bg-many-orange);
+  }
+  .text-many-orange {
+    color: var(--text-many-orange);
+  }
+  .bg-facebook-blue {
+    background-color: var(--bg-facebook-blue);
+  }
+  .bg-twitter-blue {
+    background-color: var(--bg-twitter-blue);
+  }
+  .bg-pinterest-red {
+    background-color: var(--bg-pinterest-red);
+  }
+  .bg-tumblr-blue {
+    background-color: var(--bg-tumblr-blue);
+  }
+  .bg-post-button-inactive {
+    background-color: var(--bg-post-button-inactive);
+  }
+  .bg-post-button-active {
+    background-color: var(--bg-post-button-active);
+  }
+  .border-text-area-active {
+    border-color: var(--border-text-area-active);
+  }
+}
