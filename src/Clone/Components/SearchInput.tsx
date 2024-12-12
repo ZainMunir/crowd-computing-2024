@@ -5,7 +5,7 @@ import { useCloneContext } from '../../utils/CloneContext';
 const SearchInput = () => {
   const { enabledElements } = useCloneContext();
 
-  if (!enabledElements.headerNavSearch) return null;
+  if (!enabledElements.headerNavSearch) return <div className="mr-auto"></div>;
 
   return (
     <div className="ml-10 mr-auto flex flex-grow items-center">

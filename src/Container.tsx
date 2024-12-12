@@ -24,30 +24,30 @@ const Container = () => {
 
   return (
     <div className="grid h-screen w-full grid-cols-[2fr_1fr]">
-      <ThemeProvider theme={customTheme}>
-        <div
-          className={`${
-            startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
-          } h-full overflow-y-auto`}
-        >
-          <CloneContext.Provider value={{ enabledElements, styling }}>
+      <CloneContext.Provider value={{ enabledElements, styling }}>
+        <ThemeProvider theme={customTheme}>
+          <div
+            className={`${
+              startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
+            } h-full overflow-y-auto`}
+          >
             <CloneLayout />
-          </CloneContext.Provider>
-        </div>
-        <div
-          className={`transform bg-warmWhite px-[2rem] py-[1rem] font-quicksand transition-transform duration-500 ${
-            startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
-          }`}
-        >
-          <div className="z-50 w-full">
-            {!startTask ? (
-              <Instructions onStartTask={() => setStartTask(true)} />
-            ) : (
-              <Question />
-            )}
           </div>
-        </div>
-      </ThemeProvider>
+          <div
+            className={`transform bg-warmWhite px-[2rem] py-[1rem] font-quicksand transition-transform duration-500 ${
+              startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
+            }`}
+          >
+            <div className="z-50 w-full">
+              {!startTask ? (
+                <Instructions onStartTask={() => setStartTask(true)} />
+              ) : (
+                <Question />
+              )}
+            </div>
+          </div>
+        </ThemeProvider>
+      </CloneContext.Provider>
     </div>
   );
 };

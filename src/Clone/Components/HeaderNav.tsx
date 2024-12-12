@@ -14,8 +14,10 @@ const HeaderNav = () => {
   if (!enabledElements.headerNav) return null;
 
   return (
-    <div className="flex h-[54px] items-center gap-4">
-      <img src={wattPadLogo} alt="wattpad logo" className="ml-2 h-3/5" />
+    <div className="flex h-[54px] items-center gap-4 px-4">
+      {enabledElements.headerNavLogo && (
+        <img src={wattPadLogo} alt="wattpad logo" className="h-3/5" />
+      )}
       <BrowseMenu />
       <CommunityMenu />
       <SearchInput />
@@ -39,7 +41,7 @@ const HeaderNav = () => {
         {enabledElements.headerNavSignup && (
           <AccountModal
             buttonComponent={
-              <p className="text-semibold text-dark text-medium mx-8">
+              <p className="text-semibold text-dark text-medium ml-8">
                 Sign Up
               </p>
             }

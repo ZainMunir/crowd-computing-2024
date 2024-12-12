@@ -3,6 +3,7 @@ import Header from './Header';
 import Body from './Body';
 import { placeholderData } from '../utils/defaults';
 import { useScroll, useSpring } from 'framer-motion';
+import Footer from './Footer';
 
 const CloneLayout = () => {
   const [chapterIndex, setChapterIndex] = React.useState(0);
@@ -29,6 +30,7 @@ const CloneLayout = () => {
           chapterIndex={chapterIndex}
           setChapterIndex={setChapterIndex}
         />
+        <Footer />
       </div>
     </div>
   );

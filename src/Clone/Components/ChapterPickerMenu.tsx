@@ -19,7 +19,7 @@ const ChapterPickerMenu = ({ story, chapterIndex, setChapterIndex }: Props) => {
   return (
     <Menu
       buttonVal={
-        <div className="border-light hover:bg-gray-2 group relative ml-5 flex h-[54px] w-[350px] flex-row items-center gap-4 border-r px-1 text-left">
+        <div className="border-light hover:bg-gray-2 group relative flex h-[54px] w-[350px] flex-row items-center gap-4 border-r px-1 text-left">
           <img src={story.image} alt={story.title} className="h-full" />
           <div className="">
             <div className="text-medium text-dark text-semibold -mb-1">

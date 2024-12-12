@@ -19,6 +19,17 @@ export const defaultEnabledElements: EnabledElements = {
   headerStoryAdd: true,
   headerStoryVote: true,
   headerProgressBar: true,
+  body: true,
+  bodyStoryDetails: true,
+  bodyChapterHeader: true,
+  bodySidebar: true,
+  bodyChapterContent: true,
+  bodyChapterNavigation: true,
+  bodyChapterInteractions: true,
+  bodyInlineComments: true,
+  bodyCommentSection: true,
+  bodyRelatedStories: true,
+  footer: true,
 };
 
 export const defaultStyling: Styling = {

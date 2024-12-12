@@ -18,7 +18,7 @@ const HeaderStory = ({ story, chapterIndex, setChapterIndex }: Props) => {
   if (!enabledElements.headerStory) return null;
 
   return (
-    <div className="flex h-[54px] items-center justify-between">
+    <div className="mx-4 flex h-[54px] items-center justify-between">
       <ChapterPickerMenu
         story={story}
         chapterIndex={chapterIndex}
