@@ -35,6 +35,7 @@ const Instructions = ({ onStartTask }: Props) => {
     [
       `On the left side of the screen, you will be presented with a demo of a Wattpad book's reading page. Along with this, you will see a series of questions displayed one at a time on the right side.`,
       `Read the prompt and respond to each question based on your own preferences or experience. Throughout the questionnaire, you will be asked to explore and interact with specific aspects of the application, such as analyzing the layout or trying out some customizations.`,
+      ,
     ],
     [
       `Your honesty is greatly valued. We thank you for your time and contribution to making our webpage more accessible and enjoyable for everyone!`,
