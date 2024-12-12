@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+#root {
   --text-small: 0.813rem;
   --text-medium: 1rem;
   --text-large: 1.5rem;
