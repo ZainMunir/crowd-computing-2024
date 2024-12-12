@@ -36,10 +36,16 @@
   --bg-pinterest-red: #bd081c;
   --bg-tumblr-blue: #35465d;
   --bg-progress-teal: #00b2b2;
-
+  --text-follow-teal: #14b8a6;
+  --text-completed-teal: #00b2b2;
+  --text-menu-hover: #007f80;
+  --text-completed-red: #a93e19;
   --bg-post-button-inactive: #d7caff;
   --bg-post-button-active: #3b19a9;
+  --text-reply-purple: #3b19a9;
   --border-text-area-active: #5c10ff;
+
+  --content-width: 625px;
 }
 
 @layer utilities {
@@ -139,11 +145,26 @@
   .bg-progress-teal {
     background-color: var(--bg-progress-teal);
   }
+  .text-follow-teal {
+    color: var(--text-follow-teal);
+  }
+  .text-completed-teal {
+    color: var(--text-completed-teal);
+  }
+  .text-menu-hover {
+    color: var(--text-menu-hover);
+  }
+  .text-completed-red {
+    color: var(--text-completed-red);
+  }
   .bg-post-button-inactive {
     background-color: var(--bg-post-button-inactive);
   }
   .bg-post-button-active {
     background-color: var(--bg-post-button-active);
+  }
+  .text-reply-purple {
+    color: var(--text-reply-purple);
   }
   .border-text-area-active {
     border-color: var(--border-text-area-active);

@@ -18,48 +18,54 @@ type Props = {
 
 const Comment = ({ comment }: Props) => {
   return (
-    <div className="grid w-full grid-cols-[40px_1fr_32px] gap-2 px-3 pb-4 text-[14px]">
+    <div className="grid w-full grid-cols-[40px_1fr_32px] gap-2 px-3 pb-4">
       <img
         src={comment.user.profilePic}
         className="mx-auto size-10 cursor-pointer rounded-full"
         alt="{data.author.username}"
       />
       <div className="">
-        <div className="w-fit cursor-pointer self-center font-semibold hover:underline">
+        <div className="text-dark text-small text-semibold w-fit cursor-pointer self-center hover:underline">
           {comment.user.username}
         </div>
-        <div className="my-2">{comment.text}</div>
+        <div className="text-small comment-line-height text-normalbold text-dark my-2">
+          {comment.text}
+        </div>
         <div className="flex">
-          <div className="text-gray-500">{timeAgo(comment.date)}</div>
-          <div className="mx-2 font-bold text-purple-800">Reply</div>
+          <div className="text-middle text-normalbold text-small">
+            {timeAgo(comment.date)}
+          </div>
+          <div className="text-bold text-small text-reply-purple mx-2">
+            Reply
+          </div>
         </div>
       </div>
-      <div className="flex flex-col items-center text-gray-700">
+      <div className="text-dark flex flex-col items-center">
         <Menu
-          buttonVal={<FaEllipsisH className="size-5" />}
+          buttonVal={<FaEllipsisH className="text-dark text-large" />}
           isElement={true}
           positionHorizontal="right"
         >
-          <div className="w-52 px-4 py-3 text-[14px] font-semibold">
+          <div className="min-w-max px-4 py-3 text-[14px]">
             <ReportModal
               buttonComponent={
-                <div className="flex cursor-pointer gap-2 py-2 hover:underline">
-                  <IoFlagOutline className="size-5" />
+                <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
+                  <IoFlagOutline className="text-dark text-large" />
                   Report Comment
                 </div>
               }
               isStory={false}
             />
-            <div className="flex cursor-pointer gap-2 py-2 hover:underline">
-              <IoShareSocialOutline className="size-5" />
+            <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
+              <IoShareSocialOutline className="text-dark text-large" />
               Link to Comment
             </div>
-            <div className="flex cursor-pointer gap-2 py-2 hover:underline">
-              <IoIosLink className="size-5" />
+            <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
+              <IoIosLink className="text-dark text-large" />
               Code of Conduct
             </div>
-            <div className="flex cursor-pointer gap-2 py-2 hover:underline">
-              <FiInfo className="size-5" />
+            <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
+              <FiInfo className="text-dark text-large" />
               Wattpad Safety Portal
             </div>
           </div>
@@ -70,7 +76,9 @@ const Comment = ({ comment }: Props) => {
           isSignUp={true}
         />
 
-        <div className="">{transformNumber(comment.likes)}</div>
+        <div className="text-dark text-normalbold text-small">
+          {transformNumber(comment.likes)}
+        </div>
       </div>
     </div>
   );

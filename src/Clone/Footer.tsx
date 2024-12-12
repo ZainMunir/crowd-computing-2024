@@ -26,27 +26,38 @@ const Footer = () => {
   if (!enabledElements.footer) return null;
 
   return (
-    <div className="mx-auto mb-10 mt-20 flex flex-col text-xs">
+    <div className="mx-auto mb-10 mt-20 flex flex-col">
       <div className="mb-5 flex flex-row justify-center gap-4">
         {footer_p1.map((item, index) => (
-          <div key={index} className="cursor-pointer font-bold hover:underline">
+          <div
+            key={index}
+            className="text-small text-bold text-dark cursor-pointer hover:underline"
+          >
             {item}
           </div>
         ))}
-        <Divider orientation="vertical" flexItem className="bg-gray-700" />
+        <Divider orientation="vertical" flexItem className="bg-gray-3" />
         {footer_p2.map((item, index) => (
-          <div key={index} className="cursor-pointer font-bold hover:underline">
+          <div
+            key={index}
+            className="text-small text-bold text-dark cursor-pointer font-bold hover:underline"
+          >
             {item}
           </div>
         ))}
       </div>
       <div className="flex flex-row justify-center gap-4">
         {footer_p3.map((item, index) => (
-          <div key={index} className="cursor-pointer font-bold hover:underline">
+          <div
+            key={index}
+            className="text-small text-bold text-dark cursor-pointer font-bold hover:underline"
+          >
             {item}
           </div>
         ))}
-        <div className="text-gray-600">© 2024 Wattpad</div>
+        <div className="text-middle text-normalbold text-small">
+          © 2024 Wattpad
+        </div>
       </div>
     </div>
   );

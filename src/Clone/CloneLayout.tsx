@@ -17,7 +17,7 @@ const CloneLayout = () => {
   });
 
   return (
-    <div className="flex h-full w-full flex-col bg-white">
+    <div className="bg-light flex h-full w-full flex-col">
       <div className="flex-1 overflow-y-auto" ref={ref}>
         <Header
           story={placeholderData}

@@ -23,22 +23,22 @@ const ChapterHeader = ({
 
   return (
     <div className="mx-auto flex w-[580px] flex-col justify-center">
-      <div className="mb-5 text-center text-[32px] font-semibold">
+      <div className="text-2xlarge text-dark text-semibold mb-5 text-center">
         {chapter.title}
       </div>
-      <div className="flex flex-row justify-center gap-4 text-gray-500">
+      <div className="text-middle text-medium flex flex-row justify-center gap-4">
         <ViewStar views={chapter.views} stars={chapter.stars} />
         <div className="flex items-center gap-1">
           <FaComment />
           <div
-            className="cursor-pointer text-black hover:underline"
+            className="text-dark text-medium cursor-pointer hover:underline"
             onClick={scrollToComments}
           >
             {transformNumber(allChapterCommentsLength)}
           </div>
         </div>
       </div>
-      <Divider orientation="horizontal" className="mt-16" />
+      <Divider orientation="horizontal" className="bg-gray-1 mt-16" />
     </div>
   );
 };

@@ -18,7 +18,9 @@ const RelatedStories = ({ relatedStories }: Props) => {
       <div></div>
       <div>
         <Divider orientation="horizontal" className="mt-8" />
-        <div className="p-4 text-2xl text-neutral-800">You'll also like</div>
+        <div className="text-large text-dark text-normalbold p-4">
+          You'll also like
+        </div>
         <div className="flex flex-row justify-between gap-2">
           {relatedStories.slice(0, 2).map((story, index) => (
             <StoryCard key={index} story={story} />

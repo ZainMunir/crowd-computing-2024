@@ -24,9 +24,13 @@ const CommentModal = ({
       maxW="max-w-[460px]"
     >
       <div className="flex h-full flex-col">
-        <div className="p-4 text-center font-semibold">{title}</div>
+        <div className="text-semibold text-medium text-dark p-4 text-center">
+          {title}
+        </div>
         <div className="overflow-y-auto px-2 pb-2">
-          <div className="bg-gray-100 p-4">{paragraph}</div>
+          <div className="bg-gray-1 text-dark text-medium paragraph-line-height text-normalbold p-4">
+            {paragraph}
+          </div>
           <CommentSection
             ref={null}
             comments={comments}

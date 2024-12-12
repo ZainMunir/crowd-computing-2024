@@ -32,23 +32,25 @@ const CommentSection = forwardRef<HTMLDivElement, Props>(
     return (
       <div className="flex w-full flex-col" ref={ref}>
         <div
-          className={`relative mt-2 w-full ${isInModal ? 'sticky top-0 z-10 bg-white' : ''}`}
+          className={`relative mt-2 w-full ${isInModal ? 'bg-light sticky top-0 z-10' : ''}`}
         >
           <input
             value={inputVal}
             placeholder="Write a comment..."
             onChange={handleInputChange}
-            className="h-12 w-full rounded-full border border-gray-200 py-3 pl-4 pr-12 focus:border-indigo-800 focus:outline-none"
+            className="focus:border-text-area-active text-medium border-light placeholder:text-middle text-normalbold bg-light h-12 w-full rounded-full border py-3 pl-4 pr-12 focus:outline-none"
           />
           <AccountModal
             buttonComponent={
               <button
                 className={`absolute -top-10 right-2 flex h-8 w-8 items-center rounded-full disabled:cursor-pointer ${
-                  inputVal === '' ? 'bg-violet-200' : 'bg-indigo-800'
+                  inputVal === ''
+                    ? 'bg-post-button-inactive'
+                    : 'bg-post-button-active'
                 }`}
                 disabled={inputVal === ''}
               >
-                <FiSend className="mx-auto text-white" />
+                <FiSend className="text-light text-medium mx-auto" />
               </button>
             }
             flavourText="to comment and interact with the largest storytelling community"
@@ -58,8 +60,9 @@ const CommentSection = forwardRef<HTMLDivElement, Props>(
         {sortedComments.length == 0 ? (
           <div className="mx-auto mt-10 w-56">
             <img src={noComments} className="" />
-            <div className="flex items-center justify-center gap-2 text-[14px] font-bold">
-              Be the first to comment <FaRegComment />
+            <div className="text-small text-bold text-dark flex items-center justify-center gap-2">
+              Be the first to comment{' '}
+              <FaRegComment className="text-dark text-normalbold" />
             </div>
           </div>
         ) : (
@@ -70,7 +73,7 @@ const CommentSection = forwardRef<HTMLDivElement, Props>(
         {load < sortedComments.length && (
           <button
             onClick={handleShowMore}
-            className="mt-2 h-12 rounded-full border border-black font-bold hover:bg-gray-200"
+            className="border-dark text-bold text-medium text-dark hover:bg-gray-1 mt-2 h-12 rounded-full border"
           >
             Show more
           </button>

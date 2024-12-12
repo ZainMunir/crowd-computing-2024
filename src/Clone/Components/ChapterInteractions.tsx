@@ -15,15 +15,17 @@ const ChapterInteractions = ({}: Props) => {
     <div className="mt-8 flex justify-between">
       <div className="g-1 flex items-center gap-2">
         <AccountModal
-          buttonComponent={<div className="text-black">+ Add</div>}
+          buttonComponent={
+            <div className="text-dark text-medium text-normalbold">+ Add</div>
+          }
           flavourText="to vote or add stories to your library and receive updates"
           isSignUp={true}
         />
         <AccountModal
           buttonComponent={
             <div className="flex flex-row">
-              <IoMdStar className="mr-1 self-center text-black" />
-              <div className="">Vote</div>
+              <IoMdStar className="text-dark text-medium mr-1 self-center" />
+              <div className="text-medium text-normalbold text-dark">Vote</div>
             </div>
           }
           flavourText="to vote or add stories to your library and receive updates"

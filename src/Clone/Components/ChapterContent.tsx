@@ -19,15 +19,17 @@ const ChapterContent = ({ paragraphs, chapterTitle }: Props) => {
     <div>
       {paragraphs.map((paragraph, index) => (
         <div key={index} className="group/para relative mb-5 flex">
-          <div className="mx-auto w-11/12">{paragraph.text}</div>
+          <div className="text-medium text-dark text-normalbold paragraph-line-height mx-auto w-11/12">
+            {paragraph.text}
+          </div>
           {enabledElements.bodyInlineComments && (
             <CommentModal
               buttonComponent={
                 <div
                   className={`group/comment flex cursor-pointer items-center justify-center self-end ${paragraph.comments.length == 0 ? 'hidden group-hover/para:inline-flex' : ''}`}
                 >
-                  <BiSolidComment className="size-8 text-gray-500 group-hover/comment:text-gray-300" />
-                  <div className="absolute w-10 -translate-y-1 transform text-center text-xs font-semibold text-white">
+                  <BiSolidComment className="text-dark group-hover/comment:text-middle text-2xlarge" />
+                  <div className="text-light text-small text-semibold absolute w-10 -translate-y-1 transform text-center">
                     {paragraph.comments.length == 0
                       ? '+'
                       : transformNumber(paragraph.comments.length)}

@@ -53,7 +53,7 @@ const Body = ({ story, chapterIndex, setChapterIndex }: Props) => {
         scrollToComments={scrollToComments}
         allChapterCommentsLength={allChapterComments.length}
       />
-      <div className="grid w-full grid-cols-[1fr_625px_1fr]">
+      <div className="grid w-full grid-cols-[1fr_var(--content-width)_1fr]">
         <Sidebar author={story.author} />
         <div className="col-start-2 mt-8 flex flex-col">
           <ChapterContent

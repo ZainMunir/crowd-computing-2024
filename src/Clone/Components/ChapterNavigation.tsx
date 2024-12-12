@@ -21,14 +21,14 @@ const ChapterNavigation = ({
   return (
     <>
       {chapterIndex == numChapters - 1 ? (
-        <div className="text-boldh-12 text-center text-[22px] font-bold">
+        <div className="text-bold text-large text-dark h-12 text-center">
           🎉You've finished reading{' '}
-          <span className="text-orange-800">{title}</span>
+          <span className="text-completed-red">{title}</span>
           🎉
         </div>
       ) : (
         <button
-          className="h-12 rounded-full bg-black font-bold text-white hover:bg-gray-800"
+          className="bg-dark text-bold text-light hover:bg-gray-3 text-medium h-12 rounded-full"
           onClick={() => setChapterIndex((prev) => prev + 1)}
         >
           Continue to next part

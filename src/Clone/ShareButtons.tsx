@@ -25,14 +25,29 @@ const ShareButtons = ({
   positionHorizontal = 'left',
 }: Props) => {
   const icons = [
-    { icon: <RiFacebookFill className="text-white" />, color: 'bg-indigo-800' },
-    { icon: <FaTwitter className="text-white" />, color: 'bg-blue-400' },
-    { icon: <FaPinterest className="text-white" />, color: 'bg-red-700' },
-    { icon: <FaTumblr className="text-white" />, color: 'bg-slate-700' },
-    { icon: <ImEmbed2 className="text-white" />, color: 'bg-neutral-500' },
     {
-      icon: <FaEllipsisH className="text-neutral-500" />,
-      color: 'bg-zinc-100',
+      icon: <RiFacebookFill className="text-light text-large" />,
+      color: 'bg-facebook-blue',
+    },
+    {
+      icon: <FaTwitter className="text-light text-large" />,
+      color: 'bg-twitter-blue',
+    },
+    {
+      icon: <FaPinterest className="text-light text-large" />,
+      color: 'bg-pinterest-red',
+    },
+    {
+      icon: <FaTumblr className="text-light text-large" />,
+      color: 'bg-tumblr-blue',
+    },
+    {
+      icon: <ImEmbed2 className="text-light text-large" />,
+      color: 'bg-gray-3',
+    },
+    {
+      icon: <FaEllipsisH className="text-middle text-large" />,
+      color: 'bg-gray-1',
     },
   ];
 
@@ -40,7 +55,7 @@ const ShareButtons = ({
     return (
       <div
         key={index}
-        className={`flex h-10 w-10 items-center justify-center rounded-full ${icon.color} cursor-pointer text-2xl`}
+        className={`flex h-10 w-10 items-center justify-center rounded-full ${icon.color} cursor-pointer`}
       >
         {icon.icon}
       </div>
@@ -56,27 +71,27 @@ const ShareButtons = ({
         positionVertical={positionVertical}
         positionHorizontal={positionHorizontal}
       >
-        <div className="w-44 cursor-pointer text-neutral-500">
+        <div className="text-middle text-medium text-normalbold min-w-max cursor-pointer">
           <AccountModal
             buttonComponent={
-              <div className="group flex flex-row items-center gap-2 px-2 py-1 hover:bg-gray-200">
-                <FaUserAlt className="group-hover:text-cyan-700" />
+              <div className="hover:bg-gray-1 group flex flex-row items-center gap-2 px-2 py-1">
+                <FaUserAlt className="group-hover:text-menu-hover" />
                 <div>Post to Your Profile</div>
               </div>
             }
             flavourText="to vote or add stories to your library and receive updates"
             isSignUp={true}
           />
-          <Divider className="" />
-          <div className="group flex flex-row items-center gap-2 px-2 py-1 hover:bg-gray-200">
-            <MdEmail className="group-hover:text-cyan-700" />
+          <Divider className="bg-gray-" />
+          <div className="hover:bg-gray-1 group flex flex-row items-center gap-2 px-2 py-1">
+            <MdEmail className="group-hover:text-menu-hover" />
             <div>Share via Email</div>
           </div>
-          <Divider className="" />
+          <Divider className="bg-gray-1" />
           <ReportModal
             buttonComponent={
-              <div className="group flex w-full flex-row items-center gap-2 px-2 py-1 hover:bg-gray-200">
-                <FaExclamationCircle className="group-hover:text-cyan-700" />
+              <div className="hover:bg-gray-1 group flex w-full flex-row items-center gap-2 px-2 py-1">
+                <FaExclamationCircle className="group-hover:text-menu-hover" />
                 <div>Report Story</div>
               </div>
             }

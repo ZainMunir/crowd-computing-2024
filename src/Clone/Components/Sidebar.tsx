@@ -21,14 +21,14 @@ const Sidebar = ({ author }: Props) => {
         className="mx-auto h-[72px] w-[72px] cursor-pointer rounded-full"
         alt="{data.author.username}"
       />
-      <div className="w-fit cursor-pointer self-center hover:underline">
-        by <span className="font-semibold">{author.username}</span>
+      <div className="text-dark text-medium text-normalbold w-fit cursor-pointer self-center hover:underline">
+        by <span className="text-semibold">{author.username}</span>
       </div>
       <div className="mx-auto">
         <AccountModal
           buttonComponent={
-            <div className="flex cursor-pointer items-center gap-2 self-center border border-gray-100 px-4 py-1 font-semibold text-gray-500 hover:bg-gray-100">
-              <MdPersonAddAlt1 className="text-teal-500" />
+            <div className="text-dark hover:bg-gray-1 border-light text-semibold flex cursor-pointer items-center gap-2 self-center rounded-lg border px-4 py-1">
+              <MdPersonAddAlt1 className="text-follow-teal text-medium" />
               Follow
             </div>
           }
@@ -36,7 +36,9 @@ const Sidebar = ({ author }: Props) => {
           flavourText={`to follow ${author.username} and receive updates`}
         />
       </div>
-      <div className="mt-8 self-center font-semibold text-gray-500">Share</div>
+      <div className="text-middle text-small text-semibold mt-8 self-center">
+        Share
+      </div>
       <ShareButtons flexVal="flex-col self-center" positionVertical="top" />
     </div>
   );
