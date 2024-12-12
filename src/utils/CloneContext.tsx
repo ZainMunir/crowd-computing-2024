@@ -2,6 +2,8 @@ import React, { createContext } from 'react';
 
 export type CloneContextType = {
   enabledElements: EnabledElements;
+  setEnabledElements: React.Dispatch<React.SetStateAction<EnabledElements>>;
+  defaultStyling: Styling;
   styling: Styling;
 };
 

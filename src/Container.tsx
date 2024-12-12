@@ -7,7 +7,7 @@ import CloneContext, { EnabledElements, Styling } from './utils/CloneContext';
 import { defaultEnabledElements, defaultStyling } from './utils/defaults';
 
 const Container = () => {
-  const [startTask, setStartTask] = useState(false);
+  const [startTask, setStartTask] = useState(true);
   const [enabledElements, setEnabledElements] = useState<EnabledElements>(
     defaultEnabledElements,
   );
@@ -24,7 +24,9 @@ const Container = () => {
 
   return (
     <div className="grid h-screen w-full grid-cols-[2fr_1fr]">
-      <CloneContext.Provider value={{ enabledElements, styling }}>
+      <CloneContext.Provider
+        value={{ enabledElements, setEnabledElements, defaultStyling, styling }}
+      >
         <ThemeProvider theme={customTheme}>
           <div
             className={`${

@@ -3,24 +3,9 @@ import { Slider, Stack } from '@mui/material';
 
 const QuestionSlider = ({ id, title, min, max, value, updateAnswer }) => {
   const handleSliderMove = (newValue) => {
-    const remValue = newValue / 16;
-
-    const textVars = [
-      '--text-small',
-      '--text-medium',
-      '--text-large',
-      '--text-xlarge',
-      '--text-2xlarge',
-    ];
-
-    textVars.forEach((textVar) => {
-      document
-        .getElementById('root')
-        .style.setProperty(textVar, `${remValue}rem`);
-    });
-
     updateAnswer(newValue);
   };
+
   return (
     <div>
       <p className="pb-[20px] text-[20px]"> {title} </p>

@@ -5,11 +5,13 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import QuestionCheckbox from './QuestionCheckbox';
 import QuestionSlider from './QuestionSlider';
+import QuestionTemp from './QuestionTemp';
 
 const Question = () => {
   const questionType = {
     CHECKBOX: 'checkbox',
     SLIDER: 'slider',
+    TEMP: 'temp',
     TYPE: 'type',
   };
 
@@ -31,7 +33,15 @@ const Question = () => {
       max: 20,
       answer: null,
     },
+    {
+      title: 'Testing various stylings',
+      type: questionType.TEMP,
+      min: 0.5,
+      max: 2,
+      answer: null,
+    },
   ]);
+
   const maxQuestions = questions.length;
   const [activeQuestion, setActiveQuestion] = React.useState(0);
 
@@ -95,7 +105,7 @@ const Question = () => {
         }
       />
       <div>
-        {questions[activeQuestion].type === 'checkbox' ? (
+        {questions[activeQuestion].type === questionType.CHECKBOX && (
           <QuestionCheckbox
             id={activeQuestion}
             title={questions[activeQuestion].title}
@@ -103,7 +113,8 @@ const Question = () => {
             value={questions[activeQuestion].answer}
             updateAnswer={(value) => updateAnswer(value)}
           />
-        ) : (
+        )}
+        {questions[activeQuestion].type === questionType.SLIDER && (
           <QuestionSlider
             id={activeQuestion}
             title={questions[activeQuestion].title}
@@ -112,12 +123,22 @@ const Question = () => {
             value={
               questions[activeQuestion].answer ||
               (questions[activeQuestion].min + questions[activeQuestion].max) /
-                2 +
-                1
+                2
             }
             updateAnswer={(value) => updateAnswer(value)}
           />
         )}
+        {questions[activeQuestion].type === questionType.TEMP && (
+          <QuestionTemp
+            id={activeQuestion}
+            title={questions[activeQuestion].title}
+            min={questions[activeQuestion].min}
+            max={questions[activeQuestion].max}
+            value={questions[activeQuestion].answer || 1}
+            updateAnswer={(value) => updateAnswer(value)}
+          />
+        )}
+        <h3>{questions[activeQuestion].title}</h3>
       </div>
     </div>
   );
