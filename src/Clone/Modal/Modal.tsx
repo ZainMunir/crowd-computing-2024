@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { IoCloseOutline } from 'react-icons/io5';
 import { createPortal } from 'react-dom';
-import useOutsideClick from '../useOutsideClick';
+import useOutsideClick from '../../utils/useOutsideClick';
 
 type ModalProps = {
   children: React.ReactNode;

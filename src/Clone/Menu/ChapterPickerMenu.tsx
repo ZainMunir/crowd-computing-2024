@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from '../Menu';
+import Menu from './Menu';
 import { StoryData } from '../../utils/storyTypes';
 import { RxCaretDown } from 'react-icons/rx';
 import { useCloneContext } from '../../utils/CloneContext';
@@ -47,7 +47,7 @@ const ChapterPickerMenu = ({ story, chapterIndex, setChapterIndex }: Props) => {
         <div className="overflow-y-scroll">
           {story.chapters.map((chapter, index) => (
             <div
-              key={index}
+              key={`chapter-${index}`}
               onClick={() => setChapterIndex(index)}
               className={`hover:bg-gray-2 bg-gray-1 text-semibold text-small cursor-pointer border-b border-l-4 border-transparent border-b-gray-200 pb-3 pl-3 pr-5 pt-2 ${
                 chapterIndex === index

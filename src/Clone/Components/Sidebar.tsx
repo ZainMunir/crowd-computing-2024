@@ -2,7 +2,7 @@ import React from 'react';
 import { UserData } from '../../utils/storyTypes';
 import AccountModal from '../Modal/AccountModal';
 import { MdPersonAddAlt1 } from 'react-icons/md';
-import ShareButtons from '../ShareButtons';
+import ShareButtons from './ShareButtons';
 import { useCloneContext } from '../../utils/CloneContext';
 
 type Props = {

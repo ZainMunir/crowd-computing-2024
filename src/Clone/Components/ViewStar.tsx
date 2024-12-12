@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoMdEye, IoMdStar } from 'react-icons/io';
-import { transformNumber } from '../utils/util';
+import { transformNumber } from '../../utils/util';
 
 type Props = {
   views: number;

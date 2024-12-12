@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from '../Menu';
+import Menu from './Menu';
 import { useCloneContext } from '../../utils/CloneContext';
 
 const community_options = [
@@ -18,7 +18,7 @@ const CommunityMenu = () => {
       <div className="min-w-max px-3 py-2">
         {community_options.map((option, index) => (
           <div
-            key={index}
+            key={`community-${index}`}
             className="text-dark text-medium text-normalbold cursor-pointer py-[6px] hover:underline"
           >
             {option}

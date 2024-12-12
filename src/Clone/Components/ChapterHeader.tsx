@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChapterData } from '../../utils/storyTypes';
 import { transformNumber } from '../../utils/util';
-import ViewStar from '../ViewStar';
+import ViewStar from './ViewStar';
 import { FaComment } from 'react-icons/fa';
 import { Divider } from '@mui/material';
 import { useCloneContext } from '../../utils/CloneContext';

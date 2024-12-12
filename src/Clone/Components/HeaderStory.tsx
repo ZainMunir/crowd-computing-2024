@@ -3,7 +3,7 @@ import { Divider } from '@mui/material';
 import AccountModal from '../Modal/AccountModal';
 import { IoMdStar } from 'react-icons/io';
 import { StoryData } from '../../utils/storyTypes';
-import ChapterPickerMenu from './ChapterPickerMenu';
+import ChapterPickerMenu from '../Menu/ChapterPickerMenu';
 import { useCloneContext } from '../../utils/CloneContext';
 
 type Props = {

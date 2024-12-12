@@ -1,6 +1,6 @@
 import { Divider } from '@mui/material';
 import React from 'react';
-import StoryCard from '../StoryCard';
+import StoryCard from './StoryCard';
 import { StoryData } from '../../utils/storyTypes';
 import { useCloneContext } from '../../utils/CloneContext';
 
@@ -23,7 +23,7 @@ const RelatedStories = ({ relatedStories }: Props) => {
         </div>
         <div className="flex flex-row justify-between gap-2">
           {relatedStories.slice(0, 2).map((story, index) => (
-            <StoryCard key={index} story={story} />
+            <StoryCard key={`storycard-${index}`} story={story} />
           ))}
         </div>
       </div>

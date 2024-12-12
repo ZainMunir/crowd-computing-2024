@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from '../Menu';
+import Menu from './Menu';
 import { Divider } from '@mui/material';
 import createStory from '../../resources/create-story.png';
 import { useCloneContext } from '../../utils/CloneContext';

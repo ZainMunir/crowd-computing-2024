@@ -1,5 +1,5 @@
 import React from 'react';
-import { CommentData } from '../utils/storyTypes';
+import { CommentData } from '../../utils/storyTypes';
 import { BsSuitHeart } from 'react-icons/bs';
 import { FaEllipsisH } from 'react-icons/fa';
 import { IoFlagOutline } from 'react-icons/io5';
@@ -7,10 +7,10 @@ import { IoShareSocialOutline } from 'react-icons/io5';
 import { IoIosLink } from 'react-icons/io';
 import { FiInfo } from 'react-icons/fi';
 
-import { timeAgo, transformNumber } from '../utils/util';
-import Menu from './Menu';
-import ReportModal from './Modal/ReportModal';
-import AccountModal from './Modal/AccountModal';
+import { timeAgo, transformNumber } from '../../utils/util';
+import Menu from '../Menu/Menu';
+import ReportModal from '../Modal/ReportModal';
+import AccountModal from '../Modal/AccountModal';
 
 type Props = {
   comment: CommentData;

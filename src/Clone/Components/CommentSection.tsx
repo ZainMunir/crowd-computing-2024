@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
-import { CommentData } from '../utils/storyTypes';
+import { CommentData } from '../../utils/storyTypes';
 import { FiSend } from 'react-icons/fi';
 import Comment from './Comment';
-import noComments from '../resources/no-comments.png';
+import noComments from '../../resources/no-comments.png';
 import { FaRegComment } from 'react-icons/fa';
-import AccountModal from './Modal/AccountModal';
+import AccountModal from '../Modal/AccountModal';
 
 type Props = {
   comments: CommentData[];
@@ -68,7 +68,9 @@ const CommentSection = forwardRef<HTMLDivElement, Props>(
         ) : (
           sortedComments
             .slice(0, load)
-            .map((comment, index) => <Comment key={index} comment={comment} />)
+            .map((comment, index) => (
+              <Comment key={`comment-${index}`} comment={comment} />
+            ))
         )}
         {load < sortedComments.length && (
           <button

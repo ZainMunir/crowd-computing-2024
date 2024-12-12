@@ -2,10 +2,10 @@ import React from 'react';
 import wattPadLogo from '../../resources/wp-logo-orange.png';
 import { HiLightningBolt } from 'react-icons/hi';
 import AccountModal from '../Modal/AccountModal';
-import BrowseMenu from './BrowseMenu';
-import CommunityMenu from './CommunityMenu';
+import BrowseMenu from '../Menu/BrowseMenu';
+import CommunityMenu from '../Menu/CommunityMenu';
 import SearchInput from './SearchInput';
-import WriteMenu from './WriteMenu';
+import WriteMenu from '../Menu/WriteMenu';
 import { useCloneContext } from '../../utils/CloneContext';
 
 const HeaderNav = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from './Modal';
 import { CommentData } from '../../utils/storyTypes';
-import CommentSection from '../CommentSection';
+import CommentSection from '../Components/CommentSection';
 
 type Props = {
   buttonComponent: React.ReactNode;

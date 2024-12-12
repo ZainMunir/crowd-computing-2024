@@ -30,7 +30,7 @@ const Footer = () => {
       <div className="mb-5 flex flex-row justify-center gap-4">
         {footer_p1.map((item, index) => (
           <div
-            key={index}
+            key={`footer-1-${index}`}
             className="text-small text-bold text-dark cursor-pointer hover:underline"
           >
             {item}
@@ -39,7 +39,7 @@ const Footer = () => {
         <Divider orientation="vertical" flexItem className="bg-gray-3" />
         {footer_p2.map((item, index) => (
           <div
-            key={index}
+            key={`footer-2-${index}`}
             className="text-small text-bold text-dark cursor-pointer font-bold hover:underline"
           >
             {item}
@@ -49,7 +49,7 @@ const Footer = () => {
       <div className="flex flex-row justify-center gap-4">
         {footer_p3.map((item, index) => (
           <div
-            key={index}
+            key={`footer-3-${index}`}
             className="text-small text-bold text-dark cursor-pointer font-bold hover:underline"
           >
             {item}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from '../Menu';
+import Menu from './Menu';
 import { useCloneContext } from '../../utils/CloneContext';
 
 const browse_options = [
@@ -57,7 +57,7 @@ const BrowseMenu = () => {
           </p>
           <div className="flex justify-between">
             {browse_options.map((options, index) => (
-              <div key={index} className="w-1/3">
+              <div key={`browse-col-${index}`} className="w-1/3">
                 {options.map((option, index) => (
                   <div
                     key={`browse-${index}`}

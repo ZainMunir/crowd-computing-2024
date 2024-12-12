@@ -8,10 +8,10 @@ import { FaEllipsisH } from 'react-icons/fa';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { FaExclamationCircle } from 'react-icons/fa';
-import Menu from './Menu';
+import Menu from '../Menu/Menu';
 import { Divider } from '@mui/material';
-import AccountModal from './Modal/AccountModal';
-import ReportModal from './Modal/ReportModal';
+import AccountModal from '../Modal/AccountModal';
+import ReportModal from '../Modal/ReportModal';
 
 type Props = {
   flexVal: string;
@@ -54,7 +54,7 @@ const ShareButtons = ({
   const circles = icons.map((icon, index) => {
     return (
       <div
-        key={index}
+        key={`sharebutton-${index}`}
         className={`flex h-10 w-10 items-center justify-center rounded-full ${icon.color} cursor-pointer`}
       >
         {icon.icon}

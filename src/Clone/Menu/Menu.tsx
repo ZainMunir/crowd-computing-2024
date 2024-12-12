@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
-import useOutsideClick from './useOutsideClick';
+import useOutsideClick from '../../utils/useOutsideClick';
 
 type MenuProps = {
   children: React.ReactNode;

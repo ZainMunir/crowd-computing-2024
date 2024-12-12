@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryData } from '../utils/storyTypes';
-import CommentSection from './CommentSection';
+import CommentSection from './Components/CommentSection';
 import StoryDetails from './Components/StoryDetails';
 import ChapterHeader from './Components/ChapterHeader';
 import { useCloneContext } from '../utils/CloneContext';

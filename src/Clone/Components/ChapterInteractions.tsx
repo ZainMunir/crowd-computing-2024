@@ -1,7 +1,7 @@
 import React from 'react';
 import AccountModal from '../Modal/AccountModal';
 import { IoMdStar } from 'react-icons/io';
-import ShareButtons from '../ShareButtons';
+import ShareButtons from './ShareButtons';
 import { useCloneContext } from '../../utils/CloneContext';
 
 type Props = {};

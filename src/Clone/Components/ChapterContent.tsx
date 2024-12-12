@@ -18,7 +18,7 @@ const ChapterContent = ({ paragraphs, chapterTitle }: Props) => {
   return (
     <div>
       {paragraphs.map((paragraph, index) => (
-        <div key={index} className="group/para relative mb-5 flex">
+        <div key={`paragraph-${index}`} className="group/para relative mb-5 flex">
           <div className="text-medium text-dark text-normalbold paragraph-line-height mx-auto w-11/12">
             {paragraph.text}
           </div>

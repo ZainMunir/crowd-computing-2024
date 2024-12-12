@@ -1,7 +1,7 @@
 import React from 'react';
-import { StoryData } from '../utils/storyTypes';
+import { StoryData } from '../../utils/storyTypes';
 import ViewStar from './ViewStar';
-import StoryModal from './Modal/StoryModal';
+import StoryModal from '../Modal/StoryModal';
 
 type Props = {
   story: StoryData;

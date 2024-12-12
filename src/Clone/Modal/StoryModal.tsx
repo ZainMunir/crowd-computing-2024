@@ -1,7 +1,6 @@
 import React from 'react';
 import { StoryData } from '../../utils/storyTypes';
 import Modal from './Modal';
-import ViewStar from '../ViewStar';
 import { Divider } from '@mui/material';
 import { FaListUl } from 'react-icons/fa';
 import { transformNumber } from '../../utils/util';
@@ -9,6 +8,7 @@ import AccountModal from './AccountModal';
 import { FaCheck } from 'react-icons/fa6';
 import { FaEllipsisH } from 'react-icons/fa';
 import { AiFillInfoCircle } from 'react-icons/ai';
+import ViewStar from '../Components/ViewStar';
 
 type Props = {
   buttonComponent: React.ReactNode;
