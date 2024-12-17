@@ -23,40 +23,53 @@ const Questions = ({ setCloneDisabled: setDisabled }: Props) => {
         ...(question?.defaultValue && { value: question.defaultValue }),
       })),
   );
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
+  const allGroupQuestionsAnswered = currentGroup.questions.every((question) => {
+    const answer = answers.find((answer) => answer.id === question.id);
+    return answer?.value !== undefined;
+  });
 
   useEffect(() => {
     setDisabled(currentGroup.displayHidden);
   }, [activeGroup]);
 
   const questionComponents = currentGroup.questions.map((question) => {
+    const key = `question-${question.id}`;
+    const answer = answers.find((answer) => answer.id === question.id);
+    const updateAnswerProp = (newValue) => updateAnswer(newValue, question.id);
+    const highlight = errorMessage && answer?.value == undefined ? true : false;
+
     switch (question.type) {
       case QuestionType.CHECKBOX:
         return (
           <QuestionCheckbox
-            key={`question-${question.id}`}
+            key={key}
             question={question}
-            answer={answers.find((answer) => answer.id === question.id)}
-            updateAnswer={(newValue) => updateAnswer(newValue, question.id)}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={highlight}
           />
         );
       case QuestionType.SLIDER:
         return (
           <QuestionSlider
-            key={`question-${question.id}`}
+            key={key}
             question={question}
-            answer={answers.find((answer) => answer.id === question.id)}
-            updateAnswer={(newValue) => updateAnswer(newValue, question.id)}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={highlight}
           />
         );
       case QuestionType.LIKERT:
         return (
           <QuestionLikert
-            key={`question-${question.id}`}
+            key={key}
             question={question}
-            answer={answers.find((answer) => answer.id === question.id)}
-            updateAnswer={(newValue) => updateAnswer(newValue, question.id)}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={highlight}
           />
         );
       default:
@@ -67,10 +80,16 @@ const Questions = ({ setCloneDisabled: setDisabled }: Props) => {
   const theme = useTheme();
 
   const handleNext = () => {
+    if (!allGroupQuestionsAnswered) {
+      setErrorMessage('Please answer all questions before continuing');
+      return;
+    }
+    setErrorMessage(null);
     setActiveGroup((prevActiveGroup) => prevActiveGroup + 1);
   };
 
   const handleBack = () => {
+    setErrorMessage(null);
     setActiveGroup((prevActiveGroup) => prevActiveGroup - 1);
   };
 
@@ -127,6 +146,9 @@ const Questions = ({ setCloneDisabled: setDisabled }: Props) => {
       <Divider />
       <div>{questionComponents}</div>
       <Divider />
+      {errorMessage && (
+        <p className="text-bold mt-5 text-xl text-red-700">{errorMessage}</p>
+      )}
     </div>
   );
 };

@@ -6,9 +6,15 @@ type Props = {
   question: Question;
   answer: Answer;
   updateAnswer: (value: number | string) => void;
+  highlight?: boolean;
 };
 
-const QuestionSlider = ({ question, answer, updateAnswer }: Props) => {
+const QuestionSlider = ({
+  question,
+  answer,
+  updateAnswer,
+  highlight,
+}: Props) => {
   const { questionText: title, min, max } = question;
   const value =
     typeof answer.value === 'number' ? answer.value : Number(answer.value);
@@ -18,7 +24,9 @@ const QuestionSlider = ({ question, answer, updateAnswer }: Props) => {
 
   return (
     <div className="my-10">
-      <p className="mb-5 text-xl">{title}</p>
+      <p className={`mb-5 text-xl ${highlight ? 'text-red-600' : ''}`}>
+        {title}
+      </p>{' '}
       <div>
         <Stack spacing={2} direction="row" sx={{ alignItems: 'center', mb: 1 }}>
           <p>{min}</p>

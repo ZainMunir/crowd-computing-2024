@@ -6,9 +6,15 @@ type Props = {
   question: Question;
   answer: Answer;
   updateAnswer: (value: number | string) => void;
+  highlight: boolean;
 };
 
-const QuestionLikert = ({ question, answer, updateAnswer }: Props) => {
+const QuestionLikert = ({
+  question,
+  answer,
+  updateAnswer,
+  highlight,
+}: Props) => {
   const { questionText: title } = question;
   const value =
     typeof answer.value === 'number' ? answer.value : Number(answer.value);
@@ -18,7 +24,9 @@ const QuestionLikert = ({ question, answer, updateAnswer }: Props) => {
 
   return (
     <div className="my-10">
-      <p className="mb-5 text-xl">{title}</p>
+      <p className={`mb-5 text-xl ${highlight ? 'text-red-600' : ''}`}>
+        {title}
+      </p>
       <RadioGroup
         row
         name="likert-questions"
