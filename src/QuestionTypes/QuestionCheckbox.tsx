@@ -1,15 +1,24 @@
 import React from 'react';
 import { FormControlLabel, Checkbox } from '@mui/material';
+import { Answer, Question } from '../utils/questions';
 
-const QuestionCheckbox = ({ id, title, options, value, updateAnswer }) => {
+type Props = {
+  question: Question;
+  answer: Answer;
+  updateAnswer: (value: number | string) => void;
+};
 
-  const handleCheckboxChange = (index) => {
-    updateAnswer(index)
+const QuestionCheckbox = ({ question, answer, updateAnswer }: Props) => {
+  const { title, options } = question;
+  const { value } = answer;
+
+  const handleCheckboxChange = (newValue) => {
+    updateAnswer(newValue);
   };
 
   return (
     <div>
-      <p className='text-[20px] pb-[20px]'> {title} </p>
+      <p className="pb-[20px] text-[20px]"> {title} </p>
       <div>
         {options.map((option, index) => (
           <FormControlLabel

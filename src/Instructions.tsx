@@ -67,8 +67,11 @@ const Instructions = ({ onStartTask }: Props) => {
           <div className="px-[1rem] pt-20 text-charcoalGrey">
             <div className="flex h-[350px] flex-col justify-between">
               <div>
-                {instructions[activeStep].map((paragraph) => (
-                  <p className="pt-[10px] text-justify indent-2.5">
+                {instructions[activeStep].map((paragraph, index) => (
+                  <p
+                    className="pt-[10px] text-justify indent-2.5"
+                    key={`instruction-${index}`}
+                  >
                     {paragraph}
                   </p>
                 ))}
@@ -76,15 +79,18 @@ const Instructions = ({ onStartTask }: Props) => {
 
               {activeStep === maxSteps - 1 && (
                 <div className="flex items-center pt-[20px]">
-                  <Checkbox
-                    checked={isChecked}
-                    onChange={handleCheckboxChange}
-                    inputProps={{ 'aria-label': 'controlled' }}
-                  />
-                  <div className="text-[12px]">
-                    I have read and understood the instructions provided above,
-                    and I acknowledge the work I am expected to complete.
-                  </div>
+                  <label className="flex cursor-pointer items-center">
+                    <Checkbox
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                      inputProps={{ 'aria-label': 'controlled' }}
+                    />
+                    <span className="text-[12px]">
+                      I have read and understood the instructions provided
+                      above, and I acknowledge the work I am expected to
+                      complete.
+                    </span>
+                  </label>
                 </div>
               )}
             </div>

@@ -1,11 +1,16 @@
 import React from 'react';
 import Header from './Header';
 import Body from './Body';
-import { placeholderData } from '../utils/defaults';
 import { useScroll, useSpring } from 'framer-motion';
 import Footer from './Footer';
+import { StoryData } from '../utils/storyTypes';
 
-const CloneLayout = () => {
+type Props = {
+  story: StoryData;
+  disabled: boolean;
+};
+
+const CloneLayout = ({ story, disabled }: Props) => {
   const [chapterIndex, setChapterIndex] = React.useState(0);
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -18,15 +23,18 @@ const CloneLayout = () => {
 
   return (
     <div className="bg-light flex h-full w-full flex-col">
+      {disabled && (
+        <div className="items- fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md" />
+      )}
       <div className="flex-1 overflow-y-auto" ref={ref}>
         <Header
-          story={placeholderData}
+          story={story}
           chapterIndex={chapterIndex}
           setChapterIndex={setChapterIndex}
           scaleX={scaleX}
         />
         <Body
-          story={placeholderData}
+          story={story}
           chapterIndex={chapterIndex}
           setChapterIndex={setChapterIndex}
         />

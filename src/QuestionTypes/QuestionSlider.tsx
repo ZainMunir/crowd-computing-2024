@@ -1,7 +1,17 @@
 import React from 'react';
 import { Slider, Stack } from '@mui/material';
+import { Answer, Question } from '../utils/questions';
 
-const QuestionSlider = ({ id, title, min, max, value, updateAnswer }) => {
+type Props = {
+  question: Question;
+  answer: Answer;
+  updateAnswer: (value: number | string) => void;
+};
+
+const QuestionSlider = ({ question, answer, updateAnswer }: Props) => {
+  const { title, min, max } = question;
+  const value =
+    typeof answer.value === 'number' ? answer.value : Number(answer.value);
   const handleSliderMove = (newValue) => {
     updateAnswer(newValue);
   };
@@ -20,7 +30,7 @@ const QuestionSlider = ({ id, title, min, max, value, updateAnswer }) => {
             aria-label="Always visible"
             min={min}
             max={max}
-            onChange={(event, value) => handleSliderMove(value)}
+            onChange={(event, newValue) => handleSliderMove(newValue)}
           />
           <p> {max} </p>
         </Stack>
