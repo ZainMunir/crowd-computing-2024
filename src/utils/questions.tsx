@@ -22,6 +22,7 @@ export type Answer = {
 export type QuestionGroup = {
   id: number;
   title: string;
+  displayHidden: boolean;
   questions: Question[];
 };
 
@@ -29,6 +30,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: 0,
     title: 'General Questions',
+    displayHidden: true,
     questions: [
       {
         id: 1,
@@ -51,6 +53,24 @@ export const questionGroups: Array<QuestionGroup> = [
       {
         id: 3,
         title: 'Likert test',
+        type: QuestionType.LIKERT,
+      },
+    ],
+  },
+  {
+    id: 1,
+    title: 'Feedback',
+    displayHidden: false,
+    questions: [
+      {
+        id: 4,
+        title: 'What do you think of the new design?',
+        type: QuestionType.CHECKBOX,
+        options: ['I love it', 'I hate it', 'I am indifferent'],
+      },
+      {
+        id: 5,
+        title: 'How likely are you to recommend Wattpad to a friend?',
         type: QuestionType.LIKERT,
       },
     ],

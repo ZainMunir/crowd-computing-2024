@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, MobileStepper } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -8,7 +8,11 @@ import QuestionSlider from './QuestionTypes/QuestionSlider';
 import { Answer, questionGroups, QuestionType } from './utils/questions';
 import QuestionLikert from './QuestionTypes/QuestionLikert';
 
-const Questions = () => {
+type Props = {
+  setDisabled: (value: boolean) => void;
+};
+
+const Questions = ({ setDisabled }: Props) => {
   const maxGroups = questionGroups.length;
   const [activeGroup, setActiveGroup] = React.useState(0);
   const [answers, setAnswers] = useState<Array<Answer>>(
@@ -20,9 +24,11 @@ const Questions = () => {
       })),
   );
 
-  console.log(answers);
-
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
+
+  useEffect(() => {
+    setDisabled(currentGroup.displayHidden);
+  }, [activeGroup]);
 
   const questionComponents = currentGroup.questions.map((question) => {
     switch (question.type) {

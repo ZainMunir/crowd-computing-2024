@@ -11,12 +11,12 @@ import {
 } from './utils/defaults';
 
 const Container = () => {
-  const [startTask, setStartTask] = useState(true);
+  const [startTask, setStartTask] = useState(false);
   const [enabledElements, setEnabledElements] = useState<EnabledElements>(
     defaultEnabledElements,
   );
   const [styling, setStyling] = useState<Styling>(defaultStyling);
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -75,7 +75,7 @@ const Container = () => {
               {!startTask ? (
                 <Instructions onStartTask={() => setStartTask(true)} />
               ) : (
-                <Questions />
+                <Questions setDisabled={setDisabled} />
               )}
             </div>
           </div>
