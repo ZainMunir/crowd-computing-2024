@@ -1,6 +1,6 @@
 export type Question = {
   id: number;
-  title: string;
+  questionText: string;
   type: QuestionType;
   options?: string[];
   min?: number;
@@ -29,48 +29,102 @@ export type QuestionGroup = {
 export const questionGroups: Array<QuestionGroup> = [
   {
     id: 0,
-    title: 'General Questions',
+    title: 'Background questions',
     displayHidden: true,
     questions: [
       {
         id: 1,
-        title: 'What is your experience with Wattpad?',
+        questionText:
+          'How often do you read long form text (novels/textbooks) online?',
+
         type: QuestionType.CHECKBOX,
         options: [
-          'I never used wattpad',
-          'I have heard of it and wanted to use it',
-          'I did use wattpad before',
+          'Never',
+          'Rarely',
+          'Once a week',
+          'Several times a week',
+          'Daily',
         ],
       },
       {
         id: 2,
-        title: 'Choose a font size:',
-        type: QuestionType.SLIDER,
-        min: 10,
-        max: 20,
-        defaultValue: 14,
+        questionText: 'Have you used Wattpad before?',
+        type: QuestionType.CHECKBOX,
+        options: ['Yes', 'No'],
       },
       {
         id: 3,
-        title: 'Likert test',
+        questionText: 'What is your level of English?',
+        type: QuestionType.CHECKBOX,
+        options: [
+          'Beginner',
+          'Elementary',
+          'Intermediate',
+          'Advanced',
+          'Native',
+        ],
+      },
+      {
+        id: 4,
+        questionText: 'I feel comfortable using technology.',
         type: QuestionType.LIKERT,
       },
     ],
   },
   {
     id: 1,
-    title: 'Feedback',
+    title: 'Feedback of the original design',
     displayHidden: false,
     questions: [
       {
-        id: 4,
-        title: 'What do you think of the new design?',
-        type: QuestionType.CHECKBOX,
-        options: ['I love it', 'I hate it', 'I am indifferent'],
+        id: 5,
+        questionText: 'I like the layout of the webpage.',
+        type: QuestionType.LIKERT,
       },
       {
-        id: 5,
-        title: 'How likely are you to recommend Wattpad to a friend?',
+        id: 6,
+        questionText: 'The color scheme of the webpage is visually appealing.',
+        type: QuestionType.LIKERT,
+      },
+      {
+        id: 7,
+        questionText: 'Navigating to the next chapter or section is easy.',
+        type: QuestionType.LIKERT,
+      },
+      {
+        id: 8,
+        questionText:
+          'The menu or navigation bar is intuitive for accessing content.',
+        type: QuestionType.LIKERT,
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Feedback of the original design (continued)',
+    displayHidden: false,
+    questions: [
+      {
+        id: 9,
+        questionText:
+          'Searching for specific content within the e-book is easy.',
+        type: QuestionType.LIKERT,
+      },
+      {
+        id: 10,
+        questionText: 'The webpage needs significant improvement.',
+        type: QuestionType.LIKERT,
+      },
+      {
+        id: 11,
+        questionText:
+          'The webpage is accessible for users with visual or physical impairments.',
+        type: QuestionType.LIKERT,
+      },
+      {
+        id: 12,
+        questionText:
+          'The amount of text displayed on a single page is appropriate.',
         type: QuestionType.LIKERT,
       },
     ],

@@ -9,7 +9,7 @@ type Props = {
 };
 
 const QuestionSlider = ({ question, answer, updateAnswer }: Props) => {
-  const { title, min, max } = question;
+  const { questionText: title, min, max } = question;
   const value =
     typeof answer.value === 'number' ? answer.value : Number(answer.value);
   const handleSliderMove = (newValue) => {

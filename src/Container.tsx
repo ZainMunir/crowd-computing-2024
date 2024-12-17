@@ -16,7 +16,7 @@ const Container = () => {
     defaultEnabledElements,
   );
   const [styling, setStyling] = useState<Styling>(defaultStyling);
-  const [disabled, setDisabled] = useState(false);
+  const [cloneDisabled, setCloneDisabled] = useState(false);
 
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -64,7 +64,7 @@ const Container = () => {
               startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
             } h-full overflow-y-auto`}
           >
-            <CloneLayout story={story} disabled={disabled} />
+            <CloneLayout story={story} disabled={cloneDisabled} />
           </div>
           <div
             className={`transform bg-warmWhite px-[2rem] py-[1rem] font-quicksand transition-transform duration-500 ${
@@ -75,7 +75,7 @@ const Container = () => {
               {!startTask ? (
                 <Instructions onStartTask={() => setStartTask(true)} />
               ) : (
-                <Questions setDisabled={setDisabled} />
+                <Questions setCloneDisabled={setCloneDisabled} />
               )}
             </div>
           </div>

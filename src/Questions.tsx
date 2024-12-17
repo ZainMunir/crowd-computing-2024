@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, MobileStepper } from '@mui/material';
+import { Button, Divider, MobileStepper } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
@@ -9,10 +9,10 @@ import { Answer, questionGroups, QuestionType } from './utils/questions';
 import QuestionLikert from './QuestionTypes/QuestionLikert';
 
 type Props = {
-  setDisabled: (value: boolean) => void;
+  setCloneDisabled: (value: boolean) => void;
 };
 
-const Questions = ({ setDisabled }: Props) => {
+const Questions = ({ setCloneDisabled: setDisabled }: Props) => {
   const maxGroups = questionGroups.length;
   const [activeGroup, setActiveGroup] = React.useState(0);
   const [answers, setAnswers] = useState<Array<Answer>>(
@@ -124,7 +124,9 @@ const Questions = ({ setDisabled }: Props) => {
         }
       />
       <h1 className="my-5 text-2xl">{currentGroup.title}</h1>
+      <Divider />
       <div>{questionComponents}</div>
+      <Divider />
     </div>
   );
 };

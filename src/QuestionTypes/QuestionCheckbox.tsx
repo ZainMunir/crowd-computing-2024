@@ -9,7 +9,7 @@ type Props = {
 };
 
 const QuestionCheckbox = ({ question, answer, updateAnswer }: Props) => {
-  const { title, options } = question;
+  const { questionText: title, options } = question;
   const { value } = answer;
 
   const handleCheckboxChange = (newValue) => {
