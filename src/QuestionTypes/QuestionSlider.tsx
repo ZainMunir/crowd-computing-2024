@@ -17,8 +17,8 @@ const QuestionSlider = ({ question, answer, updateAnswer }: Props) => {
   };
 
   return (
-    <div>
-      <p className="pb-[20px] text-[20px]"> {title} </p>
+    <div className="my-10">
+      <p className="mb-5 text-xl">{title}</p>
       <div>
         <Stack spacing={2} direction="row" sx={{ alignItems: 'center', mb: 1 }}>
           <p>{min}</p>

@@ -6,6 +6,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import QuestionCheckbox from './QuestionTypes/QuestionCheckbox';
 import QuestionSlider from './QuestionTypes/QuestionSlider';
 import { Answer, questionGroups, QuestionType } from './utils/questions';
+import QuestionLikert from './QuestionTypes/QuestionLikert';
 
 const Questions = () => {
   const maxGroups = questionGroups.length;
@@ -15,8 +16,11 @@ const Questions = () => {
       .flatMap((group) => group.questions)
       .map((question) => ({
         id: question.id,
+        ...(question?.defaultValue && { value: question.defaultValue }),
       })),
   );
+
+  console.log(answers);
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
 
@@ -34,6 +38,15 @@ const Questions = () => {
       case QuestionType.SLIDER:
         return (
           <QuestionSlider
+            key={`question-${question.id}`}
+            question={question}
+            answer={answers.find((answer) => answer.id === question.id)}
+            updateAnswer={(newValue) => updateAnswer(newValue, question.id)}
+          />
+        );
+      case QuestionType.LIKERT:
+        return (
+          <QuestionLikert
             key={`question-${question.id}`}
             question={question}
             answer={answers.find((answer) => answer.id === question.id)}
@@ -104,7 +117,7 @@ const Questions = () => {
           </Button>
         }
       />
-      <h1>{currentGroup.title}</h1>
+      <h1 className="my-5 text-2xl">{currentGroup.title}</h1>
       <div>{questionComponents}</div>
     </div>
   );
