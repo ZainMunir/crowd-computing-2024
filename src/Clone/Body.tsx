@@ -19,7 +19,11 @@ type Props = {
 const Body = ({ story, chapterIndex, setChapterIndex }: Props) => {
   const { enabledElements } = useCloneContext();
 
-  if (!enabledElements.body) return null;
+  const isBodyEnabled = Object.keys(enabledElements).some(
+    (key) => key.startsWith('body') && enabledElements[key],
+  );
+
+  if (!isBodyEnabled) return null;
 
   const chapter = story.chapters[chapterIndex];
   const allChapterComments = chapter.paragraphs

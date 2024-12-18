@@ -4,8 +4,6 @@ import placeholderPerson from '../resources/placeholder_person.jpg';
 import { StoryData } from './storyTypes';
 
 export const defaultEnabledElements: EnabledElements = {
-  header: true,
-  headerNav: true,
   headerNavLogo: true,
   headerNavBrowse: true,
   headerNavCommunity: true,
@@ -14,14 +12,13 @@ export const defaultEnabledElements: EnabledElements = {
   headerNavPremium: true,
   headerNavLogin: true,
   headerNavSignup: true,
-  headerStory: true,
   headerStoryChapterPicker: true,
   headerStoryAdd: true,
   headerStoryVote: true,
   headerProgressBar: true,
-  body: true,
   bodyStoryDetails: true,
   bodyChapterHeader: true,
+  bodyChapterStats: true,
   bodySidebar: true,
   bodyChapterContent: true,
   bodyChapterNavigation: true,

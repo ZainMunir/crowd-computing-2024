@@ -31,8 +31,8 @@ const QuestionTimer = ({
     let interval: NodeJS.Timeout | null = null;
     if (isTimerRunning) {
       interval = setInterval(() => {
-        setTimer((prev) => prev + 1);
-      }, 1000);
+        setTimer((prev) => prev + 10); // Increment by 1000 milliseconds (1 second)
+      }, 10);
     } else if (!isTimerRunning && timer !== 0) {
       clearInterval(interval!);
     }
@@ -49,7 +49,7 @@ const QuestionTimer = ({
   const handleStop = () => {
     setIsTimerRunning(false);
     setHideText(true);
-    updateAnswer(timer);
+    updateAnswer(timer); // Store the value in milliseconds
   };
 
   return (
@@ -58,7 +58,8 @@ const QuestionTimer = ({
         {title}
       </p>
       <div>
-        <p>Timer: {timer} seconds</p>
+        <p>Timer: {Math.floor(timer / 1000)} seconds</p>{' '}
+        {/* Display the value in seconds */}
         <Button
           variant="contained"
           color="primary"

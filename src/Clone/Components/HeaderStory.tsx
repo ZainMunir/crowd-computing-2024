@@ -15,7 +15,11 @@ type Props = {
 const HeaderStory = ({ story, chapterIndex, setChapterIndex }: Props) => {
   const { enabledElements } = useCloneContext();
 
-  if (!enabledElements.headerStory) return null;
+  const isHeaderStoryEnabled = Object.keys(enabledElements).some(
+    (key) => key.startsWith('headerStory') && enabledElements[key],
+  );
+
+  if (!isHeaderStoryEnabled) return null;
 
   return (
     <div className="mx-4 flex h-[54px] items-center justify-between">

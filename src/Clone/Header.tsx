@@ -16,8 +16,6 @@ type Props = {
 const Header = ({ story, chapterIndex, setChapterIndex, scaleX }: Props) => {
   const { enabledElements } = useCloneContext();
 
-  if (!enabledElements.header) return null;
-
   return (
     <div className="bg-light sticky top-0 z-20 flex w-full flex-col">
       <HeaderNav />

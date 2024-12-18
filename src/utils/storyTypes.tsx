@@ -14,12 +14,12 @@ export type ChapterData = {
   title: string;
   views: number;
   stars: number;
-  paragraphs?: ParagraphData[];
+  paragraphs: ParagraphData[];
 };
 
 export type ParagraphData = {
   text: string;
-  comments: CommentData[];
+  comments?: CommentData[];
 };
 
 export type CommentData = {
@@ -27,7 +27,7 @@ export type CommentData = {
   date: Date;
   text: string;
   likes: number;
-  replies: CommentData[];
+  replies?: CommentData[]; // Not implemented
 };
 
 export type UserData = {

@@ -9,12 +9,14 @@ import { Answer, questionGroups, QuestionType } from './utils/questions';
 import QuestionLikert from './QuestionTypes/QuestionLikert';
 import { useCloneContext } from './utils/CloneContext';
 import QuestionTimer from './QuestionTypes/QuestionTimer';
+import QuestionEnabledElements from './QuestionTypes/QuestionEnabledElements';
+import { defaultEnabledElements } from './utils/defaults';
 
 type Props = {};
 
 const Questions = ({}: Props) => {
   const maxGroups = questionGroups.length;
-  const [activeGroup, setActiveGroup] = React.useState(3);
+  const [activeGroup, setActiveGroup] = React.useState(0);
   const [answers, setAnswers] = useState<Array<Answer>>(
     questionGroups
       .flatMap((group) => group.questions)
@@ -26,7 +28,7 @@ const Questions = ({}: Props) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
 
-  const { setCloneDisabled } = useCloneContext();
+  const { setCloneDisabled, setEnabledElements } = useCloneContext();
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
   const allGroupQuestionsAnswered = currentGroup.questions.every((question) => {
@@ -102,6 +104,16 @@ const Questions = ({}: Props) => {
             hidden={dependency}
           />
         );
+      case QuestionType.ENABLED_ELEMENTS:
+        return (
+          <QuestionEnabledElements
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={highlight}
+          />
+        );
       default:
         return;
     }
@@ -119,6 +131,7 @@ const Questions = ({}: Props) => {
       return;
     }
     setErrorMessage(null);
+    setEnabledElements(defaultEnabledElements);
     setActiveGroup((prevActiveGroup) => prevActiveGroup + 1);
   };
 
@@ -128,6 +141,7 @@ const Questions = ({}: Props) => {
       return;
     }
     setErrorMessage(null);
+    setEnabledElements(defaultEnabledElements);
     setActiveGroup((prevActiveGroup) => prevActiveGroup - 1);
   };
 

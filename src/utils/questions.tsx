@@ -1,3 +1,6 @@
+import { EnabledElements } from './CloneContext';
+import { defaultEnabledElements } from './defaults';
+
 export type Question = {
   id: number;
   questionText: string;
@@ -5,7 +8,7 @@ export type Question = {
   options?: string[];
   min?: number;
   max?: number;
-  defaultValue?: number | string;
+  defaultValue?: number | string | EnabledElements;
   dependentOn?: number;
 };
 
@@ -15,11 +18,12 @@ export enum QuestionType {
   LIKERT = 'LIKERT',
   TIMER = 'TIMER',
   COMPREHENSION = 'COMPREHENSION',
+  ENABLED_ELEMENTS = 'ENABLED_ELEMENTS',
 }
 
 export type Answer = {
   id: number;
-  value?: string | number;
+  value?: string | number | EnabledElements;
 };
 
 export type QuestionGroup = {
@@ -154,8 +158,16 @@ export const questionGroups: Array<QuestionGroup> = [
   },
   {
     id: 4,
-    title: 'testing',
+    title: 'Customisation',
     displayHidden: false,
-    questions: [],
+    questions: [
+      {
+        id: 15,
+        questionText:
+          'Please experiment with the customisation options and choose your preferred options.',
+        type: QuestionType.ENABLED_ELEMENTS,
+        defaultValue: defaultEnabledElements,
+      },
+    ],
   },
 ];

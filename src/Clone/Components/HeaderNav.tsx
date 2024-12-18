@@ -11,7 +11,11 @@ import { useCloneContext } from '../../utils/CloneContext';
 const HeaderNav = () => {
   const { enabledElements } = useCloneContext();
 
-  if (!enabledElements.headerNav) return null;
+  const isHeaderNavEnabled = Object.keys(enabledElements).some(
+    (key) => key.startsWith('headerNav') && enabledElements[key],
+  );
+
+  if (!isHeaderNavEnabled) return null;
 
   return (
     <div className="flex h-[54px] items-center gap-4 px-4">
