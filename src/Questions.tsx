@@ -17,6 +17,7 @@ import QuestionTimer from './QuestionTypes/QuestionTimer';
 import QuestionEnabledElements from './QuestionTypes/QuestionEnabledElements';
 import { defaultEnabledElements } from './utils/defaults';
 import QuestionSubmission from './QuestionTypes/QuestionSubmission';
+import QuestionNumber from './QuestionTypes/QuestionNumber';
 
 type Props = {
   prolificInfo: ProlificInfo;
@@ -77,6 +78,16 @@ const Questions = ({ prolificInfo }: Props) => {
       case QuestionType.CHECKBOX:
         return (
           <QuestionCheckbox
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={highlight}
+          />
+        );
+      case QuestionType.NUMBER:
+        return (
+          <QuestionNumber
             key={key}
             question={question}
             answer={answer}

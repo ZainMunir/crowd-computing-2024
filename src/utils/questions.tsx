@@ -24,6 +24,7 @@ export enum QuestionType {
   COMPREHENSION = 'COMPREHENSION',
   ENABLED_ELEMENTS = 'ENABLED_ELEMENTS',
   SUBMISSION = 'SUBMISSION',
+  NUMBER = 'NUMBER',
 }
 
 export type Answer = {
@@ -97,6 +98,11 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: true,
     textHidden: true,
     questions: [
+      {
+        id: 0,
+        questionText: 'What is your age? (in years)',
+        type: QuestionType.NUMBER,
+      },
       {
         id: 1,
         questionText:

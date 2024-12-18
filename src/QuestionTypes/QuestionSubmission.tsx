@@ -65,7 +65,6 @@ const QuestionSubmission = ({
       <p className="mb-5 text-xl">{title}</p>
       <div className="flex flex-col gap-10">
         <div className="text-lg">Prolific ID: {prolificInfo.prolificPid}</div>
-
         <TextField
           id="issues"
           label="Issues (only fill if necessary)"
