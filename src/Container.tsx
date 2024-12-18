@@ -17,6 +17,7 @@ const Container = () => {
   );
   const [styling, setStyling] = useState<Styling>(defaultStyling);
   const [cloneDisabled, setCloneDisabled] = useState(false);
+  const [hideText, setHideText] = useState(true);
 
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -56,7 +57,15 @@ const Container = () => {
   return (
     <div className="grid h-screen w-full grid-cols-[2fr_1fr]">
       <CloneContext.Provider
-        value={{ enabledElements, setEnabledElements, defaultStyling, styling }}
+        value={{
+          enabledElements,
+          setEnabledElements,
+          defaultStyling,
+          styling,
+          setCloneDisabled,
+          hideText,
+          setHideText,
+        }}
       >
         <ThemeProvider theme={customTheme}>
           <div
@@ -75,7 +84,7 @@ const Container = () => {
               {!startTask ? (
                 <Instructions onStartTask={() => setStartTask(true)} />
               ) : (
-                <Questions setCloneDisabled={setCloneDisabled} />
+                <Questions />
               )}
             </div>
           </div>

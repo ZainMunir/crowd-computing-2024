@@ -6,12 +6,14 @@ export type Question = {
   min?: number;
   max?: number;
   defaultValue?: number | string;
+  dependentOn?: number;
 };
 
 export enum QuestionType {
   CHECKBOX = 'CHECKBOX',
   SLIDER = 'SLIDER',
   LIKERT = 'LIKERT',
+  TIMER = 'TIMER',
 }
 
 export type Answer = {
@@ -128,5 +130,24 @@ export const questionGroups: Array<QuestionGroup> = [
         type: QuestionType.LIKERT,
       },
     ],
+  },
+  {
+    id: 3,
+    title: 'Reading comprehension',
+    displayHidden: false,
+    questions: [
+      {
+        id: 13,
+        questionText:
+          "When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click stop when you're finished. The questions will then be revealed. You will not be able to try again.",
+        type: QuestionType.TIMER,
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: 'testing',
+    displayHidden: false,
+    questions: [],
   },
 ];

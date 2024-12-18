@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from './Modal';
 import { CommentData } from '../../utils/storyTypes';
 import CommentSection from '../Components/CommentSection';
+import { useCloneContext } from '../../utils/CloneContext';
 
 type Props = {
   buttonComponent: React.ReactNode;
@@ -16,6 +17,8 @@ const CommentModal = ({
   paragraph,
   comments,
 }: Props) => {
+  const { hideText } = useCloneContext();
+
   return (
     <Modal
       buttonComponent={buttonComponent}
@@ -28,7 +31,9 @@ const CommentModal = ({
           {title}
         </div>
         <div className="overflow-y-auto px-2 pb-2">
-          <div className="bg-gray-1 text-dark text-medium paragraph-line-height text-normalbold p-4">
+          <div
+            className={`bg-gray-1 text-dark text-medium paragraph-line-height text-normalbold p-4 ${hideText ? 'blur' : ''}`}
+          >
             {paragraph}
           </div>
           <CommentSection

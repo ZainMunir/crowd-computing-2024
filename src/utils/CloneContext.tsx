@@ -5,6 +5,9 @@ export type CloneContextType = {
   setEnabledElements: React.Dispatch<React.SetStateAction<EnabledElements>>;
   defaultStyling: Styling;
   styling: Styling;
+  setCloneDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+  hideText: boolean;
+  setHideText: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type EnabledElements = {

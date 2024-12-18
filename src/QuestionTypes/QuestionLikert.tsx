@@ -5,7 +5,7 @@ import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
 type Props = {
   question: Question;
   answer: Answer;
-  updateAnswer: (value: number | string) => void;
+  updateAnswer: (value: number | string ) => void;
   highlight: boolean;
 };
 

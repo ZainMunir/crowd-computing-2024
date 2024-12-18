@@ -7,12 +7,12 @@ import QuestionCheckbox from './QuestionTypes/QuestionCheckbox';
 import QuestionSlider from './QuestionTypes/QuestionSlider';
 import { Answer, questionGroups, QuestionType } from './utils/questions';
 import QuestionLikert from './QuestionTypes/QuestionLikert';
+import { useCloneContext } from './utils/CloneContext';
+import QuestionTimer from './QuestionTypes/QuestionTimer';
 
-type Props = {
-  setCloneDisabled: (value: boolean) => void;
-};
+type Props = {};
 
-const Questions = ({ setCloneDisabled: setDisabled }: Props) => {
+const Questions = ({}: Props) => {
   const maxGroups = questionGroups.length;
   const [activeGroup, setActiveGroup] = React.useState(0);
   const [answers, setAnswers] = useState<Array<Answer>>(
@@ -24,6 +24,9 @@ const Questions = ({ setCloneDisabled: setDisabled }: Props) => {
       })),
   );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+
+  const { setCloneDisabled } = useCloneContext();
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
   const allGroupQuestionsAnswered = currentGroup.questions.every((question) => {
@@ -32,7 +35,7 @@ const Questions = ({ setCloneDisabled: setDisabled }: Props) => {
   });
 
   useEffect(() => {
-    setDisabled(currentGroup.displayHidden);
+    setCloneDisabled(currentGroup.displayHidden);
   }, [activeGroup]);
 
   const questionComponents = currentGroup.questions.map((question) => {
@@ -72,6 +75,18 @@ const Questions = ({ setCloneDisabled: setDisabled }: Props) => {
             highlight={highlight}
           />
         );
+      case QuestionType.TIMER:
+        return (
+          <QuestionTimer
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={highlight}
+            isTimerRunning={isTimerRunning}
+            setIsTimerRunning={setIsTimerRunning}
+          />
+        );
       default:
         return;
     }
@@ -84,11 +99,19 @@ const Questions = ({ setCloneDisabled: setDisabled }: Props) => {
       setErrorMessage('Please answer all questions before continuing');
       return;
     }
+    if (isTimerRunning) {
+      setErrorMessage('Please stop the timer before switching pages');
+      return;
+    }
     setErrorMessage(null);
     setActiveGroup((prevActiveGroup) => prevActiveGroup + 1);
   };
 
   const handleBack = () => {
+    if (isTimerRunning) {
+      setErrorMessage('Please stop the timer before switching pages');
+      return;
+    }
     setErrorMessage(null);
     setActiveGroup((prevActiveGroup) => prevActiveGroup - 1);
   };

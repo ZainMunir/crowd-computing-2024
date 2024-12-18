@@ -11,15 +11,20 @@ type Props = {
 };
 
 const ChapterContent = ({ paragraphs, chapterTitle }: Props) => {
-  const { enabledElements } = useCloneContext();
+  const { enabledElements, hideText } = useCloneContext();
 
   if (!enabledElements.bodyChapterContent) return null;
 
   return (
     <div>
       {paragraphs.map((paragraph, index) => (
-        <div key={`paragraph-${index}`} className="group/para relative mb-5 flex">
-          <div className="text-medium text-dark text-normalbold paragraph-line-height mx-auto w-11/12">
+        <div
+          key={`paragraph-${index}`}
+          className="group/para relative mb-5 flex"
+        >
+          <div
+            className={`text-medium text-dark text-normalbold paragraph-line-height mx-auto w-11/12 ${hideText ? 'blur' : ''}`}
+          >
             {paragraph.text}
           </div>
           {enabledElements.bodyInlineComments && (

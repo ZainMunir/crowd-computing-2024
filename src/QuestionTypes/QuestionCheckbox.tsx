@@ -18,8 +18,6 @@ const QuestionCheckbox = ({
   const { questionText: title, options } = question;
   const { value } = answer;
 
-  console.log(highlight);
-
   const handleCheckboxChange = (newValue) => {
     updateAnswer(newValue);
   };
