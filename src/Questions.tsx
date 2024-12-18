@@ -18,6 +18,7 @@ import QuestionEnabledElements from './QuestionTypes/QuestionEnabledElements';
 import { defaultEnabledElements } from './utils/defaults';
 import QuestionSubmission from './QuestionTypes/QuestionSubmission';
 import QuestionNumber from './QuestionTypes/QuestionNumber';
+import QuestionFonts from './QuestionTypes/QuestionFonts';
 
 type Props = {
   prolificInfo: ProlificInfo;
@@ -26,7 +27,7 @@ type Props = {
 const Questions = ({ prolificInfo }: Props) => {
   const maxGroups = questionGroups.length;
   const [startTime, setStartTime] = useState(new Date());
-  const [activeGroup, setActiveGroup] = React.useState(0);
+  const [activeGroup, setActiveGroup] = React.useState(8);
   const [answers, setAnswers] = useState<Array<Answer>>(
     Array.from(
       new Map(
@@ -37,12 +38,15 @@ const Questions = ({ prolificInfo }: Props) => {
             {
               id: question.id,
               questionText: question.questionText,
-              ...(question?.defaultValue && { value: question.defaultValue }),
+              ...(question.defaultValue != null && {
+                value: question.defaultValue,
+              }),
             },
           ]),
       ).values(),
     ),
   );
+  console.log(answers);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -164,6 +168,16 @@ const Questions = ({ prolificInfo }: Props) => {
             startTime={startTime}
             isSubmitted={isSubmitted}
             setIsSubmitted={setIsSubmitted}
+          />
+        );
+      case QuestionType.FONTS:
+        return (
+          <QuestionFonts
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={highlight}
           />
         );
       default:

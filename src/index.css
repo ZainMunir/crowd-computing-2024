@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --text-font-family: 'Arial';
   --text-small: 0.813rem;
   --text-medium: 1rem;
   --text-large: 1.5rem;
@@ -49,6 +50,9 @@
 }
 
 @layer utilities {
+  .text-font-family {
+    font-family: var(--text-font-family);
+  }
   .text-small {
     font-size: var(--text-small);
   }

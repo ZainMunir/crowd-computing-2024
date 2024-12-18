@@ -194,6 +194,10 @@ export const defaultStyling: Styling = {
     var: '--content-width',
     value: '39rem',
   },
+  text_font_family: {
+    var: '--text-font-family',
+    value: 'Arial',
+  },
 };
 
 export const placeholderData: StoryData = {

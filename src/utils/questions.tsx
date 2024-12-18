@@ -25,6 +25,7 @@ export enum QuestionType {
   ENABLED_ELEMENTS = 'ENABLED_ELEMENTS',
   SUBMISSION = 'SUBMISSION',
   NUMBER = 'NUMBER',
+  FONTS = 'FONTS',
 }
 
 export type Answer = {
@@ -88,6 +89,13 @@ const styling_questions = [
       'paragraph_line_height',
       'comment_line_height',
     ],
+  },
+  {
+    id: 19,
+    questionText: 'Font Family',
+    type: QuestionType.FONTS,
+    defaultValue: 0,
+    options: ['Arial', 'Source Sans Pro'],
   },
 ];
 
@@ -256,19 +264,27 @@ export const questionGroups: Array<QuestionGroup> = [
   },
   {
     id: 8,
+    title:
+      'Focuing primarily on the main content, style the following elements to your preference',
+    displayHidden: false,
+    textHidden: false,
+    questions: [styling_questions[4]],
+  },
+  {
+    id: 9,
     title: 'Adjust your choices when they are all considered together',
     displayHidden: false,
     textHidden: false,
     questions: styling_questions,
   },
   {
-    id: 9,
+    id: 10,
     title: 'Submission',
     displayHidden: false,
     textHidden: false,
     questions: [
       {
-        id: 19,
+        id: 20,
         questionText:
           'Please verify the below details before submitting. If something has gone wrong, let us know in the textbox below.',
         type: QuestionType.SUBMISSION,
