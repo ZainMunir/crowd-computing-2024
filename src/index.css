@@ -49,6 +49,10 @@
   --content-width: 39rem;
 }
 
+body {
+  overflow: hidden;
+}
+
 @layer utilities {
   .text-font-family {
     font-family: var(--text-font-family);
