@@ -15,7 +15,6 @@ import QuestionLikert from './QuestionTypes/QuestionLikert';
 import { useCloneContext } from './utils/CloneContext';
 import QuestionTimer from './QuestionTypes/QuestionTimer';
 import QuestionEnabledElements from './QuestionTypes/QuestionEnabledElements';
-import { defaultEnabledElements } from './utils/defaults';
 import QuestionSubmission from './QuestionTypes/QuestionSubmission';
 import QuestionNumber from './QuestionTypes/QuestionNumber';
 import QuestionFonts from './QuestionTypes/QuestionFonts';
@@ -42,6 +41,12 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
               ...(question.defaultValue != null && {
                 value: question.defaultValue,
               }),
+              ...(question.styleType != null && {
+                styleType: question.styleType,
+                ...(question.options != null && {
+                  options: question.options,
+                }),
+              }),
             },
           ]),
       ).values(),
@@ -51,13 +56,8 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const {
-    setCloneDisabled,
-    setEnabledElements,
-    hideText,
-    setHideText,
-    defaultStyling,
-  } = useCloneContext();
+  const { setCloneDisabled, setEnabledElements, setHideText } =
+    useCloneContext();
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
   const allGroupQuestionsAnswered = currentGroup.questions.every((question) => {
@@ -69,7 +69,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
     setCloneDisabled(currentGroup.displayHidden);
     setStoryIndex(currentGroup.storyIndex);
     setErrorMessage(null);
-    setEnabledElements(defaultEnabledElements);
     setHideText(currentGroup.textHidden);
   }, [activeGroup]);
 
@@ -121,6 +120,12 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
           />
         );
       case QuestionType.TIMER:
+        const { timerStyleType } = currentGroup;
+
+        const relevantAnswers = answers.filter(
+          (answer) => answer.styleType != null,
+        );
+
         return (
           <QuestionTimer
             key={key}
@@ -130,6 +135,10 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             highlight={highlight}
             isTimerRunning={isTimerRunning}
             setIsTimerRunning={setIsTimerRunning}
+            relevantAnswers={
+              timerStyleType === 'custom' ? relevantAnswers : null
+            }
+            allAnswers={timerStyleType === 'custom' ? answers : null}
           />
         );
       case QuestionType.COMPREHENSION:

@@ -11,6 +11,7 @@ export type Question = {
   id: number;
   questionText: string;
   type: QuestionType;
+  styleType?: QuestionStyleType;
   options?: string[];
   min?: number;
   max?: number;
@@ -31,9 +32,19 @@ export enum QuestionType {
   FONTS = 'FONTS',
 }
 
+export enum QuestionStyleType {
+  ENABLED_ELEMENTS = 'ENABLED_ELEMENTS',
+  FONT_SIZE = 'FONT_SIZE',
+  CONTENT_WIDTH = 'CONTENT_WIDTH',
+  LINE_HEIGHT = 'LINE_HEIGHT',
+  FONT_FAMILY = 'FONT_FAMILY',
+}
+
 export type Answer = {
   id: number;
   value?: string | number | EnabledElements;
+  styleType?: QuestionStyleType;
+  options?: string[];
   questionText: string;
 };
 
@@ -44,6 +55,7 @@ export type QuestionGroup = {
   textHidden: boolean;
   questions: Question[];
   storyIndex: number;
+  timerStyleType?: 'default' | 'custom';
 };
 
 const styling_questions = [
@@ -52,12 +64,14 @@ const styling_questions = [
     questionText:
       'Please experiment with the customisation options and choose your preferred options.',
     type: QuestionType.ENABLED_ELEMENTS,
+    styleType: QuestionStyleType.ENABLED_ELEMENTS,
     defaultValue: defaultEnabledElements,
   },
   {
     id: 17,
     questionText: 'Font Size',
     type: QuestionType.SLIDER,
+    styleType: QuestionStyleType.FONT_SIZE,
     min: 0.5,
     max: 2,
     step: 0.1,
@@ -73,6 +87,7 @@ const styling_questions = [
   {
     id: 18,
     questionText: 'Content Width',
+    styleType: QuestionStyleType.CONTENT_WIDTH,
     type: QuestionType.SLIDER,
     min: 0.5,
     max: 3,
@@ -83,6 +98,7 @@ const styling_questions = [
   {
     id: 19,
     questionText: 'Font Line Height',
+    styleType: QuestionStyleType.LINE_HEIGHT,
     type: QuestionType.SLIDER,
     min: 0.5,
     max: 2,
@@ -97,6 +113,7 @@ const styling_questions = [
   {
     id: 20,
     questionText: 'Font Family',
+    styleType: QuestionStyleType.FONT_FAMILY,
     type: QuestionType.FONTS,
     defaultValue: 0,
     options: ['Arial', 'Source Sans Pro'],
@@ -162,6 +179,7 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: true,
     storyIndex: storyIndex,
+    timerStyleType: 'default',
     questions: [
       {
         id: 6,
@@ -298,6 +316,7 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: true,
     storyIndex: Math.abs(storyIndex - 1),
+    timerStyleType: 'custom',
     questions: [
       {
         id: 21,

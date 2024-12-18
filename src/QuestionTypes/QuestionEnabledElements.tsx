@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Answer, Question } from '../utils/questions';
 import { EnabledElements, useCloneContext } from '../utils/CloneContext';
 import { Checkbox, FormControlLabel } from '@mui/material';
+import { defaultEnabledElements } from '../utils/defaults';
 
 type Props = {
   question: Question;
@@ -20,8 +21,15 @@ const QuestionEnabledElements = ({
 
   const value = answer.value as EnabledElements;
 
-  const { enabledElements, setEnabledElements } = useCloneContext();
-  setEnabledElements(value);
+  const { setEnabledElements } = useCloneContext();
+
+  useLayoutEffect(() => {
+    setEnabledElements(value);
+
+    return () => {
+      setEnabledElements(defaultEnabledElements);
+    };
+  }, [value]);
 
   const handleCheckboxChange = (key: string) => {
     const newValue = {

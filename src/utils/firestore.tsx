@@ -34,7 +34,7 @@ export type Response = {
 export const addResponse = async (response: Response) => {
   try {
     const docRef = await addDoc(responseCollection, response);
-    console.log('Document written with ID: ', docRef.id);
+    // console.log('Document written with ID: ', docRef.id);
     return true;
   } catch (e) {
     console.error('Error adding document: ', e);

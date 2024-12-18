@@ -5,7 +5,7 @@ import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
 type Props = {
   question: Question;
   answer: Answer;
-  updateAnswer: (value: number | string ) => void;
+  updateAnswer: (value: number | string) => void;
   highlight: boolean;
 };
 
@@ -19,7 +19,7 @@ const QuestionLikert = ({
   const value =
     typeof answer.value === 'number' ? answer.value : Number(answer.value);
   const handleChange = (newValue) => {
-    updateAnswer(newValue);
+    updateAnswer(Number(newValue));
   };
 
   return (

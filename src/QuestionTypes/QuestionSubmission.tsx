@@ -42,9 +42,17 @@ const QuestionSubmission = ({
 
   const submitData = async () => {
     setIsSubmitting(true);
+    const filteredAnswers = answers.map((a) => {
+      return {
+        id: a.id,
+        value: a.value != null ? a.value : '',
+        questionText: a.questionText,
+      };
+    });
+
     const response: Response = {
       prolificInfo: prolificInfo,
-      answers: answers,
+      answers: filteredAnswers,
       startTime: startTime,
       endTime: new Date(),
     };
