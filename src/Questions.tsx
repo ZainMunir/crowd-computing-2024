@@ -14,7 +14,7 @@ type Props = {};
 
 const Questions = ({}: Props) => {
   const maxGroups = questionGroups.length;
-  const [activeGroup, setActiveGroup] = React.useState(0);
+  const [activeGroup, setActiveGroup] = React.useState(3);
   const [answers, setAnswers] = useState<Array<Answer>>(
     questionGroups
       .flatMap((group) => group.questions)
@@ -85,6 +85,21 @@ const Questions = ({}: Props) => {
             highlight={highlight}
             isTimerRunning={isTimerRunning}
             setIsTimerRunning={setIsTimerRunning}
+          />
+        );
+      case QuestionType.COMPREHENSION:
+        const dependency =
+          question.dependentOn &&
+          !answers.find((a) => a.id === question.dependentOn)?.value;
+        return (
+          <QuestionCheckbox
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={!dependency && highlight}
+            display="below"
+            hidden={dependency}
           />
         );
       default:

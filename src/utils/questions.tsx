@@ -14,6 +14,7 @@ export enum QuestionType {
   SLIDER = 'SLIDER',
   LIKERT = 'LIKERT',
   TIMER = 'TIMER',
+  COMPREHENSION = 'COMPREHENSION',
 }
 
 export type Answer = {
@@ -141,6 +142,13 @@ export const questionGroups: Array<QuestionGroup> = [
         questionText:
           "When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click stop when you're finished. The questions will then be revealed. You will not be able to try again.",
         type: QuestionType.TIMER,
+      },
+      {
+        id: 14,
+        questionText: 'Compreshension question 1',
+        type: QuestionType.COMPREHENSION,
+        dependentOn: 13,
+        options: ['True', 'False'],
       },
     ],
   },

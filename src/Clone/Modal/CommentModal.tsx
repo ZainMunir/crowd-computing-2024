@@ -32,7 +32,7 @@ const CommentModal = ({
         </div>
         <div className="overflow-y-auto px-2 pb-2">
           <div
-            className={`bg-gray-1 text-dark text-medium paragraph-line-height text-normalbold p-4 ${hideText ? 'blur' : ''}`}
+            className={`bg-gray-1 text-dark text-medium paragraph-line-height text-normalbold p-4 ${hideText ? 'select-none blur' : ''}`}
           >
             {paragraph}
           </div>

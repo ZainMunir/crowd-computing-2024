@@ -11,7 +11,7 @@ import {
 } from './utils/defaults';
 
 const Container = () => {
-  const [startTask, setStartTask] = useState(false);
+  const [startTask, setStartTask] = useState(true);
   const [enabledElements, setEnabledElements] = useState<EnabledElements>(
     defaultEnabledElements,
   );

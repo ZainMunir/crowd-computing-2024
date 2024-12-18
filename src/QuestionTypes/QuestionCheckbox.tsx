@@ -7,6 +7,8 @@ type Props = {
   answer: Answer;
   updateAnswer: (value: number | string) => void;
   highlight: boolean;
+  display?: 'side' | 'below';
+  hidden?: boolean;
 };
 
 const QuestionCheckbox = ({
@@ -14,6 +16,8 @@ const QuestionCheckbox = ({
   answer,
   updateAnswer,
   highlight,
+  display = 'side',
+  hidden = false,
 }: Props) => {
   const { questionText: title, options } = question;
   const { value } = answer;
@@ -23,11 +27,11 @@ const QuestionCheckbox = ({
   };
 
   return (
-    <div className="my-10">
+    <div className={`my-10 ${hidden ? 'select-none blur' : ''}`}>
       <p className={`mb-5 text-xl ${highlight ? 'text-red-600' : ''}`}>
         {title}
       </p>
-      <div>
+      <div className={`${display === 'below' ? 'flex flex-col' : ''}`}>
         {options.map((option, index) => (
           <FormControlLabel
             key={index}
@@ -38,6 +42,7 @@ const QuestionCheckbox = ({
               />
             }
             label={option}
+            disabled={hidden}
           />
         ))}
       </div>
