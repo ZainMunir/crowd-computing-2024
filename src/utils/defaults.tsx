@@ -192,7 +192,7 @@ export const defaultStyling: Styling = {
   },
   content_width: {
     var: '--content-width',
-    value: '625px',
+    value: '39rem',
   },
 };
 

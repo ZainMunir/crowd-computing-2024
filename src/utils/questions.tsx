@@ -8,6 +8,7 @@ export type Question = {
   options?: string[];
   min?: number;
   max?: number;
+  step?: number;
   defaultValue?: number | string | EnabledElements;
   dependentOn?: number;
 };
@@ -30,14 +31,66 @@ export type QuestionGroup = {
   id: number;
   title: string;
   displayHidden: boolean;
+  textHidden: boolean;
   questions: Question[];
 };
+
+const styling_questions = [
+  {
+    id: 15,
+    questionText:
+      'Please experiment with the customisation options and choose your preferred options.',
+    type: QuestionType.ENABLED_ELEMENTS,
+    defaultValue: defaultEnabledElements,
+  },
+  {
+    id: 16,
+    questionText: 'Font Size',
+    type: QuestionType.SLIDER,
+    min: 0.5,
+    max: 2,
+    step: 0.1,
+    defaultValue: 1,
+    options: [
+      'text_small',
+      'text_medium',
+      'text_large',
+      'text_xlarge',
+      'text_2xlarge',
+    ],
+  },
+  {
+    id: 17,
+    questionText: 'Content Width',
+    type: QuestionType.SLIDER,
+    min: 0.5,
+    max: 3,
+    step: 0.1,
+    defaultValue: 1,
+    options: ['content_width'],
+  },
+  {
+    id: 18,
+    questionText: 'Font Line Height',
+    type: QuestionType.SLIDER,
+    min: 0.5,
+    max: 2,
+    step: 0.1,
+    defaultValue: 1,
+    options: [
+      'description_line_height',
+      'paragraph_line_height',
+      'comment_line_height',
+    ],
+  },
+];
 
 export const questionGroups: Array<QuestionGroup> = [
   {
     id: 0,
     title: 'Background questions',
     displayHidden: true,
+    textHidden: true,
     questions: [
       {
         id: 1,
@@ -82,6 +135,7 @@ export const questionGroups: Array<QuestionGroup> = [
     id: 1,
     title: 'Feedback of the original design',
     displayHidden: false,
+    textHidden: true,
     questions: [
       {
         id: 5,
@@ -110,6 +164,7 @@ export const questionGroups: Array<QuestionGroup> = [
     id: 2,
     title: 'Feedback of the original design (continued)',
     displayHidden: false,
+    textHidden: true,
     questions: [
       {
         id: 9,
@@ -140,6 +195,7 @@ export const questionGroups: Array<QuestionGroup> = [
     id: 3,
     title: 'Reading comprehension',
     displayHidden: false,
+    textHidden: true,
     questions: [
       {
         id: 13,
@@ -160,14 +216,38 @@ export const questionGroups: Array<QuestionGroup> = [
     id: 4,
     title: 'Customisation',
     displayHidden: false,
-    questions: [
-      {
-        id: 15,
-        questionText:
-          'Please experiment with the customisation options and choose your preferred options.',
-        type: QuestionType.ENABLED_ELEMENTS,
-        defaultValue: defaultEnabledElements,
-      },
-    ],
+    textHidden: false,
+    questions: [styling_questions[0]],
+  },
+  {
+    id: 5,
+    title:
+      'Focusing primarily on the main content, style the following elements to your preference',
+    displayHidden: false,
+    textHidden: false,
+    questions: [styling_questions[1]],
+  },
+  {
+    id: 6,
+    title:
+      'Focusing primarily on the main content, style the following elements to your preference',
+    displayHidden: false,
+    textHidden: false,
+    questions: [styling_questions[2]],
+  },
+  {
+    id: 7,
+    title:
+      'Focusing primarily on the main content, style the following elements to your preference',
+    displayHidden: false,
+    textHidden: false,
+    questions: [styling_questions[3]],
+  },
+  {
+    id: 8,
+    title: 'Adjust your choices when they are all considered together',
+    displayHidden: false,
+    textHidden: false,
+    questions: styling_questions,
   },
 ];

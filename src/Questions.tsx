@@ -28,7 +28,13 @@ const Questions = ({}: Props) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
 
-  const { setCloneDisabled, setEnabledElements } = useCloneContext();
+  const {
+    setCloneDisabled,
+    setEnabledElements,
+    hideText,
+    setHideText,
+    defaultStyling,
+  } = useCloneContext();
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
   const allGroupQuestionsAnswered = currentGroup.questions.every((question) => {
@@ -36,8 +42,20 @@ const Questions = ({}: Props) => {
     return answer?.value !== undefined;
   });
 
+  function resetStyling() {
+    Object.keys(defaultStyling).forEach((key) => {
+      document
+        .getElementById('root')
+        .style.setProperty(defaultStyling[key].var, defaultStyling[key].value);
+    });
+  }
+
   useEffect(() => {
     setCloneDisabled(currentGroup.displayHidden);
+    setErrorMessage(null);
+    setEnabledElements(defaultEnabledElements);
+    resetStyling();
+    setHideText(currentGroup.textHidden);
   }, [activeGroup]);
 
   const questionComponents = currentGroup.questions.map((question) => {
@@ -130,8 +148,6 @@ const Questions = ({}: Props) => {
       setErrorMessage('Please stop the timer before switching pages');
       return;
     }
-    setErrorMessage(null);
-    setEnabledElements(defaultEnabledElements);
     setActiveGroup((prevActiveGroup) => prevActiveGroup + 1);
   };
 
@@ -140,8 +156,6 @@ const Questions = ({}: Props) => {
       setErrorMessage('Please stop the timer before switching pages');
       return;
     }
-    setErrorMessage(null);
-    setEnabledElements(defaultEnabledElements);
     setActiveGroup((prevActiveGroup) => prevActiveGroup - 1);
   };
 

@@ -45,7 +45,7 @@
   --text-reply-purple: #3b19a9;
   --border-text-area-active: #5c10ff;
 
-  --content-width: 625px;
+  --content-width: 39rem;
 }
 
 @layer utilities {

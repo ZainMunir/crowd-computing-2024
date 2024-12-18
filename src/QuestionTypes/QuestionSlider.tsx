@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Slider, Stack } from '@mui/material';
 import { Answer, Question } from '../utils/questions';
+import { Styling, useCloneContext } from '../utils/CloneContext';
 
 type Props = {
   question: Question;
@@ -15,11 +16,45 @@ const QuestionSlider = ({
   updateAnswer,
   highlight,
 }: Props) => {
-  const { questionText: title, min, max } = question;
+  const { questionText: title, min, max, step, options } = question;
   const value =
     typeof answer.value === 'number' ? answer.value : Number(answer.value);
-  const handleSliderMove = (newValue) => {
-    updateAnswer(newValue);
+
+  const { defaultStyling } = useCloneContext();
+
+  const styleVars: Array<{ var: string; value: string }> = Object.keys(
+    defaultStyling,
+  )
+    .filter((key) => options.includes(key))
+    .map((key) => defaultStyling[key]);
+
+  useEffect(() => {
+    styleVars.forEach((styleVar) => {
+      document
+        .getElementById('root')
+        .style.setProperty(
+          styleVar.var,
+          `${multiplyRem(styleVar.value, value)}`,
+        );
+    });
+  }, []);
+
+  function multiplyRem(old, factor) {
+    const number = parseFloat(old.replace('rem', ''));
+    return `${number * factor}rem`;
+  }
+
+  const handleSliderMove = (factor) => {
+    styleVars.forEach((styleVar) => {
+      document
+        .getElementById('root')
+        .style.setProperty(
+          styleVar.var,
+          `${multiplyRem(styleVar.value, factor)}`,
+        );
+    });
+
+    updateAnswer(factor);
   };
 
   return (
@@ -33,7 +68,7 @@ const QuestionSlider = ({
           <Slider
             value={value}
             valueLabelDisplay="auto"
-            step={2}
+            step={step}
             marks
             aria-label="Always visible"
             min={min}
