@@ -30,10 +30,10 @@ const QuestionSlider = ({
 
   function resetStyling() {
     console.log('resetting');
-    Object.keys(defaultStyling).forEach((key) => {
+    styleVars.forEach((styleVar) => {
       document
         .getElementById('root')
-        .style.setProperty(defaultStyling[key].var, defaultStyling[key].value);
+        .style.setProperty(styleVar.var, styleVar.value);
     });
   }
 
