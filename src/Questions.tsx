@@ -27,7 +27,7 @@ type Props = {
 const Questions = ({ prolificInfo }: Props) => {
   const maxGroups = questionGroups.length;
   const [startTime, setStartTime] = useState(new Date());
-  const [activeGroup, setActiveGroup] = React.useState(8);
+  const [activeGroup, setActiveGroup] = React.useState(9);
   const [answers, setAnswers] = useState<Array<Answer>>(
     Array.from(
       new Map(
@@ -231,8 +231,9 @@ const Questions = ({ prolificInfo }: Props) => {
   );
 
   return (
-    <div>
+    <div className="pb-10">
       <MobileStepper
+        className="sticky top-0 z-20 py-4"
         style={{
           backgroundColor: '#FFF6F1',
           background: '#FFF6F1',

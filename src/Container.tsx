@@ -77,7 +77,7 @@ const Container = () => {
             <CloneLayout story={story} disabled={cloneDisabled} />
           </div>
           <div
-            className={`transform bg-warmWhite px-[2rem] py-[1rem] font-quicksand transition-transform duration-500 ${
+            className={`transform overflow-y-auto bg-warmWhite px-8 font-quicksand transition-transform duration-500 ${
               startTask ? 'translate-x-[0%]' : 'translate-x-[-100%]'
             }`}
           >
