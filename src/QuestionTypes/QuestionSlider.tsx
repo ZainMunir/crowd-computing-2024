@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { Slider, Stack } from '@mui/material';
 import { Answer, Question } from '../utils/questions';
 import { Styling, useCloneContext } from '../utils/CloneContext';
@@ -28,7 +28,17 @@ const QuestionSlider = ({
     .filter((key) => options.includes(key))
     .map((key) => defaultStyling[key]);
 
-  useEffect(() => {
+  function resetStyling() {
+    console.log('resetting');
+    Object.keys(defaultStyling).forEach((key) => {
+      document
+        .getElementById('root')
+        .style.setProperty(defaultStyling[key].var, defaultStyling[key].value);
+    });
+  }
+
+  useLayoutEffect(() => {
+    console.log(value);
     styleVars.forEach((styleVar) => {
       document
         .getElementById('root')
@@ -37,7 +47,16 @@ const QuestionSlider = ({
           `${multiplyRem(styleVar.value, value)}`,
         );
     });
-  }, []);
+
+    styleVars.forEach((styleVar) => {
+      console.log(
+        styleVar.var,
+        document.getElementById('root').style.getPropertyValue(styleVar.var),
+      );
+    });
+
+    return resetStyling;
+  }, [value]);
 
   function multiplyRem(old, factor) {
     const number = parseFloat(old.replace('rem', ''));
@@ -45,15 +64,6 @@ const QuestionSlider = ({
   }
 
   const handleSliderMove = (factor) => {
-    styleVars.forEach((styleVar) => {
-      document
-        .getElementById('root')
-        .style.setProperty(
-          styleVar.var,
-          `${multiplyRem(styleVar.value, factor)}`,
-        );
-    });
-
     updateAnswer(factor);
   };
 

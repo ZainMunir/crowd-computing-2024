@@ -16,7 +16,7 @@ type Props = {};
 
 const Questions = ({}: Props) => {
   const maxGroups = questionGroups.length;
-  const [activeGroup, setActiveGroup] = React.useState(0);
+  const [activeGroup, setActiveGroup] = React.useState(5);
   const [answers, setAnswers] = useState<Array<Answer>>(
     questionGroups
       .flatMap((group) => group.questions)
@@ -42,19 +42,11 @@ const Questions = ({}: Props) => {
     return answer?.value !== undefined;
   });
 
-  function resetStyling() {
-    Object.keys(defaultStyling).forEach((key) => {
-      document
-        .getElementById('root')
-        .style.setProperty(defaultStyling[key].var, defaultStyling[key].value);
-    });
-  }
-
   useEffect(() => {
     setCloneDisabled(currentGroup.displayHidden);
     setErrorMessage(null);
     setEnabledElements(defaultEnabledElements);
-    resetStyling();
+    console.log(activeGroup);
     setHideText(currentGroup.textHidden);
   }, [activeGroup]);
 
