@@ -5,28 +5,46 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import QuestionCheckbox from './QuestionTypes/QuestionCheckbox';
 import QuestionSlider from './QuestionTypes/QuestionSlider';
-import { Answer, questionGroups, QuestionType } from './utils/questions';
+import {
+  Answer,
+  ProlificInfo,
+  questionGroups,
+  QuestionType,
+} from './utils/questions';
 import QuestionLikert from './QuestionTypes/QuestionLikert';
 import { useCloneContext } from './utils/CloneContext';
 import QuestionTimer from './QuestionTypes/QuestionTimer';
 import QuestionEnabledElements from './QuestionTypes/QuestionEnabledElements';
 import { defaultEnabledElements } from './utils/defaults';
+import QuestionSubmission from './QuestionTypes/QuestionSubmission';
 
-type Props = {};
+type Props = {
+  prolificInfo: ProlificInfo;
+};
 
-const Questions = ({}: Props) => {
+const Questions = ({ prolificInfo }: Props) => {
   const maxGroups = questionGroups.length;
-  const [activeGroup, setActiveGroup] = React.useState(5);
+  const [startTime, setStartTime] = useState(new Date());
+  const [activeGroup, setActiveGroup] = React.useState(0);
   const [answers, setAnswers] = useState<Array<Answer>>(
-    questionGroups
-      .flatMap((group) => group.questions)
-      .map((question) => ({
-        id: question.id,
-        ...(question?.defaultValue && { value: question.defaultValue }),
-      })),
+    Array.from(
+      new Map(
+        questionGroups
+          .flatMap((group) => group.questions)
+          .map((question) => [
+            question.id,
+            {
+              id: question.id,
+              questionText: question.questionText,
+              ...(question?.defaultValue && { value: question.defaultValue }),
+            },
+          ]),
+      ).values(),
+    ),
   );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const {
     setCloneDisabled,
@@ -46,7 +64,6 @@ const Questions = ({}: Props) => {
     setCloneDisabled(currentGroup.displayHidden);
     setErrorMessage(null);
     setEnabledElements(defaultEnabledElements);
-    console.log(activeGroup);
     setHideText(currentGroup.textHidden);
   }, [activeGroup]);
 
@@ -124,6 +141,20 @@ const Questions = ({}: Props) => {
             highlight={highlight}
           />
         );
+      case QuestionType.SUBMISSION:
+        return (
+          <QuestionSubmission
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            answers={answers}
+            prolificInfo={prolificInfo}
+            startTime={startTime}
+            isSubmitted={isSubmitted}
+            setIsSubmitted={setIsSubmitted}
+          />
+        );
       default:
         return;
     }
@@ -159,6 +190,21 @@ const Questions = ({}: Props) => {
     );
   };
 
+  const nextButton = (
+    <Button
+      size="small"
+      onClick={handleNext}
+      disabled={activeGroup === maxGroups - 1}
+    >
+      Next
+      {theme.direction === 'rtl' ? (
+        <KeyboardArrowLeft />
+      ) : (
+        <KeyboardArrowRight />
+      )}
+    </Button>
+  );
+
   return (
     <div>
       <MobileStepper
@@ -171,25 +217,12 @@ const Questions = ({}: Props) => {
         steps={maxGroups}
         position="static"
         activeStep={activeGroup}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeGroup === maxGroups - 1}
-          >
-            Next
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
+        nextButton={nextButton}
         backButton={
           <Button
             size="small"
             onClick={handleBack}
-            disabled={activeGroup === 0}
+            disabled={activeGroup === 0 || isSubmitted}
           >
             {theme.direction === 'rtl' ? (
               <KeyboardArrowRight />
@@ -207,6 +240,7 @@ const Questions = ({}: Props) => {
       {errorMessage && (
         <p className="text-bold mt-5 text-xl text-red-700">{errorMessage}</p>
       )}
+      <div className="flex justify-end">{nextButton}</div>
     </div>
   );
 };

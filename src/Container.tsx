@@ -9,6 +9,7 @@ import {
   defaultStyling,
   placeholderData,
 } from './utils/defaults';
+import { ProlificInfo } from './utils/questions';
 
 const Container = () => {
   const [startTask, setStartTask] = useState(false);
@@ -21,7 +22,7 @@ const Container = () => {
 
   const urlParams = new URLSearchParams(window.location.search);
 
-  const prolificInfo = {
+  const prolificInfo: ProlificInfo = {
     prolificPid: urlParams.get('PROLIFIC_PID'),
     studyId: urlParams.get('STUDY_ID'),
     sessionId: urlParams.get('SESSION_ID'),
@@ -84,7 +85,7 @@ const Container = () => {
               {!startTask ? (
                 <Instructions onStartTask={() => setStartTask(true)} />
               ) : (
-                <Questions />
+                <Questions prolificInfo={prolificInfo} />
               )}
             </div>
           </div>

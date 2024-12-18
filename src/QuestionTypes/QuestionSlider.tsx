@@ -29,7 +29,6 @@ const QuestionSlider = ({
     .map((key) => defaultStyling[key]);
 
   function resetStyling() {
-    console.log('resetting');
     styleVars.forEach((styleVar) => {
       document
         .getElementById('root')
@@ -38,7 +37,6 @@ const QuestionSlider = ({
   }
 
   useLayoutEffect(() => {
-    console.log(value);
     styleVars.forEach((styleVar) => {
       document
         .getElementById('root')
@@ -46,13 +44,6 @@ const QuestionSlider = ({
           styleVar.var,
           `${multiplyRem(styleVar.value, value)}`,
         );
-    });
-
-    styleVars.forEach((styleVar) => {
-      console.log(
-        styleVar.var,
-        document.getElementById('root').style.getPropertyValue(styleVar.var),
-      );
     });
 
     return resetStyling;

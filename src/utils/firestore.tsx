@@ -2,6 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { addDoc, collection, getFirestore } from 'firebase/firestore/lite';
+import { Answer, ProlificInfo } from './questions';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,5 +23,23 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const responseCollection = collection(db, 'responses');
+
+export type Response = {
+  prolificInfo: ProlificInfo;
+  answers: Array<Answer>;
+  startTime: Date;
+  endTime: Date;
+};
+
+export const addResponse = async (response: Response) => {
+  try {
+    const docRef = await addDoc(responseCollection, response);
+    console.log('Document written with ID: ', docRef.id);
+    return true;
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
+  return false;
+};
 
 export {};

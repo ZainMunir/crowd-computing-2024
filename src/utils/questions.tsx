@@ -1,6 +1,9 @@
 import { EnabledElements } from './CloneContext';
 import { defaultEnabledElements } from './defaults';
 
+export const completionCode = 'CJAHK33A';
+export const prolificRedirectLink = `https://app.prolific.com/submissions/complete?cc=${completionCode}`;
+
 export type Question = {
   id: number;
   questionText: string;
@@ -20,11 +23,13 @@ export enum QuestionType {
   TIMER = 'TIMER',
   COMPREHENSION = 'COMPREHENSION',
   ENABLED_ELEMENTS = 'ENABLED_ELEMENTS',
+  SUBMISSION = 'SUBMISSION',
 }
 
 export type Answer = {
   id: number;
   value?: string | number | EnabledElements;
+  questionText: string;
 };
 
 export type QuestionGroup = {
@@ -250,4 +255,24 @@ export const questionGroups: Array<QuestionGroup> = [
     textHidden: false,
     questions: styling_questions,
   },
+  {
+    id: 9,
+    title: 'Submission',
+    displayHidden: false,
+    textHidden: false,
+    questions: [
+      {
+        id: 19,
+        questionText:
+          'Please verify the below details before submitting. If something has gone wrong, let us know in the textbox below.',
+        type: QuestionType.SUBMISSION,
+      },
+    ],
+  },
 ];
+
+export type ProlificInfo = {
+  prolificPid: string | null;
+  studyId: string | null;
+  sessionId: string | null;
+};
