@@ -1,3 +1,176 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --text-font-family: 'Arial';
+  --text-small: 0.813rem;
+  --text-medium: 1rem;
+  --text-large: 1.5rem;
+  --text-xlarge: 1.75rem;
+  --text-2xlarge: 2rem;
+  --text-normalbold: 400;
+  --text-semibold: 600;
+  --text-bold: 700;
+  --text-middle: #6f6f6f;
+  --text-light: #ffffff;
+  --text-dark: #222222;
+  --bg-light: #ffffff;
+  --bg-gray-1: #f6f6f6;
+  --bg-gray-2: #eeeeee;
+  --bg-gray-3: #6f6f6f;
+  --bg-dark: #121212;
+  --border-light: #eeeeee;
+  --border-dark: #121212;
+  --description-line-height: 1.5rem;
+  --paragraph-line-height: 1.875rem;
+  --comment-line-height: 1.25rem;
+
+  --text-lightning-red: #e81249;
+  --bg-button-purple: #21164c;
+  --bg-orange: #ff6122;
+  --text-orange: #ff6122;
+  --border-orange: #ff6122;
+  --bg-facebook-blue: #3b5998;
+  --text-facebook-blue: #3b5998;
+  --bg-twitter-blue: #55acee;
+  --bg-pinterest-red: #bd081c;
+  --bg-tumblr-blue: #35465d;
+  --bg-progress-teal: #00b2b2;
+  --text-follow-teal: #14b8a6;
+  --text-completed-teal: #00b2b2;
+  --text-menu-hover: #007f80;
+  --text-completed-red: #a93e19;
+  --bg-post-button-inactive: #d7caff;
+  --bg-post-button-active: #3b19a9;
+  --text-reply-purple: #3b19a9;
+  --border-text-area-active: #5c10ff;
+
+  --content-width: 39rem;
+}
+
+@layer utilities {
+  .text-font-family {
+    font-family: var(--text-font-family);
+  }
+  .text-small {
+    font-size: var(--text-small);
+  }
+  .text-medium {
+    font-size: var(--text-medium);
+  }
+  .text-large {
+    font-size: var(--text-large);
+  }
+  .text-xlarge {
+    font-size: var(--text-xlarge);
+  }
+  .text-2xlarge {
+    font-size: var(--text-2xlarge);
+  }
+  .text-normalbold {
+    font-weight: var(--text-normalbold);
+  }
+  .text-semibold {
+    font-weight: var(--text-semibold);
+  }
+  .text-bold {
+    font-weight: var(--text-bold);
+  }
+  .text-middle {
+    color: var(--text-middle);
+  }
+  .text-light {
+    color: var(--text-light);
+  }
+  .text-dark {
+    color: var(--text-dark);
+  }
+  .bg-light {
+    background-color: var(--bg-light);
+  }
+  .bg-gray-1 {
+    background-color: var(--bg-gray-1);
+  }
+  .bg-gray-2 {
+    background-color: var(--bg-gray-2);
+  }
+  .bg-gray-3 {
+    background-color: var(--bg-gray-3);
+  }
+  .bg-dark {
+    background-color: var(--bg-dark);
+  }
+  .border-light {
+    border-color: var(--border-light);
+  }
+  .border-dark {
+    border-color: var(--border-dark);
+  }
+  .description-line-height {
+    line-height: var(--description-line-height);
+  }
+  .paragraph-line-height {
+    line-height: var(--paragraph-line-height);
+  }
+  .comment-line-height {
+    line-height: var(--comment-line-height);
+  }
+  .text-lightning-red {
+    color: var(--text-lightning-red);
+  }
+  .bg-button-purple {
+    background-color: var(--bg-button-purple);
+  }
+  .bg-orange {
+    background-color: var(--bg-orange);
+  }
+  .text-orange {
+    color: var(--text-orange);
+  }
+  .border-orange {
+    border-left-color: var(--border-orange);
+  }
+  .bg-facebook-blue {
+    background-color: var(--bg-facebook-blue);
+  }
+  .text-facebook-blue {
+    color: var(--text-facebook-blue);
+  }
+  .bg-twitter-blue {
+    background-color: var(--bg-twitter-blue);
+  }
+  .bg-pinterest-red {
+    background-color: var(--bg-pinterest-red);
+  }
+  .bg-tumblr-blue {
+    background-color: var(--bg-tumblr-blue);
+  }
+  .bg-progress-teal {
+    background-color: var(--bg-progress-teal);
+  }
+  .text-follow-teal {
+    color: var(--text-follow-teal);
+  }
+  .text-completed-teal {
+    color: var(--text-completed-teal);
+  }
+  .text-menu-hover {
+    color: var(--text-menu-hover);
+  }
+  .text-completed-red {
+    color: var(--text-completed-red);
+  }
+  .bg-post-button-inactive {
+    background-color: var(--bg-post-button-inactive);
+  }
+  .bg-post-button-active {
+    background-color: var(--bg-post-button-active);
+  }
+  .text-reply-purple {
+    color: var(--text-reply-purple);
+  }
+  .border-text-area-active {
+    border-color: var(--border-text-area-active);
+  }
+}
