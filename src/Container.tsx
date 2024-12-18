@@ -4,15 +4,11 @@ import Instructions from './Instructions';
 import Questions from './Questions';
 import CloneLayout from './Clone/CloneLayout';
 import CloneContext, { EnabledElements, Styling } from './utils/CloneContext';
-import {
-  defaultEnabledElements,
-  defaultStyling,
-  placeholderData,
-} from './utils/defaults';
-import { ProlificInfo } from './utils/questions';
+import { defaultEnabledElements, defaultStyling } from './utils/defaults';
+import { ProlificInfo, stories } from './utils/questions';
 
 const Container = () => {
-  const [startTask, setStartTask] = useState(true);
+  const [startTask, setStartTask] = useState(false);
   const [enabledElements, setEnabledElements] = useState<EnabledElements>(
     defaultEnabledElements,
   );
@@ -28,23 +24,9 @@ const Container = () => {
     sessionId: urlParams.get('SESSION_ID'),
   };
 
-  const stories = [placeholderData, placeholderData, placeholderData];
+  const [storyIndex, setStoryIndex] = useState(0);
 
-  const hashStringToNumber = (str) => {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return hash;
-  };
-
-  const storyIndex = prolificInfo.prolificPid
-    ? (Math.abs(hashStringToNumber(prolificInfo.prolificPid)) %
-        stories.length) +
-      1
-    : 1;
-
-  const story = stories[storyIndex - 1];
+  const story = stories[storyIndex];
 
   const customTheme = createTheme({
     palette: {
@@ -85,7 +67,10 @@ const Container = () => {
               {!startTask ? (
                 <Instructions onStartTask={() => setStartTask(true)} />
               ) : (
-                <Questions prolificInfo={prolificInfo} />
+                <Questions
+                  prolificInfo={prolificInfo}
+                  setStoryIndex={setStoryIndex}
+                />
               )}
             </div>
           </div>

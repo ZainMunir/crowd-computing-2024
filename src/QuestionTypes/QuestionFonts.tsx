@@ -36,8 +36,6 @@ const QuestionFonts = ({
   }
 
   useLayoutEffect(() => {
-    console.log(styleVar.var, options[value], value);
-
     document
       .getElementById('root')
       .style.setProperty(styleVar.var, options[value]);

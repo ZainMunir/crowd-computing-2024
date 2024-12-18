@@ -41,5 +41,3 @@ export const addResponse = async (response: Response) => {
   }
   return false;
 };
-
-export {};

@@ -1,8 +1,11 @@
 import { EnabledElements } from './CloneContext';
-import { defaultEnabledElements } from './defaults';
+import { defaultEnabledElements, placeholderData } from './defaults';
 
 export const completionCode = 'CJAHK33A';
 export const prolificRedirectLink = `https://app.prolific.com/submissions/complete?cc=${completionCode}`;
+
+const storyIndex = Math.random() < 0.5 ? 0 : 1;
+export const stories = [placeholderData, placeholderData, placeholderData];
 
 export type Question = {
   id: number;
@@ -40,18 +43,19 @@ export type QuestionGroup = {
   displayHidden: boolean;
   textHidden: boolean;
   questions: Question[];
+  storyIndex: number;
 };
 
 const styling_questions = [
   {
-    id: 15,
+    id: 16,
     questionText:
       'Please experiment with the customisation options and choose your preferred options.',
     type: QuestionType.ENABLED_ELEMENTS,
     defaultValue: defaultEnabledElements,
   },
   {
-    id: 16,
+    id: 17,
     questionText: 'Font Size',
     type: QuestionType.SLIDER,
     min: 0.5,
@@ -67,7 +71,7 @@ const styling_questions = [
     ],
   },
   {
-    id: 17,
+    id: 18,
     questionText: 'Content Width',
     type: QuestionType.SLIDER,
     min: 0.5,
@@ -77,7 +81,7 @@ const styling_questions = [
     options: ['content_width'],
   },
   {
-    id: 18,
+    id: 19,
     questionText: 'Font Line Height',
     type: QuestionType.SLIDER,
     min: 0.5,
@@ -91,7 +95,7 @@ const styling_questions = [
     ],
   },
   {
-    id: 19,
+    id: 20,
     questionText: 'Font Family',
     type: QuestionType.FONTS,
     defaultValue: 0,
@@ -104,15 +108,17 @@ export const questionGroups: Array<QuestionGroup> = [
     id: 0,
     title: 'Background questions',
     displayHidden: true,
-    textHidden: true,
+    textHidden: false,
+    storyIndex: 2,
     questions: [
       {
-        id: 0,
+        id: 1,
         questionText: 'What is your age? (in years)',
         type: QuestionType.NUMBER,
+        defaultValue: 0,
       },
       {
-        id: 1,
+        id: 2,
         questionText:
           'How often do you read long form text (novels/textbooks) online?',
 
@@ -126,13 +132,13 @@ export const questionGroups: Array<QuestionGroup> = [
         ],
       },
       {
-        id: 2,
+        id: 3,
         questionText: 'Have you used Wattpad before?',
         type: QuestionType.CHECKBOX,
         options: ['Yes', 'No'],
       },
       {
-        id: 3,
+        id: 4,
         questionText: 'What is your level of English?',
         type: QuestionType.CHECKBOX,
         options: [
@@ -144,7 +150,7 @@ export const questionGroups: Array<QuestionGroup> = [
         ],
       },
       {
-        id: 4,
+        id: 5,
         questionText: 'I feel comfortable using technology.',
         type: QuestionType.LIKERT,
       },
@@ -152,27 +158,50 @@ export const questionGroups: Array<QuestionGroup> = [
   },
   {
     id: 1,
-    title: 'Feedback of the original design',
+    title: 'Reading comprehension',
     displayHidden: false,
     textHidden: true,
+    storyIndex: storyIndex,
     questions: [
       {
-        id: 5,
+        id: 6,
+        questionText:
+          "When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click stop when you're finished. The questions will then be revealed. You will not be able to try again.",
+        type: QuestionType.TIMER,
+      },
+      {
+        id: 7,
+        questionText: 'Compreshension question 1',
+        type: QuestionType.COMPREHENSION,
+        dependentOn: 6,
+        options: ['True', 'False'],
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Feedback of the original design',
+    displayHidden: false,
+    textHidden: false,
+    storyIndex: 2,
+    questions: [
+      {
+        id: 8,
         questionText: 'I like the layout of the webpage.',
         type: QuestionType.LIKERT,
       },
       {
-        id: 6,
+        id: 9,
         questionText: 'The color scheme of the webpage is visually appealing.',
         type: QuestionType.LIKERT,
       },
       {
-        id: 7,
+        id: 10,
         questionText: 'Navigating to the next chapter or section is easy.',
         type: QuestionType.LIKERT,
       },
       {
-        id: 8,
+        id: 11,
         questionText:
           'The menu or navigation bar is intuitive for accessing content.',
         type: QuestionType.LIKERT,
@@ -180,54 +209,34 @@ export const questionGroups: Array<QuestionGroup> = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: 'Feedback of the original design (continued)',
     displayHidden: false,
-    textHidden: true,
+    textHidden: false,
+    storyIndex: 2,
     questions: [
       {
-        id: 9,
+        id: 12,
         questionText:
           'Searching for specific content within the e-book is easy.',
         type: QuestionType.LIKERT,
       },
       {
-        id: 10,
+        id: 13,
         questionText: 'The webpage needs significant improvement.',
         type: QuestionType.LIKERT,
       },
       {
-        id: 11,
+        id: 14,
         questionText:
           'The webpage is accessible for users with visual or physical impairments.',
         type: QuestionType.LIKERT,
       },
       {
-        id: 12,
+        id: 15,
         questionText:
           'The amount of text displayed on a single page is appropriate.',
         type: QuestionType.LIKERT,
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: 'Reading comprehension',
-    displayHidden: false,
-    textHidden: true,
-    questions: [
-      {
-        id: 13,
-        questionText:
-          "When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click stop when you're finished. The questions will then be revealed. You will not be able to try again.",
-        type: QuestionType.TIMER,
-      },
-      {
-        id: 14,
-        questionText: 'Compreshension question 1',
-        type: QuestionType.COMPREHENSION,
-        dependentOn: 13,
-        options: ['True', 'False'],
       },
     ],
   },
@@ -237,6 +246,7 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[0]],
+    storyIndex: 2,
   },
   {
     id: 5,
@@ -245,6 +255,7 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[1]],
+    storyIndex: 2,
   },
   {
     id: 6,
@@ -253,6 +264,7 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[2]],
+    storyIndex: 2,
   },
   {
     id: 7,
@@ -261,6 +273,7 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[3]],
+    storyIndex: 2,
   },
   {
     id: 8,
@@ -269,6 +282,7 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[4]],
+    storyIndex: 2,
   },
   {
     id: 9,
@@ -276,15 +290,39 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: false,
     questions: styling_questions,
+    storyIndex: 2,
   },
   {
     id: 10,
+    title: 'Reading comprehension 2',
+    displayHidden: false,
+    textHidden: true,
+    storyIndex: Math.abs(storyIndex - 1),
+    questions: [
+      {
+        id: 21,
+        questionText:
+          "When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click stop when you're finished. The questions will then be revealed. You will not be able to try again.",
+        type: QuestionType.TIMER,
+      },
+      {
+        id: 22,
+        questionText: 'Compreshension question 1',
+        type: QuestionType.COMPREHENSION,
+        dependentOn: 21,
+        options: ['True', 'False'],
+      },
+    ],
+  },
+  {
+    id: 11,
     title: 'Submission',
     displayHidden: false,
     textHidden: false,
+    storyIndex: 2,
     questions: [
       {
-        id: 20,
+        id: 23,
         questionText:
           'Please verify the below details before submitting. If something has gone wrong, let us know in the textbox below.',
         type: QuestionType.SUBMISSION,

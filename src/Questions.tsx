@@ -22,12 +22,13 @@ import QuestionFonts from './QuestionTypes/QuestionFonts';
 
 type Props = {
   prolificInfo: ProlificInfo;
+  setStoryIndex: (index: number) => void;
 };
 
-const Questions = ({ prolificInfo }: Props) => {
+const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const maxGroups = questionGroups.length;
   const [startTime, setStartTime] = useState(new Date());
-  const [activeGroup, setActiveGroup] = React.useState(9);
+  const [activeGroup, setActiveGroup] = React.useState(0);
   const [answers, setAnswers] = useState<Array<Answer>>(
     Array.from(
       new Map(
@@ -46,7 +47,6 @@ const Questions = ({ prolificInfo }: Props) => {
       ).values(),
     ),
   );
-  console.log(answers);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -67,6 +67,7 @@ const Questions = ({ prolificInfo }: Props) => {
 
   useEffect(() => {
     setCloneDisabled(currentGroup.displayHidden);
+    setStoryIndex(currentGroup.storyIndex);
     setErrorMessage(null);
     setEnabledElements(defaultEnabledElements);
     setHideText(currentGroup.textHidden);
