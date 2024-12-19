@@ -195,4 +195,8 @@ export const defaultStyling: Styling = {
     var: '--text-font-family',
     value: 'Arial',
   },
+  letter_spacing: {
+    var: '--letter-spacing',
+    value: '0.03rem',
+  },
 };

@@ -3,15 +3,23 @@
 @tailwind utilities;
 
 :root {
+  --text-font-family-not-changed: 'Arial';
+  --text-medium-not-changed: 1rem;
+
   --text-font-family: 'Arial';
+
   --text-small: 0.813rem;
   --text-medium: 1rem;
   --text-large: 1.5rem;
   --text-xlarge: 1.75rem;
   --text-2xlarge: 2rem;
+
+  --letter-spacing: 0.03rem;
+
   --text-normalbold: 400;
   --text-semibold: 600;
   --text-bold: 700;
+
   --text-middle: #6f6f6f;
   --text-light: #ffffff;
   --text-dark: #222222;
@@ -22,6 +30,7 @@
   --bg-dark: #121212;
   --border-light: #eeeeee;
   --border-dark: #121212;
+
   --description-line-height: 1.5rem;
   --paragraph-line-height: 1.875rem;
   --comment-line-height: 1.25rem;
@@ -54,14 +63,15 @@ body {
 }
 
 @layer utilities {
-  .text-font-family {
-    font-family: var(--text-font-family);
+  .text-font {
+    font-family: var(--text-font-family-not-changed);
   }
+
   .text-small {
     font-size: var(--text-small);
   }
   .text-medium {
-    font-size: var(--text-medium);
+    font-size: var(--text-medium-not-changed);
   }
   .text-large {
     font-size: var(--text-large);
@@ -72,6 +82,13 @@ body {
   .text-2xlarge {
     font-size: var(--text-2xlarge);
   }
+
+  .text-content {
+    font-family: var(--text-font-family);
+    font-size: var(--text-medium);
+    letter-spacing: var(--letter-spacing);
+  }
+
   .text-normalbold {
     font-weight: var(--text-normalbold);
   }

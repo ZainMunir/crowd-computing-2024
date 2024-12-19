@@ -39,6 +39,7 @@ export enum QuestionStyleType {
   FONT_SIZE = 'FONT_SIZE',
   CONTENT_WIDTH = 'CONTENT_WIDTH',
   LINE_HEIGHT = 'LINE_HEIGHT',
+  LETTER_SPACING = 'LETTER_SPACING',
   FONT_FAMILY = 'FONT_FAMILY',
 }
 
@@ -155,11 +156,11 @@ const styling_questions = [
     step: 0.1,
     defaultValue: 1,
     options: [
-      'text_small',
+      // 'text_small',
       'text_medium',
-      'text_large',
-      'text_xlarge',
-      'text_2xlarge',
+      // 'text_large',
+      // 'text_xlarge',
+      // 'text_2xlarge',
     ],
   },
   {
@@ -183,10 +184,21 @@ const styling_questions = [
     step: 0.1,
     defaultValue: 1,
     options: [
-      'description_line_height',
+      // 'description_line_height',
       'paragraph_line_height',
-      'comment_line_height',
+      // 'comment_line_height',
     ],
+  },
+  {
+    id: returnAndIncrementQuestionID(),
+    questionText: 'Letter spacing',
+    styleType: QuestionStyleType.LETTER_SPACING,
+    type: QuestionType.SLIDER,
+    min: -2,
+    max: 2,
+    step: 0.1,
+    defaultValue: 0,
+    options: ['letter_spacing'],
   },
   {
     id: returnAndIncrementQuestionID(),
@@ -194,7 +206,7 @@ const styling_questions = [
     styleType: QuestionStyleType.FONT_FAMILY,
     type: QuestionType.FONTS,
     defaultValue: 0,
-    options: ['Arial', 'Source Sans Pro'],
+    options: ['Arial', 'Georgia', 'Helvetica', 'monospace', 'Open-Dyslexic'],
   },
 ];
 
@@ -333,6 +345,15 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[4]],
+    storyIndex: 2,
+  },
+  {
+    id: returnAndIncrementGroupID(),
+    title:
+      'Focuing primarily on the main content, style the following elements to your preference',
+    displayHidden: false,
+    textHidden: false,
+    questions: [styling_questions[5]],
     storyIndex: 2,
   },
   {
