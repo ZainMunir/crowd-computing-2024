@@ -1,5 +1,5 @@
 import React from 'react';
-import { Answer, Question } from '../utils/questions';
+import { Answer, Question } from '../utils/questionData';
 import { TextField } from '@mui/material';
 
 type Props = {

@@ -5,7 +5,7 @@ import Questions from './Questions';
 import CloneLayout from './Clone/CloneLayout';
 import CloneContext, { EnabledElements, Styling } from './utils/CloneContext';
 import { defaultEnabledElements, defaultStyling } from './utils/defaults';
-import { ProlificInfo, stories } from './utils/questions';
+import { ProlificInfo, stories } from './utils/questionData';
 
 const Container = () => {
   const [startTask, setStartTask] = useState(false);

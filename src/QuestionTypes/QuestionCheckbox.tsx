@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormControlLabel, Checkbox } from '@mui/material';
-import { Answer, Question } from '../utils/questions';
+import { Answer, Question } from '../utils/questionData';
 
 type Props = {
   question: Question;

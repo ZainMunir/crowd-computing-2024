@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect } from 'react';
 import { Slider, Stack } from '@mui/material';
-import { Answer, Question } from '../utils/questions';
+import { Answer, Question } from '../utils/questionData';
 import { Styling, useCloneContext } from '../utils/CloneContext';
 
 type Props = {

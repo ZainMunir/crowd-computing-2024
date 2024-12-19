@@ -10,7 +10,7 @@ import {
   ProlificInfo,
   questionGroups,
   QuestionType,
-} from './utils/questions';
+} from './utils/questionData';
 import QuestionLikert from './QuestionTypes/QuestionLikert';
 import { useCloneContext } from './utils/CloneContext';
 import QuestionTimer from './QuestionTypes/QuestionTimer';

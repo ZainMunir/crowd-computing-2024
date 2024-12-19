@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Button } from '@mui/material';
-import { Answer, Question, QuestionStyleType } from '../utils/questions';
+import { Answer, Question, QuestionStyleType } from '../utils/questionData';
 import { EnabledElements, useCloneContext } from '../utils/CloneContext';
 import { defaultEnabledElements } from '../utils/defaults';
 
