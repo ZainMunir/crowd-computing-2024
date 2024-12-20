@@ -28,7 +28,7 @@ const StoryDetails = ({ story }: Props) => {
         ></div>
         <div className="mt-[-340px] flex h-full w-full flex-col justify-center">
           <div className="z-10 mx-auto flex h-[245px] w-[625px] flex-row gap-3">
-            <img src={story.image} />
+            <img src={story.image} className='max-h-full' />
             <div className="flex-grow">
               <p className="text-light text-small text-semibold">
                 YOU ARE READING

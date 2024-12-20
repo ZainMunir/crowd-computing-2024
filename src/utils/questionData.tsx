@@ -1,13 +1,13 @@
 import { EnabledElements } from './CloneContext';
 import { defaultEnabledElements } from './defaults';
-import { placeholderData } from './storyData';
+import { placeholderData, CountOfMonteCristo, KingsMusketeers } from './storyData';
 import { timeAgo } from './util';
 
 export const completionCode = 'CJAHK33A';
 export const prolificRedirectLink = `https://app.prolific.com/submissions/complete?cc=${completionCode}`;
 
 const storyIndex = Math.random() < 0.5 ? 0 : 1;
-export const stories = [placeholderData, placeholderData, placeholderData];
+export const stories = [CountOfMonteCristo, KingsMusketeers, KingsMusketeers];
 
 export type Question = {
   id: number;
@@ -206,7 +206,7 @@ const styling_questions = [
     styleType: QuestionStyleType.FONT_FAMILY,
     type: QuestionType.FONTS,
     defaultValue: 0,
-    options: ['Arial', 'Georgia', 'Helvetica', 'monospace', 'Open-Dyslexic'],
+    options: ['Arial', 'Georgia', 'Helvetica', 'Monospace', 'Open-Dyslexic'],
   },
 ];
 
@@ -295,10 +295,10 @@ export const questionGroups: Array<QuestionGroup> = [
       },
       {
         id: 8,
-        questionText: 'Compreshension question 1',
+        questionText: 'How does Edmond react to his betrayal?',
         type: QuestionType.COMPREHENSION,
         dependentOn: 7,
-        options: ['True', 'False'],
+        options: ['With a mixture of confusion and growing despair', 'With immediate anger and a resolve for revenge', 'By trying to escape and confront his betrayers', 'By denying the betrayal ever happened'],
       },
     ],
   },
@@ -380,10 +380,10 @@ export const questionGroups: Array<QuestionGroup> = [
       },
       {
         id: returnAndIncrementQuestionID(),
-        questionText: 'Compreshension question 1',
+        questionText: 'What decision do the four men make when the guards appear?',
         type: QuestionType.COMPREHENSION,
         dependentOn: questionID - 1,
-        options: ['True', 'False'],
+        options: ['They surrender immediately to avoid trouble', 'They continue their duels despite the interruption', 'They unite to fight the guards as a team', 'They flee the scene to escape capture'],
       },
     ],
   },

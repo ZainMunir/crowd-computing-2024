@@ -19,7 +19,7 @@ const QuestionNumber = ({
   const value =
     typeof answer.value === 'number' ? answer.value : Number(answer.value);
   const handleChange = (event) => {
-    updateAnswer(Number(event.target.value));
+    updateAnswer(Math.max(0, Number(event.target.value)));
   };
 
   return (
