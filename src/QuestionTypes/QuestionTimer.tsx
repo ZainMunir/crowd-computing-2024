@@ -28,8 +28,6 @@ const QuestionTimer = ({
   const { questionText: title } = question;
   const { value } = answer;
 
-  console.log(relevantAnswers);
-
   const { setHideText, setEnabledElements, defaultStyling } = useCloneContext();
 
   const enabledElements = relevantAnswers?.find(

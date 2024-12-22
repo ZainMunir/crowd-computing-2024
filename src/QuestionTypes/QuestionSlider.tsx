@@ -37,8 +37,6 @@ const QuestionSlider = ({
     return resetStyling;
   }, [value]);
 
-  console.log(value);
-
   const handleSliderMove = (val) => {
     updateAnswer(val);
   };
