@@ -1,6 +1,10 @@
 import { EnabledElements } from './CloneContext';
 import { defaultEnabledElements } from './defaults';
-import { placeholderData, CountOfMonteCristo, KingsMusketeers } from './storyData';
+import {
+  placeholderData,
+  CountOfMonteCristo,
+  KingsMusketeers,
+} from './storyData';
 import { timeAgo } from './util';
 
 export const completionCode = 'CJAHK33A';
@@ -120,7 +124,7 @@ const returnAndIncrementGroupID = () => {
   return groupID;
 };
 
-const feedbacKGroups = feedbackQuestions.map((group, index) => {
+const feedbackGroups = feedbackQuestions.map((group, index) => {
   return {
     id: returnAndIncrementGroupID(),
     title: `Feedback of the original design - ${group.title}`,
@@ -151,27 +155,21 @@ const styling_questions = [
     questionText: 'Font Size',
     type: QuestionType.SLIDER,
     styleType: QuestionStyleType.FONT_SIZE,
-    min: 0.5,
-    max: 2,
-    step: 0.1,
-    defaultValue: 1,
-    options: [
-      // 'text_small',
-      'text_medium',
-      // 'text_large',
-      // 'text_xlarge',
-      // 'text_2xlarge',
-    ],
+    min: 8,
+    max: 24,
+    step: 2,
+    defaultValue: 16,
+    options: ['text_medium'],
   },
   {
     id: returnAndIncrementQuestionID(),
     questionText: 'Content Width',
     styleType: QuestionStyleType.CONTENT_WIDTH,
     type: QuestionType.SLIDER,
-    min: 0.5,
-    max: 3,
-    step: 0.1,
-    defaultValue: 1,
+    min: 300,
+    max: 1600,
+    step: 25,
+    defaultValue: 625,
     options: ['content_width'],
   },
   {
@@ -179,15 +177,11 @@ const styling_questions = [
     questionText: 'Font Line Height',
     styleType: QuestionStyleType.LINE_HEIGHT,
     type: QuestionType.SLIDER,
-    min: 0.5,
-    max: 2,
-    step: 0.1,
-    defaultValue: 1,
-    options: [
-      // 'description_line_height',
-      'paragraph_line_height',
-      // 'comment_line_height',
-    ],
+    min: 10,
+    max: 50,
+    step: 2,
+    defaultValue: 30,
+    options: ['paragraph_line_height'],
   },
   {
     id: returnAndIncrementQuestionID(),
@@ -195,7 +189,7 @@ const styling_questions = [
     styleType: QuestionStyleType.LETTER_SPACING,
     type: QuestionType.SLIDER,
     min: -2,
-    max: 2,
+    max: 6,
     step: 0.1,
     defaultValue: 0,
     options: ['letter_spacing'],
@@ -298,11 +292,16 @@ export const questionGroups: Array<QuestionGroup> = [
         questionText: 'How does Edmond react to his betrayal?',
         type: QuestionType.COMPREHENSION,
         dependentOn: 7,
-        options: ['With a mixture of confusion and growing despair', 'With immediate anger and a resolve for revenge', 'By trying to escape and confront his betrayers', 'By denying the betrayal ever happened'],
+        options: [
+          'With a mixture of confusion and growing despair',
+          'With immediate anger and a resolve for revenge',
+          'By trying to escape and confront his betrayers',
+          'By denying the betrayal ever happened',
+        ],
       },
     ],
   },
-  ...feedbacKGroups,
+  ...feedbackGroups,
   {
     id: returnAndIncrementGroupID(),
     title: 'Customisation',
@@ -380,10 +379,16 @@ export const questionGroups: Array<QuestionGroup> = [
       },
       {
         id: returnAndIncrementQuestionID(),
-        questionText: 'What decision do the four men make when the guards appear?',
+        questionText:
+          'What decision do the four men make when the guards appear?',
         type: QuestionType.COMPREHENSION,
         dependentOn: questionID - 1,
-        options: ['They surrender immediately to avoid trouble', 'They continue their duels despite the interruption', 'They unite to fight the guards as a team', 'They flee the scene to escape capture'],
+        options: [
+          'They surrender immediately to avoid trouble',
+          'They continue their duels despite the interruption',
+          'They unite to fight the guards as a team',
+          'They flee the scene to escape capture',
+        ],
       },
     ],
   },

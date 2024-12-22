@@ -33,7 +33,7 @@ export const defaultStyling: Styling = {
   },
   text_medium: {
     var: '--text-medium',
-    value: '1rem',
+    value: '16px',
   },
   text_large: {
     var: '--text-large',
@@ -105,7 +105,7 @@ export const defaultStyling: Styling = {
   },
   paragraph_line_height: {
     var: '--paragraph-line-height',
-    value: '1.875rem',
+    value: '30px',
   },
   comment_line_height: {
     var: '--comment-line-height',
@@ -189,7 +189,7 @@ export const defaultStyling: Styling = {
   },
   content_width: {
     var: '--content-width',
-    value: '39rem',
+    value: '625px',
   },
   text_font_family: {
     var: '--text-font-family',
@@ -197,6 +197,6 @@ export const defaultStyling: Styling = {
   },
   letter_spacing: {
     var: '--letter-spacing',
-    value: '0.03rem',
+    value: '0px',
   },
 };

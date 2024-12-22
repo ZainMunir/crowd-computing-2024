@@ -28,6 +28,8 @@ const QuestionTimer = ({
   const { questionText: title } = question;
   const { value } = answer;
 
+  console.log(relevantAnswers);
+
   const { setHideText, setEnabledElements, defaultStyling } = useCloneContext();
 
   const enabledElements = relevantAnswers?.find(
@@ -45,11 +47,6 @@ const QuestionTimer = ({
   );
 
   const [timer, setTimer] = useState(value ? Number(value) : 0);
-
-  function multiplyRem(old, factor) {
-    const number = parseFloat(old.replace('rem', ''));
-    return `${number * factor}rem`;
-  }
 
   function resetStyling() {
     sliders?.forEach((slider) => {
@@ -91,10 +88,7 @@ const QuestionTimer = ({
       styleVars.forEach((styleVar) => {
         document
           .getElementById('root')
-          .style.setProperty(
-            styleVar.var,
-            `${multiplyRem(styleVar.value, value)}`,
-          );
+          .style.setProperty(styleVar.var, `${value}px`);
       });
     });
 
