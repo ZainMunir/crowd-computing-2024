@@ -7,7 +7,7 @@ export const completionCode = 'CJAHK33A';
 export const prolificRedirectLink = `https://app.prolific.com/submissions/complete?cc=${completionCode}`;
 
 const storyIndex = Math.random() < 0.5 ? 0 : 1;
-export const stories = [CountOfMonteCristo, KingsMusketeers, KingsMusketeers];
+export const stories = [CountOfMonteCristo, KingsMusketeers, placeholderData];
 
 export type Question = {
   id: number;

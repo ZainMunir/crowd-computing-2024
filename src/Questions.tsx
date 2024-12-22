@@ -269,7 +269,7 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
           </Button>
         }
       />
-      <h1 className="my-5 text-2xl">{currentGroup.title}</h1>
+      <h1 className="my-5 text-2xl font-semibold">{currentGroup.title}</h1>
       <Divider />
       <div>{questionComponents}</div>
       <Divider />
