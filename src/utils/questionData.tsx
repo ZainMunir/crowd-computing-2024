@@ -79,6 +79,10 @@ export function themeMapping(options: string[], value: number) {
           var: '--custom-grayscale',
           value: '0%',
         },
+        {
+          var: '--custom-sepia',
+          value: '0%',
+        },
       ];
     case 'Dark':
       return [
@@ -88,6 +92,10 @@ export function themeMapping(options: string[], value: number) {
         },
         {
           var: '--custom-grayscale',
+          value: '0%',
+        },
+        {
+          var: '--custom-sepia',
           value: '0%',
         },
       ];
@@ -101,6 +109,10 @@ export function themeMapping(options: string[], value: number) {
           var: '--custom-grayscale',
           value: '100%',
         },
+        {
+          var: '--custom-sepia',
+          value: '0%',
+        },
       ];
     case 'Dark Grayscale':
       return [
@@ -110,6 +122,40 @@ export function themeMapping(options: string[], value: number) {
         },
         {
           var: '--custom-grayscale',
+          value: '100%',
+        },
+        {
+          var: '--custom-sepia',
+          value: '0%',
+        },
+      ];
+    case 'Light Sepia':
+      return [
+        {
+          var: '--custom-inverted',
+          value: '0%',
+        },
+        {
+          var: '--custom-grayscale',
+          value: '0%',
+        },
+        {
+          var: '--custom-sepia',
+          value: '100%',
+        },
+      ];
+    case 'Dark Sepia':
+      return [
+        {
+          var: '--custom-inverted',
+          value: '100%',
+        },
+        {
+          var: '--custom-grayscale',
+          value: '0%',
+        },
+        {
+          var: '--custom-sepia',
           value: '100%',
         },
       ];
@@ -259,7 +305,14 @@ const styling_questions = [
     styleType: QuestionStyleType.THEME,
     type: QuestionType.THEME,
     defaultValue: 0,
-    options: ['Light', 'Dark', 'Light Grayscale', 'Dark Grayscale'],
+    options: [
+      'Light',
+      'Dark',
+      'Light Grayscale',
+      'Dark Grayscale',
+      'Light Sepia',
+      'Dark Sepia',
+    ],
   },
 ];
 
@@ -399,7 +452,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focuing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, style the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[4]],
@@ -408,7 +461,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focuing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, style the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[5]],
@@ -417,7 +470,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focuing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, style the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[6]],

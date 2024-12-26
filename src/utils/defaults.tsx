@@ -209,4 +209,9 @@ export const defaultStyling: Styling = {
     var: '--custom-grayscale',
     value: '0%',
   },
+
+  custom_sepia: {
+    var: '--custom-sepia',
+    value: '0%',
+  },
 };

@@ -74,7 +74,7 @@ div:has(> svg) {
 
 @layer utilities {
   .custom-theming {
-    filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale));
+    filter: invert(var(--custom-inverted));
   }
 
   .custom-top-filter {
