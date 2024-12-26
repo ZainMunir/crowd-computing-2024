@@ -69,21 +69,23 @@ body {
 }
 
 div:has(> svg) {
-  filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale))
-    hue-rotate(var(--custom-hue-rotate)) sepia(var(--custom-sepia))
-    contrast(var(--custom-contrast));
+  filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale));
 }
 
 @layer utilities {
   .custom-theming {
+    filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale));
+  }
+
+  .custom-top-filter {
     filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale))
-      hue-rotate(var(--custom-hue-rotate)) sepia(var(--custom-sepia))
-      contrast(var(--custom-contrast));
+      sepia(var(--custom-sepia)) contrast(var(--custom-contrast))
+      hue-rotate(var(--custom-hue-rotate));
   }
 
   .special-case-filter.custom-theming {
     filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale))
-      hue-rotate(var(--custom-hue-rotate)) sepia(var(--custom-sepia)) blur(24px);
+      hue-rotate(var(--custom-hue-rotate)) blur(24px);
   }
 
   .text-font {

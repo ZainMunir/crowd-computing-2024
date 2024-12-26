@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import { FormControlLabel, Checkbox } from '@mui/material';
-import { Answer, Question } from '../utils/questionData';
+import { Answer, Question, themeMapping } from '../utils/questionData';
 import { useCloneContext } from '../utils/CloneContext';
 
 type Props = {
@@ -26,15 +26,6 @@ const QuestionTheme = ({
     updateAnswer(newValue);
   };
 
-  function mapping(value: number) {
-    switch (options[value]) {
-      case 'Light':
-        return '0%';
-      case 'Dark':
-        return '100%';
-    }
-  }
-
   const { defaultStyling } = useCloneContext();
 
   const styleVar: { var: string; value: string } =
@@ -47,9 +38,11 @@ const QuestionTheme = ({
   }
 
   useLayoutEffect(() => {
-    document
-      .getElementsByTagName('body')[0]
-      .style.setProperty(styleVar.var, mapping(value));
+    themeMapping(options, value).forEach((styleVar) => {
+      document
+        .getElementsByTagName('body')[0]
+        .style.setProperty(styleVar.var, styleVar.value);
+    });
     return resetStyling;
   }, [value]);
 

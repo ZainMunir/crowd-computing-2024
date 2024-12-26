@@ -67,6 +67,55 @@ export type QuestionGroup = {
   timerStyleType?: 'default' | 'custom';
 };
 
+export function themeMapping(options: string[], value: number) {
+  switch (options[value]) {
+    case 'Light':
+      return [
+        {
+          var: '--custom-inverted',
+          value: '0%',
+        },
+        {
+          var: '--custom-grayscale',
+          value: '0%',
+        },
+      ];
+    case 'Dark':
+      return [
+        {
+          var: '--custom-inverted',
+          value: '100%',
+        },
+        {
+          var: '--custom-grayscale',
+          value: '0%',
+        },
+      ];
+    case 'Light Grayscale':
+      return [
+        {
+          var: '--custom-inverted',
+          value: '0%',
+        },
+        {
+          var: '--custom-grayscale',
+          value: '100%',
+        },
+      ];
+    case 'Dark Grayscale':
+      return [
+        {
+          var: '--custom-inverted',
+          value: '100%',
+        },
+        {
+          var: '--custom-grayscale',
+          value: '100%',
+        },
+      ];
+  }
+}
+
 const feedbackQuestions = [
   {
     title: 'Layout and Navigation',
@@ -210,7 +259,7 @@ const styling_questions = [
     styleType: QuestionStyleType.THEME,
     type: QuestionType.THEME,
     defaultValue: 0,
-    options: ['Light', 'Dark'],
+    options: ['Light', 'Dark', 'Light Grayscale', 'Dark Grayscale'],
   },
 ];
 

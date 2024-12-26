@@ -204,4 +204,9 @@ export const defaultStyling: Styling = {
     var: '--custom-inverted',
     value: '0%',
   },
+
+  custom_grayscale: {
+    var: '--custom-grayscale',
+    value: '0%',
+  },
 };

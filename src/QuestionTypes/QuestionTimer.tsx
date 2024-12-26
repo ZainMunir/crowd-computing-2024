@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Button } from '@mui/material';
-import { Answer, Question, QuestionStyleType } from '../utils/questionData';
+import {
+  Answer,
+  Question,
+  QuestionStyleType,
+  themeMapping,
+} from '../utils/questionData';
 import { EnabledElements, useCloneContext } from '../utils/CloneContext';
 import { defaultEnabledElements } from '../utils/defaults';
 
@@ -82,15 +87,13 @@ const QuestionTimer = ({
     document
       .getElementsByTagName('body')[0]
       .style.setProperty(customInverted.var, customInverted.value);
-  }
 
-  function themeMapping(value: number, options: string[]) {
-    switch (options[value]) {
-      case 'Light':
-        return '0%';
-      case 'Dark':
-        return '100%';
-    }
+    const customGrayscale: { var: string; value: string } =
+      defaultStyling.custom_grayscale;
+
+    document
+      .getElementsByTagName('body')[0]
+      .style.setProperty(customGrayscale.var, customGrayscale.value);
   }
 
   useLayoutEffect(() => {
@@ -123,12 +126,13 @@ const QuestionTimer = ({
         fontFamily.options[fontFamily.value as number],
       );
 
-    document
-      .getElementsByTagName('body')[0]
-      .style.setProperty(
-        defaultStyling.custom_inverted.var,
-        themeMapping(theming.value as number, theming.options),
-      );
+    themeMapping(theming.options, theming.value as number).forEach(
+      (styleVar) => {
+        document
+          .getElementsByTagName('body')[0]
+          .style.setProperty(styleVar.var, styleVar.value);
+      },
+    );
 
     return () => {
       setEnabledElements(defaultEnabledElements);
