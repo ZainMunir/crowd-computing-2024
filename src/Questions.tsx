@@ -28,7 +28,7 @@ type Props = {
 const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const maxGroups = questionGroups.length;
   const [startTime, setStartTime] = useState(new Date());
-  const [activeGroup, setActiveGroup] = React.useState(14);
+  const [activeGroup, setActiveGroup] = React.useState(0);
   const [answers, setAnswers] = useState<Array<Answer>>(
     Array.from(
       new Map(
@@ -57,8 +57,7 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const { setCloneDisabled, setEnabledElements, setHideText } =
-    useCloneContext();
+  const { setCloneDisabled, setHideText } = useCloneContext();
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
   const allGroupQuestionsAnswered = currentGroup.questions.every((question) => {
