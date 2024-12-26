@@ -94,6 +94,13 @@ const QuestionTimer = ({
     document
       .getElementsByTagName('body')[0]
       .style.setProperty(customGrayscale.var, customGrayscale.value);
+
+    const customSepia: { var: string; value: string } =
+      defaultStyling.custom_sepia;
+
+    document
+      .getElementsByTagName('body')[0]
+      .style.setProperty(customSepia.var, customSepia.value);
   }
 
   useLayoutEffect(() => {

@@ -162,6 +162,38 @@ export function themeMapping(options: string[], value: number) {
   }
 }
 
+function getComprehensionQuestion(storyIndex: number, questionID: number) {
+  switch (storyIndex) {
+    case 0:
+      return {
+        id: questionID,
+        questionText: 'How does Edmond react to his betrayal?',
+        type: QuestionType.COMPREHENSION,
+        dependentOn: questionID - 1,
+        options: [
+          'With a mixture of confusion and growing despair',
+          'With immediate anger and a resolve for revenge',
+          'By trying to escape and confront his betrayers',
+          'By denying the betrayal ever happened',
+        ],
+      } as Question;
+    case 1:
+      return {
+        id: questionID,
+        questionText:
+          'What decision do the four men make when the guards appear?',
+        type: QuestionType.COMPREHENSION,
+        dependentOn: questionID - 1,
+        options: [
+          'They surrender immediately to avoid trouble',
+          'They continue their duels despite the interruption',
+          'They unite to fight the guards as a team',
+          'They flee the scene to escape capture',
+        ],
+      } as Question;
+  }
+}
+
 const feedbackQuestions = [
   {
     title: 'Layout and Navigation',
@@ -399,18 +431,7 @@ export const questionGroups: Array<QuestionGroup> = [
           "When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click stop when you're finished. The questions will then be revealed. You will not be able to try again.",
         type: QuestionType.TIMER,
       },
-      {
-        id: 8,
-        questionText: 'How does Edmond react to his betrayal?',
-        type: QuestionType.COMPREHENSION,
-        dependentOn: 7,
-        options: [
-          'With a mixture of confusion and growing despair',
-          'With immediate anger and a resolve for revenge',
-          'By trying to escape and confront his betrayers',
-          'By denying the betrayal ever happened',
-        ],
-      },
+      getComprehensionQuestion(storyIndex, 8),
     ],
   },
   ...feedbackGroups,
@@ -498,19 +519,10 @@ export const questionGroups: Array<QuestionGroup> = [
           "When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click stop when you're finished. The questions will then be revealed. You will not be able to try again.",
         type: QuestionType.TIMER,
       },
-      {
-        id: returnAndIncrementQuestionID(),
-        questionText:
-          'What decision do the four men make when the guards appear?',
-        type: QuestionType.COMPREHENSION,
-        dependentOn: questionID - 1,
-        options: [
-          'They surrender immediately to avoid trouble',
-          'They continue their duels despite the interruption',
-          'They unite to fight the guards as a team',
-          'They flee the scene to escape capture',
-        ],
-      },
+      getComprehensionQuestion(
+        Math.abs(storyIndex - 1),
+        returnAndIncrementQuestionID(),
+      ),
     ],
   },
   {
