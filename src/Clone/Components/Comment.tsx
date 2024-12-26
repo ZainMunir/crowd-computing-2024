@@ -11,6 +11,7 @@ import { timeAgo, transformNumber } from '../../utils/util';
 import Menu from '../Menu/Menu';
 import ReportModal from '../Modal/ReportModal';
 import AccountModal from '../Modal/AccountModal';
+import { RandomAvatar } from 'react-random-avatars';
 
 type Props = {
   comment: CommentData;
@@ -19,11 +20,7 @@ type Props = {
 const Comment = ({ comment }: Props) => {
   return (
     <div className="grid w-full grid-cols-[40px_1fr_32px] gap-2 px-3 pb-4">
-      <img
-        src={comment.user.profilePic}
-        className="mx-auto size-10 cursor-pointer rounded-full"
-        alt="{data.author.username}"
-      />
+      <RandomAvatar name={comment.user.username} size={40} />
       <div className="">
         <div className="text-dark text-small text-semibold w-fit cursor-pointer self-center hover:underline">
           {comment.user.username}

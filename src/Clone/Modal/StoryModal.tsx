@@ -26,7 +26,7 @@ const StoryModal = ({ buttonComponent, story, views, stars }: Props) => {
       maxW="max-w-[560px]"
     >
       <div className="bg-light flex h-[450px] w-[560px]">
-        <img src={story.image} className="h-full" />
+        <img src={story.image} className="custom-theming h-full" />
         <div className="mx-4 mb-2 mt-4 flex flex-col text-center">
           <div className="text-large text-semibold text-dark">
             {story.title}

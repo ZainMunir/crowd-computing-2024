@@ -4,253 +4,125 @@ import placeholderPoster from '../resources/placeholder_poster.jpg';
 import placeholderPerson from '../resources/placeholder_person.jpg';
 import kingsMusketeersCover from '../resources/kings-musketeers-cover.jpg';
 import { StoryData } from './storyTypes';
+import { loremIpsum, username, fullname, Avatar } from 'react-lorem-ipsum';
+
+const textStrings = loremIpsum({ p: 15, random: true });
+const commentStrings = loremIpsum({
+  p: 15,
+  random: true,
+  avgSentencesPerParagraph: 1,
+});
+
+let commentIndex = 0;
+
+function randomCommentString() {
+  const comment = commentStrings[commentIndex];
+  commentIndex = (commentIndex + 1) % commentStrings.length;
+  return comment;
+}
+
+function randomDate() {
+  const start = new Date(2023, 0, 1);
+  const end = new Date(2024, 11, 31);
+  return new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime()),
+  );
+}
+
+function randomLikes() {
+  return Math.floor(Math.random() * 2000);
+}
+
+function randomComment() {
+  return {
+    user: {
+      username: username(),
+      profilePic: placeholderPerson,
+    },
+    date: randomDate(),
+    text: randomCommentString(),
+    likes: randomLikes(),
+  };
+}
+
 export const placeholderData: StoryData = {
-  title: 'Title',
+  title: 'Story Title',
   genre: 'Genre',
-  description:
-    'Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac porta metus, nec pretium ipsum. Suspendisse lacus neque, dapibus ac efficitur eget, molestie blandit augue. Proin at dolor ac odio vulputate rhoncus. Sed at ante convallis, consectetur justo quis, tempus nibh. Proin justo nisl, mattis sit amet suscipit vitae, rhoncus ac mauris. Quisque accumsan nunc eu dictum varius. Mauris egestas tincidunt ex, non volutpat sapien porta ut. In hac habitasse platea dictumst. Nullam vitae dignissim dui. Nam sit amet commodo dolor, sit amet condimentum justo.',
+  description: textStrings[0],
   image: placeholderPoster,
-  tags: [
-    'Tag1',
-    'Tag2',
-    'Tag3',
-    'Tag4',
-    'Tag5',
-    'Tag6',
-    'Tag7',
-    'Tag8',
-    'Tag9',
-    'Tag10',
-  ],
+  tags: textStrings[1].split(' '),
   author: {
-    username: 'Username',
+    username: username(),
     profilePic: placeholderPerson,
   },
   chapters: [
     {
-      title: "Author's Note",
+      title: 'Chapter 1',
       views: 19000443,
       stars: 53493,
       paragraphs: [
         {
-          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
-          comments: [
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1731237006 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-          ],
+          text: textStrings[2],
+          comments: [randomComment()],
         },
         {
-          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
-          comments: [
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1733832642 * 1000),
-              text: 'Comment text',
-              likes: 1000,
-              replies: [],
-            },
-          ],
+          text: textStrings[3],
+          comments: [randomComment(), randomComment()],
         },
 
         {
-          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
-          comments: [
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(1696932606 * 1000),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-          ],
+          text: textStrings[4],
+          comments: [],
         },
       ],
     },
     {
-      title: '2',
+      title: 'Chapter 2',
       views: 19000443,
       stars: 53493,
       paragraphs: [
         {
-          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
+          text: textStrings[5],
+          comments: [
+            randomComment(),
+            randomComment(),
+            randomComment(),
+            randomComment(),
+            randomComment(),
+            randomComment(),
+            randomComment(),
+            randomComment(),
+            randomComment(),
+            randomComment(),
+            randomComment(),
+            randomComment(),
+          ],
+        },
+        {
+          text: textStrings[6],
           comments: [],
         },
         {
-          text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
+          text: textStrings[7],
+          comments: [],
+        },
+      ],
+    },
+    {
+      title: 'Chapter 3',
+      views: 19000443,
+      stars: 53493,
+      paragraphs: [
+        {
+          text: textStrings[8],
+          comments: [],
+        },
+        {
+          text: textStrings[9],
+          comments: [],
+        },
+        {
+          text: textStrings[10],
           comments: [],
         },
       ],
