@@ -18,7 +18,7 @@ const Sidebar = ({ author }: Props) => {
     <div className="col-start-1 flex w-[260px] flex-col gap-2 justify-self-end">
       <img
         src={author.profilePic}
-        className="mx-auto h-[72px] w-[72px] cursor-pointer rounded-full"
+        className="custom-theming mx-auto h-[72px] w-[72px] cursor-pointer rounded-full"
         alt="{data.author.username}"
       />
       <div className="text-dark text-medium text-normalbold w-fit cursor-pointer self-center hover:underline">
@@ -28,7 +28,9 @@ const Sidebar = ({ author }: Props) => {
         <AccountModal
           buttonComponent={
             <div className="text-dark hover:bg-gray-1 border-light text-semibold flex cursor-pointer items-center gap-2 self-center rounded-lg border px-4 py-1">
-              <MdPersonAddAlt1 className="text-follow-teal text-medium" />
+              <div>
+                <MdPersonAddAlt1 className="text-follow-teal text-medium" />
+              </div>
               Follow
             </div>
           }

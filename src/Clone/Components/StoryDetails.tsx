@@ -16,7 +16,7 @@ const StoryDetails = ({ story }: Props) => {
 
   return (
     <div className="group">
-      <div className="h-[340px] w-full overflow-hidden">
+      <div className="custom-theming h-[340px] w-full overflow-hidden">
         <div
           style={
             // https://stackoverflow.com/questions/70805041/background-image-in-tailwindcss-using-dynamic-url-react-js
@@ -24,11 +24,11 @@ const StoryDetails = ({ story }: Props) => {
               '--image-url': `url(${story.image})`,
             } as React.CSSProperties
           }
-          className={`h-full w-full scale-110 bg-[image:var(--image-url)] bg-cover bg-center bg-no-repeat blur-xl`}
+          className={`special-case-filter h-full w-full scale-110 bg-[image:var(--image-url)] bg-cover bg-center bg-no-repeat blur-xl`}
         ></div>
         <div className="mt-[-340px] flex h-full w-full flex-col justify-center">
           <div className="z-10 mx-auto flex h-[245px] w-[625px] flex-row gap-3">
-            <img src={story.image} className='max-h-full' />
+            <img src={story.image} className="max-h-full" />
             <div className="flex-grow">
               <p className="text-light text-small text-semibold">
                 YOU ARE READING

@@ -27,7 +27,7 @@ type Props = {
 const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const maxGroups = questionGroups.length;
   const [startTime, setStartTime] = useState(new Date());
-  const [activeGroup, setActiveGroup] = React.useState(0);
+  const [activeGroup, setActiveGroup] = React.useState(3);
   const [answers, setAnswers] = useState<Array<Answer>>(
     Array.from(
       new Map(

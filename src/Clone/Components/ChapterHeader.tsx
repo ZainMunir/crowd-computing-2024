@@ -33,7 +33,9 @@ const ChapterHeader = ({
         <div className="text-middle text-medium flex flex-row justify-center gap-4">
           <ViewStar views={chapter.views} stars={chapter.stars} />
           <div className="flex items-center gap-1">
-            <FaComment />
+            <div>
+              <FaComment />
+            </div>
             <div
               className="text-dark text-medium cursor-pointer hover:underline"
               onClick={scrollToComments}

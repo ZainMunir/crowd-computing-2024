@@ -35,7 +35,7 @@ const Comment = ({ comment }: Props) => {
           <div className="text-middle text-normalbold text-small">
             {timeAgo(comment.date)}
           </div>
-          <div className="text-bold text-small text-reply-purple mx-2">
+          <div className="text-bold text-small text-reply-purple custom-theming mx-2">
             Reply
           </div>
         </div>

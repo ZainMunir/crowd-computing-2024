@@ -56,13 +56,36 @@
   --border-text-area-active: #5c10ff;
 
   --content-width: 625px;
+
+  --custom-inverted: 100%;
+  --custom-grayscale: 0%;
+  --custom-hue-rotate: 0deg;
+  --custom-sepia: 0%;
+  --custom-contrast: 100%;
 }
 
 body {
   overflow: hidden;
 }
 
+div:has(> svg) {
+  filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale))
+    hue-rotate(var(--custom-hue-rotate)) sepia(var(--custom-sepia))
+    contrast(var(--custom-contrast));
+}
+
 @layer utilities {
+  .custom-theming {
+    filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale))
+      hue-rotate(var(--custom-hue-rotate)) sepia(var(--custom-sepia))
+      contrast(var(--custom-contrast));
+  }
+
+  .special-case-filter.custom-theming {
+    filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale))
+      hue-rotate(var(--custom-hue-rotate)) sepia(var(--custom-sepia)) blur(24px);
+  }
+
   .text-font {
     font-family: var(--text-font-family-not-changed);
   }

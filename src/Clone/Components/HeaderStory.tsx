@@ -28,7 +28,7 @@ const HeaderStory = ({ story, chapterIndex, setChapterIndex }: Props) => {
         chapterIndex={chapterIndex}
         setChapterIndex={setChapterIndex}
       />
-      <div className="g-1 flex items-center gap-2">
+      <div className="g-1 custom-theming flex items-center gap-2">
         {enabledElements.headerStoryAdd && (
           <AccountModal
             buttonComponent={
@@ -47,7 +47,9 @@ const HeaderStory = ({ story, chapterIndex, setChapterIndex }: Props) => {
           <AccountModal
             buttonComponent={
               <div className="mx-4 flex flex-row">
-                <IoMdStar className="text-large text-middle mr-2" />
+                <div>
+                  <IoMdStar className="text-large text-middle mr-2" />
+                </div>
                 <div className="text-orange text-semibold text-medium">
                   Vote
                 </div>

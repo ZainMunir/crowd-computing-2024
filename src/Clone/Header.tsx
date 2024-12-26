@@ -26,7 +26,7 @@ const Header = ({ story, chapterIndex, setChapterIndex, scaleX }: Props) => {
       />
       {enabledElements.headerProgressBar && (
         <motion.div
-          className="bg-progress-teal h-1 origin-left"
+          className="bg-progress-teal custom-theming h-1 origin-left"
           style={{ scaleX }}
         />
       )}

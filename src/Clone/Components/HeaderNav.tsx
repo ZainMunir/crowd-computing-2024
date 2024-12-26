@@ -20,7 +20,11 @@ const HeaderNav = () => {
   return (
     <div className="flex h-[54px] items-center gap-4 px-4">
       {enabledElements.headerNavLogo && (
-        <img src={wattPadLogo} alt="wattpad logo" className="h-3/5" />
+        <img
+          src={wattPadLogo}
+          alt="wattpad logo"
+          className="custom-theming h-3/5"
+        />
       )}
       <BrowseMenu />
       <CommunityMenu />
@@ -28,7 +32,7 @@ const HeaderNav = () => {
       <div className="flex flex-row">
         <WriteMenu />
         {enabledElements.headerNavPremium && (
-          <button className="bg-button-purple text-bold text-light text-medium mx-4 flex h-10 items-center self-center rounded-[32px] px-6">
+          <button className="bg-button-purple text-bold text-light text-medium custom-theming mx-4 flex h-10 items-center self-center rounded-[32px] px-6">
             <HiLightningBolt className="text-lightning-red text-medium mr-1" />
             Try Premium
           </button>

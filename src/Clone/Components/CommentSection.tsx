@@ -43,7 +43,7 @@ const CommentSection = forwardRef<HTMLDivElement, Props>(
           <AccountModal
             buttonComponent={
               <button
-                className={`absolute -top-10 right-2 flex h-8 w-8 items-center rounded-full disabled:cursor-pointer ${
+                className={`custom-theming absolute -top-10 right-2 flex h-8 w-8 items-center rounded-full disabled:cursor-pointer ${
                   inputVal === ''
                     ? 'bg-post-button-inactive'
                     : 'bg-post-button-active'
