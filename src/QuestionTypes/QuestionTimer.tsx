@@ -34,14 +34,21 @@ const QuestionTimer = ({
     (answer) => answer.styleType == QuestionStyleType.ENABLED_ELEMENTS,
   )?.value as EnabledElements;
 
-  const sliders = relevantAnswers?.filter(
-    (answer) =>
-      answer.styleType != QuestionStyleType.ENABLED_ELEMENTS &&
-      answer.styleType != QuestionStyleType.FONT_FAMILY,
+  const sliders = relevantAnswers?.filter((answer) =>
+    [
+      QuestionStyleType.FONT_SIZE,
+      QuestionStyleType.LETTER_SPACING,
+      QuestionStyleType.LINE_HEIGHT,
+      QuestionStyleType.CONTENT_WIDTH,
+    ].includes(answer.styleType),
   );
 
   const fontFamily = relevantAnswers?.find(
     (answer) => answer.styleType == QuestionStyleType.FONT_FAMILY,
+  );
+
+  const theming = relevantAnswers?.find(
+    (answer) => answer.styleType == QuestionStyleType.THEME,
   );
 
   const [timer, setTimer] = useState(value ? Number(value) : 0);
@@ -68,6 +75,22 @@ const QuestionTimer = ({
     document
       .getElementById('root')
       .style.setProperty(styleVar.var, styleVar.value);
+
+    const customInverted: { var: string; value: string } =
+      defaultStyling.custom_inverted;
+
+    document
+      .getElementsByTagName('body')[0]
+      .style.setProperty(customInverted.var, customInverted.value);
+  }
+
+  function themeMapping(value: number, options: string[]) {
+    switch (options[value]) {
+      case 'Light':
+        return '0%';
+      case 'Dark':
+        return '100%';
+    }
   }
 
   useLayoutEffect(() => {
@@ -98,6 +121,13 @@ const QuestionTimer = ({
       .style.setProperty(
         styleVar.var,
         fontFamily.options[fontFamily.value as number],
+      );
+
+    document
+      .getElementsByTagName('body')[0]
+      .style.setProperty(
+        defaultStyling.custom_inverted.var,
+        themeMapping(theming.value as number, theming.options),
       );
 
     return () => {

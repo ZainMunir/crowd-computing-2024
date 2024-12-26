@@ -36,6 +36,7 @@ export enum QuestionType {
   SUBMISSION = 'SUBMISSION',
   NUMBER = 'NUMBER',
   FONTS = 'FONTS',
+  THEME = 'THEME',
 }
 
 export enum QuestionStyleType {
@@ -45,6 +46,7 @@ export enum QuestionStyleType {
   LINE_HEIGHT = 'LINE_HEIGHT',
   LETTER_SPACING = 'LETTER_SPACING',
   FONT_FAMILY = 'FONT_FAMILY',
+  THEME = 'THEME',
 }
 
 export type Answer = {
@@ -202,6 +204,14 @@ const styling_questions = [
     defaultValue: 0,
     options: ['Arial', 'Georgia', 'Helvetica', 'Monospace', 'Open-Dyslexic'],
   },
+  {
+    id: returnAndIncrementQuestionID(),
+    questionText: 'Theme',
+    styleType: QuestionStyleType.THEME,
+    type: QuestionType.THEME,
+    defaultValue: 0,
+    options: ['Light', 'Dark'],
+  },
 ];
 
 export const questionGroups: Array<QuestionGroup> = [
@@ -353,6 +363,15 @@ export const questionGroups: Array<QuestionGroup> = [
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[5]],
+    storyIndex: 2,
+  },
+  {
+    id: returnAndIncrementGroupID(),
+    title:
+      'Focuing primarily on the main content, style the following elements to your preference',
+    displayHidden: false,
+    textHidden: false,
+    questions: [styling_questions[6]],
     storyIndex: 2,
   },
   {

@@ -50,22 +50,30 @@ const Comment = ({ comment }: Props) => {
             <ReportModal
               buttonComponent={
                 <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
-                  <IoFlagOutline className="text-dark text-large" />
+                  <div>
+                    <IoFlagOutline className="text-dark text-large" />
+                  </div>
                   Report Comment
                 </div>
               }
               isStory={false}
             />
             <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
-              <IoShareSocialOutline className="text-dark text-large" />
+              <div>
+                <IoShareSocialOutline className="text-dark text-large" />
+              </div>
               Link to Comment
             </div>
             <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
-              <IoIosLink className="text-dark text-large" />
+              <div>
+                <IoIosLink className="text-dark text-large" />
+              </div>
               Code of Conduct
             </div>
             <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
-              <FiInfo className="text-dark text-large" />
+              <div>
+                <FiInfo className="text-dark text-large" />
+              </div>
               Wattpad Safety Portal
             </div>
           </div>

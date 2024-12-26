@@ -8,7 +8,7 @@ import { defaultEnabledElements, defaultStyling } from './utils/defaults';
 import { ProlificInfo, stories } from './utils/questionData';
 
 const Container = () => {
-  const [startTask, setStartTask] = useState(true);
+  const [startTask, setStartTask] = useState(false);
   const [enabledElements, setEnabledElements] = useState<EnabledElements>(
     defaultEnabledElements,
   );

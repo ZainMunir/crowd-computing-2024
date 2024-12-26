@@ -199,4 +199,9 @@ export const defaultStyling: Styling = {
     var: '--letter-spacing',
     value: '0px',
   },
+
+  custom_inverted: {
+    var: '--custom-inverted',
+    value: '0%',
+  },
 };

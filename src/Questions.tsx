@@ -18,6 +18,7 @@ import QuestionEnabledElements from './QuestionTypes/QuestionEnabledElements';
 import QuestionSubmission from './QuestionTypes/QuestionSubmission';
 import QuestionNumber from './QuestionTypes/QuestionNumber';
 import QuestionFonts from './QuestionTypes/QuestionFonts';
+import QuestionTheme from './QuestionTypes/QuestionTheme';
 
 type Props = {
   prolificInfo: ProlificInfo;
@@ -27,7 +28,7 @@ type Props = {
 const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const maxGroups = questionGroups.length;
   const [startTime, setStartTime] = useState(new Date());
-  const [activeGroup, setActiveGroup] = React.useState(3);
+  const [activeGroup, setActiveGroup] = React.useState(0);
   const [answers, setAnswers] = useState<Array<Answer>>(
     Array.from(
       new Map(
@@ -183,6 +184,17 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
       case QuestionType.FONTS:
         return (
           <QuestionFonts
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={highlight}
+          />
+        );
+
+      case QuestionType.THEME:
+        return (
+          <QuestionTheme
             key={key}
             question={question}
             answer={answer}

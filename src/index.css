@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+body {
   --text-font-family-not-changed: 'Arial';
   --text-medium-not-changed: 1rem;
 
@@ -57,7 +57,7 @@
 
   --content-width: 625px;
 
-  --custom-inverted: 100%;
+  --custom-inverted: 0%;
   --custom-grayscale: 0%;
   --custom-hue-rotate: 0deg;
   --custom-sepia: 0%;

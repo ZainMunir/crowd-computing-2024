@@ -1,8 +1,8 @@
 import countOfMonteCristoCover from '../resources/count-of-monte-cristo-cover.jpg';
-import alexandreDumasPhoto from '../resources/alexandre-dumas-picture.jpg'
-import placeholderPoster from '../resources/placeholder_poster.jpg'
+import alexandreDumasPhoto from '../resources/alexandre-dumas-picture.jpg';
+import placeholderPoster from '../resources/placeholder_poster.jpg';
 import placeholderPerson from '../resources/placeholder_person.jpg';
-import kingsMusketeersCover from '../resources/kings-musketeers-cover.jpg'
+import kingsMusketeersCover from '../resources/kings-musketeers-cover.jpg';
 import { StoryData } from './storyTypes';
 export const placeholderData: StoryData = {
   title: 'Title',
@@ -247,18 +247,7 @@ export const placeholderData: StoryData = {
       paragraphs: [
         {
           text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
-          comments: [
-            {
-              user: {
-                username: 'Username',
-                profilePic: placeholderPerson,
-              },
-              date: new Date(Date.now()),
-              text: 'Comment text',
-              likes: 999,
-              replies: [],
-            },
-          ],
+          comments: [],
         },
         {
           text: 'Donec et enim at nisi porttitor dapibus ac ut neque. Morbi consectetur elit sit amet augue mattis rhoncus. Vivamus vel vestibulum magna, vitae pellentesque leo. Sed molestie sagittis pretium. Etiam commodo sapien vel neque dapibus, at viverra dolor tincidunt. Suspendisse faucibus vehicula ex et hendrerit. Pellentesque aliquam mattis pretium. Nam condimentum velit nunc, porttitor aliquam orci sagittis ornare.',
@@ -275,7 +264,7 @@ export const CountOfMonteCristo: StoryData = {
   title: 'The Count of Monte-Cristo',
   genre: 'Fiction',
   description:
-    'Falsely accused of treason, Edmond Dantès is imprisoned in the bleak Chateau d\'If. After a hair-raising escape, he launches an elaborate plot to extract a bitter revenge against those who betrayed him.',
+    "Falsely accused of treason, Edmond Dantès is imprisoned in the bleak Chateau d'If. After a hair-raising escape, he launches an elaborate plot to extract a bitter revenge against those who betrayed him.",
   image: countOfMonteCristoCover,
   tags: [
     'Revenge',
@@ -290,7 +279,7 @@ export const CountOfMonteCristo: StoryData = {
   },
   chapters: [
     {
-      title: "Chapter 8",
+      title: 'Chapter 8',
       views: 19000443,
       stars: 53493,
       paragraphs: [
@@ -336,8 +325,8 @@ export const CountOfMonteCristo: StoryData = {
               text: 'The line “hope, once a bright ember, dimmed each day” is such a powerful way to show the passage of despair.',
               likes: 173,
               replies: [],
-            }
-          ],          
+            },
+          ],
         },
         {
           text: '‘How could they?’ he whispered hoarsely to the empty room. But there was no answer, only the echo of his own voice rebounding off the cold, damp stone walls.',
@@ -356,21 +345,21 @@ export const CountOfMonteCristo: StoryData = {
               text: 'Imagine staring at that tiny barred window every day, knowing no one is coming. The despair is overwhelming.',
               likes: 156,
               replies: [],
-            }
+            },
           ],
         },
       ],
-    }
+    },
   ],
   status: 'Ongoing',
   isMature: true,
 };
 
 export const KingsMusketeers: StoryData = {
-  title: 'The King\'s Musketeers and the Cardinal\'s Guards',
+  title: "The King's Musketeers and the Cardinal's Guards",
   genre: 'Fiction',
   description:
-    'Falsely accused of treason, Edmond Dantès is imprisoned in the bleak Chateau d\'If. After a hair-raising escape, he launches an elaborate plot to extract a bitter revenge against those who betrayed him.',
+    "Falsely accused of treason, Edmond Dantès is imprisoned in the bleak Chateau d'If. After a hair-raising escape, he launches an elaborate plot to extract a bitter revenge against those who betrayed him.",
   image: kingsMusketeersCover,
   tags: [
     'Adventure',
@@ -385,7 +374,7 @@ export const KingsMusketeers: StoryData = {
   },
   chapters: [
     {
-      title: "Chapter 5",
+      title: 'Chapter 5',
       views: 19000443,
       stars: 53493,
       paragraphs: [
@@ -411,7 +400,7 @@ export const KingsMusketeers: StoryData = {
               text: 'Nothing beats the thrill of a good sword fight. Athos always delivers!',
               likes: 189,
               replies: [],
-            }
+            },
           ],
         },
         {
@@ -426,7 +415,7 @@ export const KingsMusketeers: StoryData = {
               text: 'The perfect duo energy here. You can almost hear the swagger in their voices.',
               likes: 175,
               replies: [],
-            }
+            },
           ],
         },
         {
@@ -434,7 +423,7 @@ export const KingsMusketeers: StoryData = {
           comments: [],
         },
         {
-          text: 'But at the very moment their swords crossed, the sudden appearance of the cardinal\'s guards shattered their concentration.',
+          text: "But at the very moment their swords crossed, the sudden appearance of the cardinal's guards shattered their concentration.",
           comments: [
             {
               user: {
@@ -445,7 +434,7 @@ export const KingsMusketeers: StoryData = {
               text: 'Just when you think the duel is heating up, the cardinal’s guards ruin everything. Classic plot twist!',
               likes: 210,
               replies: [],
-            }
+            },
           ],
         },
         {
@@ -470,7 +459,7 @@ export const KingsMusketeers: StoryData = {
               text: 'Arrested for dueling?! It’s always the cardinal’s guards that ruin the fun.',
               likes: 162,
               replies: [],
-            }
+            },
           ],
         },
         {
@@ -511,12 +500,11 @@ export const KingsMusketeers: StoryData = {
               text: 'Such a great moment! Their swords flashing together feels like the ultimate symbol of unity and defiance.',
               likes: 201,
               replies: [],
-            }
+            },
           ],
-          
-        }
+        },
       ],
-    }
+    },
   ],
   status: 'Ongoing',
   isMature: true,
