@@ -329,7 +329,7 @@ const styling_questions = [
     styleType: QuestionStyleType.FONT_FAMILY,
     type: QuestionType.FONTS,
     defaultValue: 0,
-    options: ['Arial', 'Georgia', 'Helvetica', 'Monospace', 'Open-Dyslexic'],
+    options: ['Arial', 'Georgia', 'Helvetica', 'Monospace', 'OpenDyslexic'],
   },
   {
     id: returnAndIncrementQuestionID(),
