@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Button } from '@mui/material';
-import { Answer, Question, QuestionStyleType } from '../utils/questions';
+import {
+  Answer,
+  Question,
+  QuestionStyleType,
+  themeMapping,
+} from '../utils/questionData';
 import { EnabledElements, useCloneContext } from '../utils/CloneContext';
 import { defaultEnabledElements } from '../utils/defaults';
 
@@ -34,22 +39,24 @@ const QuestionTimer = ({
     (answer) => answer.styleType == QuestionStyleType.ENABLED_ELEMENTS,
   )?.value as EnabledElements;
 
-  const sliders = relevantAnswers?.filter(
-    (answer) =>
-      answer.styleType != QuestionStyleType.ENABLED_ELEMENTS &&
-      answer.styleType != QuestionStyleType.FONT_FAMILY,
+  const sliders = relevantAnswers?.filter((answer) =>
+    [
+      QuestionStyleType.FONT_SIZE,
+      QuestionStyleType.LETTER_SPACING,
+      QuestionStyleType.LINE_HEIGHT,
+      QuestionStyleType.CONTENT_WIDTH,
+    ].includes(answer.styleType),
   );
 
   const fontFamily = relevantAnswers?.find(
     (answer) => answer.styleType == QuestionStyleType.FONT_FAMILY,
   );
 
-  const [timer, setTimer] = useState(value ? Number(value) : 0);
+  const theming = relevantAnswers?.find(
+    (answer) => answer.styleType == QuestionStyleType.THEME,
+  );
 
-  function multiplyRem(old, factor) {
-    const number = parseFloat(old.replace('rem', ''));
-    return `${number * factor}rem`;
-  }
+  const [timer, setTimer] = useState(value ? Number(value) : 0);
 
   function resetStyling() {
     sliders?.forEach((slider) => {
@@ -73,6 +80,27 @@ const QuestionTimer = ({
     document
       .getElementById('root')
       .style.setProperty(styleVar.var, styleVar.value);
+
+    const customInverted: { var: string; value: string } =
+      defaultStyling.custom_inverted;
+
+    document
+      .getElementsByTagName('body')[0]
+      .style.setProperty(customInverted.var, customInverted.value);
+
+    const customGrayscale: { var: string; value: string } =
+      defaultStyling.custom_grayscale;
+
+    document
+      .getElementsByTagName('body')[0]
+      .style.setProperty(customGrayscale.var, customGrayscale.value);
+
+    const customSepia: { var: string; value: string } =
+      defaultStyling.custom_sepia;
+
+    document
+      .getElementsByTagName('body')[0]
+      .style.setProperty(customSepia.var, customSepia.value);
   }
 
   useLayoutEffect(() => {
@@ -91,10 +119,7 @@ const QuestionTimer = ({
       styleVars.forEach((styleVar) => {
         document
           .getElementById('root')
-          .style.setProperty(
-            styleVar.var,
-            `${multiplyRem(styleVar.value, value)}`,
-          );
+          .style.setProperty(styleVar.var, `${value}px`);
       });
     });
 
@@ -107,6 +132,14 @@ const QuestionTimer = ({
         styleVar.var,
         fontFamily.options[fontFamily.value as number],
       );
+
+    themeMapping(theming.options, theming.value as number).forEach(
+      (styleVar) => {
+        document
+          .getElementsByTagName('body')[0]
+          .style.setProperty(styleVar.var, styleVar.value);
+      },
+    );
 
     return () => {
       setEnabledElements(defaultEnabledElements);

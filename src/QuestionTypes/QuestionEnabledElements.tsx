@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import { Answer, Question } from '../utils/questions';
+import { Answer, Question } from '../utils/questionData';
 import { EnabledElements, useCloneContext } from '../utils/CloneContext';
 import { Checkbox, FormControlLabel } from '@mui/material';
 import { defaultEnabledElements } from '../utils/defaults';

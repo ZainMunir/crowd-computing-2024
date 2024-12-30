@@ -1,6 +1,6 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { FormControlLabel, Checkbox } from '@mui/material';
-import { Answer, Question } from '../utils/questionData';
+import { Answer, Question, themeMapping } from '../utils/questionData';
 import { useCloneContext } from '../utils/CloneContext';
 
 type Props = {
@@ -8,9 +8,11 @@ type Props = {
   answer: Answer;
   updateAnswer: (value: number | string) => void;
   highlight: boolean;
+  display?: 'side' | 'below';
+  hidden?: boolean;
 };
 
-const QuestionFonts = ({
+const QuestionTheme = ({
   question,
   answer,
   updateAnswer,
@@ -27,18 +29,20 @@ const QuestionFonts = ({
   const { defaultStyling } = useCloneContext();
 
   const styleVar: { var: string; value: string } =
-    defaultStyling.text_font_family;
+    defaultStyling.custom_inverted;
 
   function resetStyling() {
     document
-      .getElementById('root')
+      .getElementsByTagName('body')[0]
       .style.setProperty(styleVar.var, styleVar.value);
   }
 
   useLayoutEffect(() => {
-    document
-      .getElementById('root')
-      .style.setProperty(styleVar.var, options[value]);
+    themeMapping(options, value).forEach((styleVar) => {
+      document
+        .getElementsByTagName('body')[0]
+        .style.setProperty(styleVar.var, styleVar.value);
+    });
     return resetStyling;
   }, [value]);
 
@@ -65,4 +69,4 @@ const QuestionFonts = ({
   );
 };
 
-export default QuestionFonts;
+export default QuestionTheme;

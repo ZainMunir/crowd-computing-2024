@@ -43,7 +43,7 @@ const CommentSection = forwardRef<HTMLDivElement, Props>(
           <AccountModal
             buttonComponent={
               <button
-                className={`absolute -top-10 right-2 flex h-8 w-8 items-center rounded-full disabled:cursor-pointer ${
+                className={`custom-theming absolute -top-10 right-2 flex h-8 w-8 items-center rounded-full disabled:cursor-pointer ${
                   inputVal === ''
                     ? 'bg-post-button-inactive'
                     : 'bg-post-button-active'
@@ -59,10 +59,12 @@ const CommentSection = forwardRef<HTMLDivElement, Props>(
         </div>
         {sortedComments.length == 0 ? (
           <div className="mx-auto mt-10 w-56">
-            <img src={noComments} className="" />
+            <img src={noComments} className="custom-theming" />
             <div className="text-small text-bold text-dark flex items-center justify-center gap-2">
               Be the first to comment{' '}
-              <FaRegComment className="text-dark text-normalbold" />
+              <div>
+                <FaRegComment className="text-dark text-normalbold" />
+              </div>
             </div>
           </div>
         ) : (

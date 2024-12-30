@@ -1,7 +1,7 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Slider, Stack } from '@mui/material';
-import { Answer, Question } from '../utils/questions';
-import { Styling, useCloneContext } from '../utils/CloneContext';
+import { Answer, Question } from '../utils/questionData';
+import { useCloneContext } from '../utils/CloneContext';
 
 type Props = {
   question: Question;
@@ -22,50 +22,33 @@ const QuestionSlider = ({
 
   const { defaultStyling } = useCloneContext();
 
-  const styleVars: Array<{ var: string; value: string }> = Object.keys(
-    defaultStyling,
-  )
-    .filter((key) => options.includes(key))
-    .map((key) => defaultStyling[key]);
+  const styleVar = defaultStyling[options[0]];
 
   function resetStyling() {
-    styleVars.forEach((styleVar) => {
-      document
-        .getElementById('root')
-        .style.setProperty(styleVar.var, styleVar.value);
-    });
+    document
+      .getElementById('root')
+      .style.setProperty(styleVar.var, styleVar.value);
   }
 
   useLayoutEffect(() => {
-    styleVars.forEach((styleVar) => {
-      document
-        .getElementById('root')
-        .style.setProperty(
-          styleVar.var,
-          `${multiplyRem(styleVar.value, value)}`,
-        );
-    });
-
+    document
+      .getElementById('root')
+      .style.setProperty(styleVar.var, `${value}px`);
     return resetStyling;
   }, [value]);
 
-  function multiplyRem(old, factor) {
-    const number = parseFloat(old.replace('rem', ''));
-    return `${number * factor}rem`;
-  }
-
-  const handleSliderMove = (factor) => {
-    updateAnswer(factor);
+  const handleSliderMove = (val) => {
+    updateAnswer(val);
   };
 
   return (
     <div className="my-10">
       <p className={`mb-5 text-xl ${highlight ? 'text-red-600' : ''}`}>
         {title}
-      </p>{' '}
+      </p>
       <div>
         <Stack spacing={2} direction="row" sx={{ alignItems: 'center', mb: 1 }}>
-          <p>{min}</p>
+          <p>{min}px</p>
           <Slider
             value={value}
             valueLabelDisplay="auto"
@@ -76,7 +59,7 @@ const QuestionSlider = ({
             max={max}
             onChange={(event, newValue) => handleSliderMove(newValue)}
           />
-          <p> {max} </p>
+          <p>{max}px</p>
         </Stack>
       </div>
     </div>

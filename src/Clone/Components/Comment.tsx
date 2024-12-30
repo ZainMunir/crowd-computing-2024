@@ -11,6 +11,7 @@ import { timeAgo, transformNumber } from '../../utils/util';
 import Menu from '../Menu/Menu';
 import ReportModal from '../Modal/ReportModal';
 import AccountModal from '../Modal/AccountModal';
+import { RandomAvatar } from 'react-random-avatars';
 
 type Props = {
   comment: CommentData;
@@ -19,11 +20,7 @@ type Props = {
 const Comment = ({ comment }: Props) => {
   return (
     <div className="grid w-full grid-cols-[40px_1fr_32px] gap-2 px-3 pb-4">
-      <img
-        src={comment.user.profilePic}
-        className="mx-auto size-10 cursor-pointer rounded-full"
-        alt="{data.author.username}"
-      />
+      <RandomAvatar name={comment.user.username} size={40} />
       <div className="">
         <div className="text-dark text-small text-semibold w-fit cursor-pointer self-center hover:underline">
           {comment.user.username}
@@ -35,7 +32,7 @@ const Comment = ({ comment }: Props) => {
           <div className="text-middle text-normalbold text-small">
             {timeAgo(comment.date)}
           </div>
-          <div className="text-bold text-small text-reply-purple mx-2">
+          <div className="text-bold text-small text-reply-purple custom-theming mx-2">
             Reply
           </div>
         </div>
@@ -50,22 +47,30 @@ const Comment = ({ comment }: Props) => {
             <ReportModal
               buttonComponent={
                 <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
-                  <IoFlagOutline className="text-dark text-large" />
+                  <div>
+                    <IoFlagOutline className="text-dark text-large" />
+                  </div>
                   Report Comment
                 </div>
               }
               isStory={false}
             />
             <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
-              <IoShareSocialOutline className="text-dark text-large" />
+              <div>
+                <IoShareSocialOutline className="text-dark text-large" />
+              </div>
               Link to Comment
             </div>
             <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
-              <IoIosLink className="text-dark text-large" />
+              <div>
+                <IoIosLink className="text-dark text-large" />
+              </div>
               Code of Conduct
             </div>
             <div className="text-medium text-semibold text-dark flex cursor-pointer gap-2 py-2 hover:underline">
-              <FiInfo className="text-dark text-large" />
+              <div>
+                <FiInfo className="text-dark text-large" />
+              </div>
               Wattpad Safety Portal
             </div>
           </div>

@@ -22,7 +22,7 @@ const CloneLayout = ({ story, disabled }: Props) => {
   });
 
   return (
-    <div className="bg-light text-font-family flex h-full w-full flex-col">
+    <div className="bg-light text-font-family custom-theming custom-top-filter flex h-full w-full flex-col">
       {disabled && (
         <div className="items- fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md" />
       )}

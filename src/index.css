@@ -2,16 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+body {
+  --text-font-family-not-changed: 'Arial';
+  --text-medium-not-changed: 1rem;
+
   --text-font-family: 'Arial';
+
   --text-small: 0.813rem;
-  --text-medium: 1rem;
+  --text-medium: 16px;
   --text-large: 1.5rem;
   --text-xlarge: 1.75rem;
   --text-2xlarge: 2rem;
+
+  --letter-spacing: 0px;
+
   --text-normalbold: 400;
   --text-semibold: 600;
   --text-bold: 700;
+
   --text-middle: #6f6f6f;
   --text-light: #ffffff;
   --text-dark: #222222;
@@ -22,8 +30,9 @@
   --bg-dark: #121212;
   --border-light: #eeeeee;
   --border-dark: #121212;
+
   --description-line-height: 1.5rem;
-  --paragraph-line-height: 1.875rem;
+  --paragraph-line-height: 30px;
   --comment-line-height: 1.25rem;
 
   --text-lightning-red: #e81249;
@@ -46,18 +55,48 @@
   --text-reply-purple: #3b19a9;
   --border-text-area-active: #5c10ff;
 
-  --content-width: 39rem;
+  --content-width: 625px;
+
+  --custom-inverted: 0%;
+  --custom-grayscale: 0%;
+  --custom-hue-rotate: 0deg;
+  --custom-sepia: 0%;
+  --custom-contrast: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+div:has(> svg) {
+  filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale));
 }
 
 @layer utilities {
-  .text-font-family {
-    font-family: var(--text-font-family);
+  .custom-theming {
+    filter: invert(var(--custom-inverted));
   }
+
+  .custom-top-filter {
+    filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale))
+      sepia(var(--custom-sepia)) contrast(var(--custom-contrast))
+      hue-rotate(var(--custom-hue-rotate));
+  }
+
+  .special-case-filter.custom-theming {
+    filter: invert(var(--custom-inverted)) grayscale(var(--custom-grayscale))
+      hue-rotate(var(--custom-hue-rotate)) blur(24px);
+  }
+
+  .text-font {
+    font-family: var(--text-font-family-not-changed);
+  }
+
   .text-small {
     font-size: var(--text-small);
   }
   .text-medium {
-    font-size: var(--text-medium);
+    font-size: var(--text-medium-not-changed);
   }
   .text-large {
     font-size: var(--text-large);
@@ -68,6 +107,13 @@
   .text-2xlarge {
     font-size: var(--text-2xlarge);
   }
+
+  .text-content {
+    font-family: var(--text-font-family);
+    font-size: var(--text-medium);
+    letter-spacing: var(--letter-spacing);
+  }
+
   .text-normalbold {
     font-weight: var(--text-normalbold);
   }

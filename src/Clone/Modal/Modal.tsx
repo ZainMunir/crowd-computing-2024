@@ -59,7 +59,7 @@ const Modal = ({
 
   const modalContent = (
     <div
-      className={`items- fixed inset-0 z-40 flex w-2/3 items-center justify-center bg-black bg-opacity-50 ${
+      className={`custom-top-filter fixed inset-0 z-40 flex w-2/3 items-center justify-center bg-black bg-opacity-50 ${
         isClosing ? 'animate-fadeout' : 'animate-fadein'
       } `}
     >

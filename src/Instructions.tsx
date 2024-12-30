@@ -27,7 +27,7 @@ const Instructions = ({ onStartTask }: Props) => {
 
   const instructions = [
     [
-      `We’re on a mission to make Wattpad a more delightful, intuitive, and enjoyable platform for everyone. 
+      `We're on a mission to make Wattpad a more delightful, intuitive, and enjoyable platform for everyone. 
       Your input is invaluable to us as we seek to enhance the desktop version of our application.`,
       `By sharing your insights and feedback, you will play a key role in helping us craft a better reading experience for our entire community.
       Your thoughtful responses will directly contribute to making Wattpad a more user-friendly and enjoyable space for readers and writers alike.`,

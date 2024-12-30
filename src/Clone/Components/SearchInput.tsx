@@ -9,7 +9,9 @@ const SearchInput = () => {
 
   return (
     <div className="ml-10 mr-auto flex flex-grow items-center">
-      <FaSearch className="text-dark text-medium" />
+      <div>
+        <FaSearch className="text-dark text-medium" />
+      </div>
       <input
         type="text"
         placeholder="Search"

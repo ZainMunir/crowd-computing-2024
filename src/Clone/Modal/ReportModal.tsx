@@ -27,19 +27,25 @@ const ReportModal = ({ buttonComponent, isStory }: Props) => {
         <Divider />
         <div className="relative cursor-pointer py-4 pl-6">
           Inappropriate Content
-          <RxCaretRight className="absolute right-4 top-4 size-6 text-gray-700" />
+          <div className="absolute right-4 top-4">
+            <RxCaretRight className="size-6 text-gray-700" />
+          </div>
         </div>
         <Divider />
         <div className="relative cursor-pointer py-4 pl-6">
           Copyright Infringement
-          <RxCaretRight className="absolute right-4 top-4 size-6 text-gray-700" />
+          <div className="absolute right-4 top-4">
+            <RxCaretRight className="size-6 text-gray-700" />
+          </div>{' '}
         </div>
         <Divider />
         {!isStory && (
           <>
             <div className="relative cursor-pointer py-4 pl-6">
               I don't like what I'm seeing
-              <RxCaretRight className="absolute right-4 top-4 size-6 text-gray-700" />
+              <div className="absolute right-4 top-4">
+                <RxCaretRight className="size-6 text-gray-700" />
+              </div>
             </div>
             <Divider />
           </>

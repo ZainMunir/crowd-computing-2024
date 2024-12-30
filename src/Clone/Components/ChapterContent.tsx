@@ -23,7 +23,7 @@ const ChapterContent = ({ paragraphs, chapterTitle }: Props) => {
           className="group/para relative mb-5 flex"
         >
           <div
-            className={`text-medium text-dark text-normalbold paragraph-line-height mx-auto w-11/12 ${hideText ? 'select-none blur' : ''}`}
+            className={`text-content text-medium text-dark text-normalbold paragraph-line-height mx-auto w-11/12 ${hideText ? 'select-none blur' : ''}`}
           >
             {paragraph.text}
           </div>

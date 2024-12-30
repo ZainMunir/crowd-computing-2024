@@ -13,7 +13,11 @@ const WriteMenu = () => {
     <Menu buttonVal="Write">
       <div className="min-w-max px-3 py-2">
         <div className="flex">
-          <img src={createStory} alt="create story" className="h-8" />
+          <img
+            src={createStory}
+            alt="create story"
+            className="custom-theming h-8"
+          />
           <div className="text-dark text-medium text-normalbold cursor-pointer py-[6px] hover:underline">
             Create a new story
           </div>

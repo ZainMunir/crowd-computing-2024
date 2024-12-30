@@ -23,7 +23,7 @@ const ChapterNavigation = ({
       {chapterIndex == numChapters - 1 ? (
         <div className="text-bold text-large text-dark h-12 text-center">
           🎉You've finished reading{' '}
-          <span className="text-completed-red">{title}</span>
+          <span className="text-completed-red custom-theming">{title}</span>
           🎉
         </div>
       ) : (

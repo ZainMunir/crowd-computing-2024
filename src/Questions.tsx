@@ -10,7 +10,7 @@ import {
   ProlificInfo,
   questionGroups,
   QuestionType,
-} from './utils/questions';
+} from './utils/questionData';
 import QuestionLikert from './QuestionTypes/QuestionLikert';
 import { useCloneContext } from './utils/CloneContext';
 import QuestionTimer from './QuestionTypes/QuestionTimer';
@@ -18,6 +18,7 @@ import QuestionEnabledElements from './QuestionTypes/QuestionEnabledElements';
 import QuestionSubmission from './QuestionTypes/QuestionSubmission';
 import QuestionNumber from './QuestionTypes/QuestionNumber';
 import QuestionFonts from './QuestionTypes/QuestionFonts';
+import QuestionTheme from './QuestionTypes/QuestionTheme';
 
 type Props = {
   prolificInfo: ProlificInfo;
@@ -56,8 +57,7 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const { setCloneDisabled, setEnabledElements, setHideText } =
-    useCloneContext();
+  const { setCloneDisabled, setHideText } = useCloneContext();
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
   const allGroupQuestionsAnswered = currentGroup.questions.every((question) => {
@@ -190,6 +190,17 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             highlight={highlight}
           />
         );
+
+      case QuestionType.THEME:
+        return (
+          <QuestionTheme
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+            highlight={highlight}
+          />
+        );
       default:
         return;
     }
@@ -269,7 +280,7 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
           </Button>
         }
       />
-      <h1 className="my-5 text-2xl">{currentGroup.title}</h1>
+      <h1 className="my-5 text-2xl font-semibold">{currentGroup.title}</h1>
       <Divider />
       <div>{questionComponents}</div>
       <Divider />

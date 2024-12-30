@@ -20,7 +20,11 @@ const ChapterPickerMenu = ({ story, chapterIndex, setChapterIndex }: Props) => {
     <Menu
       buttonVal={
         <div className="border-light hover:bg-gray-2 group relative flex h-[54px] w-[350px] flex-row items-center gap-4 border-r px-1 text-left">
-          <img src={story.image} alt={story.title} className="h-full" />
+          <img
+            src={story.image}
+            alt={story.title}
+            className="custom-theming h-full"
+          />
           <div className="">
             <div className="text-medium text-dark text-semibold -mb-1">
               {story.title}
@@ -29,7 +33,9 @@ const ChapterPickerMenu = ({ story, chapterIndex, setChapterIndex }: Props) => {
               by {story.author.username}
             </div>
           </div>
-          <RxCaretDown className="text-middle group-hover:text-dark text-2xlarge absolute right-2 top-3" />
+          <div className="absolute right-2 top-3">
+            <RxCaretDown className="text-middle group-hover:text-dark text-2xlarge" />
+          </div>
         </div>
       }
       isElement={true}

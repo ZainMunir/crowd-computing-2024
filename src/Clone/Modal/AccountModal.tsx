@@ -21,11 +21,15 @@ const AccountModal = ({ buttonComponent, isSignUp, flavourText }: Props) => {
           {typeString} {type ? flavourText : 'to Wattpad'}
         </div>
         <button className="border-dark text-bold text-dark text-medium bg-light flex h-12 w-full items-center justify-center gap-2 self-center rounded-full border-2">
-          <FcGoogle className="text-large" />
+          <div>
+            <FcGoogle className="text-large" />
+          </div>
           {typeString} with Google
         </button>
         <button className="border-dark text-bold text-dark text-medium bg-light flex h-12 w-full items-center justify-center gap-2 self-center rounded-full border-2">
-          <AiFillFacebook className="text-large text-facebook-blue" />
+          <div>
+            <AiFillFacebook className="text-large text-facebook-blue" />
+          </div>
           {typeString} with Facebook
         </button>
         <Divider className="text-small text-middle text-normalbold" flexItem>

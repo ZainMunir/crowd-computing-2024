@@ -5,7 +5,7 @@ import {
   Question,
   completionCode,
   prolificRedirectLink,
-} from '../utils/questions';
+} from '../utils/questionData';
 import { Button, TextField } from '@mui/material';
 import { addResponse, Response } from '../utils/firestore';
 

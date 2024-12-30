@@ -1,5 +1,5 @@
 import React from 'react';
-import { Answer, Question } from '../utils/questions';
+import { Answer, Question } from '../utils/questionData';
 import { TextField } from '@mui/material';
 
 type Props = {
@@ -19,7 +19,7 @@ const QuestionNumber = ({
   const value =
     typeof answer.value === 'number' ? answer.value : Number(answer.value);
   const handleChange = (event) => {
-    updateAnswer(Number(event.target.value));
+    updateAnswer(Math.max(0, Number(event.target.value)));
   };
 
   return (
