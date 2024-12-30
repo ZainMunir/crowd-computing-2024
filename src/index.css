@@ -220,3 +220,32 @@ div:has(> svg) {
     border-color: var(--border-text-area-active);
   }
 }
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('./resources/fonts/OpenDyslexic-Regular.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('./resources/fonts/OpenDyslexic-Bold.woff2') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('./resources/fonts/OpenDyslexic-Italic.woff2') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('./resources/fonts/OpenDyslexic-Bold-Italic.woff2')
+    format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
