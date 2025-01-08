@@ -7,15 +7,9 @@ type Props = {
   question: Question;
   answer: Answer;
   updateAnswer: (value: number | string) => void;
-  highlight: boolean;
 };
 
-const QuestionFonts = ({
-  question,
-  answer,
-  updateAnswer,
-  highlight,
-}: Props) => {
+const QuestionFonts = ({ question, answer, updateAnswer }: Props) => {
   const { questionText: title, options } = question;
   const value =
     typeof answer.value === 'number' ? answer.value : Number(answer.value);
@@ -44,9 +38,8 @@ const QuestionFonts = ({
 
   return (
     <div className="my-10">
-      <p className={`mb-5 text-xl ${highlight ? 'text-red-600' : ''}`}>
-        {title}
-      </p>
+      <p className="mb-5 text-xl">{title}</p>
+
       <div>
         {options.map((option, index) => (
           <FormControlLabel

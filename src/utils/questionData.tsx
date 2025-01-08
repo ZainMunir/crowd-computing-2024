@@ -24,6 +24,7 @@ export type Question = {
   step?: number;
   defaultValue?: number | string | EnabledElements;
   dependentOn?: number;
+  mandatory?: boolean;
 };
 
 export enum QuestionType {
@@ -37,6 +38,7 @@ export enum QuestionType {
   NUMBER = 'NUMBER',
   FONTS = 'FONTS',
   THEME = 'THEME',
+  TEXTBOX = 'TEXTBOX',
 }
 
 export enum QuestionStyleType {
@@ -272,7 +274,7 @@ const styling_questions = [
   {
     id: returnAndIncrementQuestionID(),
     questionText:
-      'Please experiment with the customisation options and choose your preferred options.',
+      'Visible Interface Elements (e.g., navigation, chapter text, comments)',
     type: QuestionType.ENABLED_ELEMENTS,
     styleType: QuestionStyleType.ENABLED_ELEMENTS,
     defaultValue: defaultEnabledElements,
@@ -446,7 +448,8 @@ export const questionGroups: Array<QuestionGroup> = [
   ...feedbackGroups,
   {
     id: returnAndIncrementGroupID(),
-    title: 'Customisation',
+    title:
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[0]],
@@ -455,7 +458,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[1]],
@@ -464,7 +467,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[2]],
@@ -473,7 +476,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[3]],
@@ -482,7 +485,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[4]],
@@ -491,7 +494,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[5]],
@@ -500,7 +503,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[6]],
@@ -536,6 +539,31 @@ export const questionGroups: Array<QuestionGroup> = [
   },
   {
     id: returnAndIncrementGroupID(),
+    title: 'Please indicate if you felt your changes were an improvement',
+    displayHidden: false,
+    textHidden: false,
+    storyIndex: 2,
+    questions: [
+      ...styling_questions.map((q) => {
+        return {
+          id: returnAndIncrementQuestionID(),
+          questionText: q.questionText,
+          type: QuestionType.CHECKBOX,
+          options: ['Yes', 'No'],
+        };
+      }),
+      {
+        id: returnAndIncrementQuestionID(),
+        questionText:
+          'If any of your answers were no, please provide any additional reasoning.',
+        type: QuestionType.TEXTBOX,
+        mandatory: false,
+        defaultValue: '',
+      },
+    ],
+  },
+  {
+    id: returnAndIncrementGroupID(),
     title: 'Submission',
     displayHidden: false,
     textHidden: false,
@@ -544,7 +572,14 @@ export const questionGroups: Array<QuestionGroup> = [
       {
         id: returnAndIncrementQuestionID(),
         questionText:
-          'Please verify the below details before submitting. If something has gone wrong, let us know in the textbox below.',
+          'Please verify that your Prolific ID is present and correct. If something has gone wrong, let us know in the textbox below.',
+        type: QuestionType.TEXTBOX,
+        mandatory: false,
+        defaultValue: '',
+      },
+      {
+        id: returnAndIncrementQuestionID(),
+        questionText: '',
         type: QuestionType.SUBMISSION,
       },
     ],

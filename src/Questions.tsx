@@ -19,6 +19,7 @@ import QuestionSubmission from './QuestionTypes/QuestionSubmission';
 import QuestionNumber from './QuestionTypes/QuestionNumber';
 import QuestionFonts from './QuestionTypes/QuestionFonts';
 import QuestionTheme from './QuestionTypes/QuestionTheme';
+import QuestionTextBox from './QuestionTypes/QuestionTextbox';
 
 type Props = {
   prolificInfo: ProlificInfo;
@@ -60,10 +61,12 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const { setCloneDisabled, setHideText } = useCloneContext();
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
-  const allGroupQuestionsAnswered = currentGroup.questions.every((question) => {
-    const answer = answers.find((answer) => answer.id === question.id);
-    return answer?.value !== undefined;
-  });
+  const allGroupQuestionsAnswered = currentGroup.questions
+    .filter((question) => question.mandatory != false)
+    .every((question) => {
+      const answer = answers.find((answer) => answer.id === question.id);
+      return answer?.value !== undefined && answer?.value !== '';
+    });
 
   useEffect(() => {
     setCloneDisabled(currentGroup.displayHidden);
@@ -76,7 +79,10 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
     const key = `question-${question.id}`;
     const answer = answers.find((answer) => answer.id === question.id);
     const updateAnswerProp = (newValue) => updateAnswer(newValue, question.id);
-    const highlight = errorMessage && answer?.value == undefined ? true : false;
+    const highlight =
+      errorMessage && answer?.value == undefined
+        ? true
+        : false || answer.value === '';
 
     switch (question.type) {
       case QuestionType.CHECKBOX:
@@ -96,7 +102,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             question={question}
             answer={answer}
             updateAnswer={updateAnswerProp}
-            highlight={highlight}
           />
         );
       case QuestionType.SLIDER:
@@ -106,7 +111,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             question={question}
             answer={answer}
             updateAnswer={updateAnswerProp}
-            highlight={highlight}
           />
         );
       case QuestionType.LIKERT:
@@ -121,7 +125,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
         );
       case QuestionType.TIMER:
         const { timerStyleType } = currentGroup;
-
         const relevantAnswers = answers.filter(
           (answer) => answer.styleType != null,
         );
@@ -163,7 +166,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             question={question}
             answer={answer}
             updateAnswer={updateAnswerProp}
-            highlight={highlight}
           />
         );
       case QuestionType.SUBMISSION:
@@ -171,8 +173,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
           <QuestionSubmission
             key={key}
             question={question}
-            answer={answer}
-            updateAnswer={updateAnswerProp}
             answers={answers}
             prolificInfo={prolificInfo}
             startTime={startTime}
@@ -187,13 +187,20 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             question={question}
             answer={answer}
             updateAnswer={updateAnswerProp}
-            highlight={highlight}
           />
         );
-
       case QuestionType.THEME:
         return (
           <QuestionTheme
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+          />
+        );
+      case QuestionType.TEXTBOX:
+        return (
+          <QuestionTextBox
             key={key}
             question={question}
             answer={answer}

@@ -8,15 +8,9 @@ type Props = {
   question: Question;
   answer: Answer;
   updateAnswer: (value: EnabledElements) => void;
-  highlight: boolean;
 };
 
-const QuestionEnabledElements = ({
-  question,
-  answer,
-  updateAnswer,
-  highlight,
-}: Props) => {
+const QuestionEnabledElements = ({ question, answer, updateAnswer }: Props) => {
   const { questionText: title } = question;
 
   const value = answer.value as EnabledElements;
@@ -63,9 +57,7 @@ const QuestionEnabledElements = ({
 
   return (
     <div className="my-10">
-      <p className={`mb-5 text-xl ${highlight ? 'text-red-600' : ''}`}>
-        {title}
-      </p>
+      <p className="mb-5 text-xl">{title}</p>
       {Object.keys(groupedElements).map((group) => (
         <div key={group} className="mb-5 capitalize">
           <p className="mb-2 text-lg font-semibold">

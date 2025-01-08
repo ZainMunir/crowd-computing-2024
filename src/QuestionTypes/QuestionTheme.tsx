@@ -7,17 +7,11 @@ type Props = {
   question: Question;
   answer: Answer;
   updateAnswer: (value: number | string) => void;
-  highlight: boolean;
   display?: 'side' | 'below';
   hidden?: boolean;
 };
 
-const QuestionTheme = ({
-  question,
-  answer,
-  updateAnswer,
-  highlight,
-}: Props) => {
+const QuestionTheme = ({ question, answer, updateAnswer }: Props) => {
   const { questionText: title, options } = question;
   const value =
     typeof answer.value === 'number' ? answer.value : Number(answer.value);
@@ -48,9 +42,7 @@ const QuestionTheme = ({
 
   return (
     <div className="my-10">
-      <p className={`mb-5 text-xl ${highlight ? 'text-red-600' : ''}`}>
-        {title}
-      </p>
+      <p className="mb-5 text-xl">{title}</p>
       <div>
         {options.map((option, index) => (
           <FormControlLabel

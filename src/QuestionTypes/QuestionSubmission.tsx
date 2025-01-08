@@ -6,13 +6,11 @@ import {
   completionCode,
   prolificRedirectLink,
 } from '../utils/questionData';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { addResponse, Response } from '../utils/firestore';
 
 type Props = {
   question: Question;
-  answer: Answer;
-  updateAnswer: (value: number | string) => void;
   answers: Answer[];
   prolificInfo: ProlificInfo;
   startTime: Date;
@@ -22,8 +20,6 @@ type Props = {
 
 const QuestionSubmission = ({
   question,
-  answer,
-  updateAnswer,
   answers,
   prolificInfo,
   startTime,
@@ -31,14 +27,9 @@ const QuestionSubmission = ({
   setIsSubmitted,
 }: Props) => {
   const { questionText: title } = question;
-  const { value } = answer;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionMessage, setSubmissionMessage] = useState('');
-
-  const handleChange = (newValue) => {
-    updateAnswer(newValue);
-  };
 
   const submitData = async () => {
     setIsSubmitting(true);
@@ -75,13 +66,6 @@ const QuestionSubmission = ({
       <p className="mb-5 text-xl">{title}</p>
       <div className="flex flex-col gap-10">
         <div className="text-lg">Prolific ID: {prolificInfo.prolificPid}</div>
-        <TextField
-          id="issues"
-          label="Issues (only fill if necessary)"
-          variant="outlined"
-          value={value}
-          onChange={(event) => handleChange(event.target.value)}
-        />
         <Button
           variant="contained"
           color={isSubmitting ? 'secondary' : 'primary'}
