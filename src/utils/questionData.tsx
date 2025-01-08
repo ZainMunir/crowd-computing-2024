@@ -24,6 +24,7 @@ export type Question = {
   step?: number;
   defaultValue?: number | string | EnabledElements;
   dependentOn?: number;
+  mandatory?: boolean;
 };
 
 export enum QuestionType {
@@ -37,6 +38,7 @@ export enum QuestionType {
   NUMBER = 'NUMBER',
   FONTS = 'FONTS',
   THEME = 'THEME',
+  TEXTBOX = 'TEXTBOX',
 }
 
 export enum QuestionStyleType {
@@ -200,8 +202,6 @@ const feedbackQuestions = [
     questions: [
       'The layout of the webpage is easy to understand and use.',
       'Navigating to the next chapter or section is simple and straightforward.',
-      'The menu or navigation bar is intuitive and easy to use for accessing content.',
-      'Searching for specific content within the e-book is easy.',
     ],
   },
   {
@@ -210,7 +210,7 @@ const feedbackQuestions = [
       'The color scheme of the webpage is visually appealing.',
       'The font size and style are easy to read.',
       'The amount of text displayed on a single page is appropriate and readable.',
-      "For this question, please select 'Neutral' specifically.",
+      "Are you still paying attention? For this question, please select 'Neutral' specifically.",
     ],
   },
   {
@@ -241,7 +241,7 @@ const feedbackQuestions = [
 ];
 
 var groupID = 2;
-var questionID = 8;
+var questionID = 9;
 
 const returnAndIncrementQuestionID = () => {
   questionID += 1;
@@ -274,7 +274,7 @@ const styling_questions = [
   {
     id: returnAndIncrementQuestionID(),
     questionText:
-      'Please experiment with the customisation options and choose your preferred options.',
+      'Visible Interface Elements (e.g., navigation, chapter text, comments)',
     type: QuestionType.ENABLED_ELEMENTS,
     styleType: QuestionStyleType.ENABLED_ELEMENTS,
     defaultValue: defaultEnabledElements,
@@ -415,6 +415,17 @@ export const questionGroups: Array<QuestionGroup> = [
         questionText: 'I feel comfortable using technology.',
         type: QuestionType.LIKERT,
       },
+      {
+        id: 7,
+        questionText: 'What is your experience with Wattpad?',
+        type: QuestionType.CHECKBOX,
+        options: [
+          "I've never heard of Wattpad",
+          "I've heard of Wattpad but never used it",
+          "I've used Wattpad before",
+          "I'm a regular user of Wattpad",
+        ],
+      },
     ],
   },
   {
@@ -426,18 +437,19 @@ export const questionGroups: Array<QuestionGroup> = [
     timerStyleType: 'default',
     questions: [
       {
-        id: 7,
+        id: 8,
         questionText:
-          "When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click stop when you're finished. The questions will then be revealed. You will not be able to try again.",
+          'When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click finished when you are done reading. The questions will then be revealed. You will not be able to try again.',
         type: QuestionType.TIMER,
       },
-      getComprehensionQuestion(storyIndex, 8),
+      getComprehensionQuestion(storyIndex, 9),
     ],
   },
   ...feedbackGroups,
   {
     id: returnAndIncrementGroupID(),
-    title: 'Customisation',
+    title:
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[0]],
@@ -446,7 +458,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[1]],
@@ -455,7 +467,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[2]],
@@ -464,7 +476,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[3]],
@@ -473,7 +485,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[4]],
@@ -482,7 +494,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[5]],
@@ -491,7 +503,7 @@ export const questionGroups: Array<QuestionGroup> = [
   {
     id: returnAndIncrementGroupID(),
     title:
-      'Focusing primarily on the main content, style the following elements to your preference',
+      'Focusing primarily on the main content, adjust the following elements to your preference',
     displayHidden: false,
     textHidden: false,
     questions: [styling_questions[6]],
@@ -527,6 +539,31 @@ export const questionGroups: Array<QuestionGroup> = [
   },
   {
     id: returnAndIncrementGroupID(),
+    title: 'Please indicate if you felt your changes were an improvement',
+    displayHidden: false,
+    textHidden: false,
+    storyIndex: 2,
+    questions: [
+      ...styling_questions.map((q) => {
+        return {
+          id: returnAndIncrementQuestionID(),
+          questionText: q.questionText,
+          type: QuestionType.CHECKBOX,
+          options: ['Yes', 'No'],
+        };
+      }),
+      {
+        id: returnAndIncrementQuestionID(),
+        questionText:
+          'If any of your answers were no, please provide any additional reasoning.',
+        type: QuestionType.TEXTBOX,
+        mandatory: false,
+        defaultValue: '',
+      },
+    ],
+  },
+  {
+    id: returnAndIncrementGroupID(),
     title: 'Submission',
     displayHidden: false,
     textHidden: false,
@@ -535,7 +572,14 @@ export const questionGroups: Array<QuestionGroup> = [
       {
         id: returnAndIncrementQuestionID(),
         questionText:
-          'Please verify the below details before submitting. If something has gone wrong, let us know in the textbox below.',
+          'Please verify that your Prolific ID is present and correct. If something has gone wrong, let us know in the textbox below.',
+        type: QuestionType.TEXTBOX,
+        mandatory: false,
+        defaultValue: '',
+      },
+      {
+        id: returnAndIncrementQuestionID(),
+        questionText: '',
         type: QuestionType.SUBMISSION,
       },
     ],
@@ -546,4 +590,14 @@ export type ProlificInfo = {
   prolificPid: string | null;
   studyId: string | null;
   sessionId: string | null;
+};
+
+export type ActionLog = {
+  action: 'updateAnswer' | 'setActiveGroup';
+  timestamp: Date;
+  details?: {
+    questionId?: number;
+    value?: string | number | EnabledElements;
+    groupId?: number;
+  };
 };

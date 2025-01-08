@@ -6,6 +6,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import QuestionCheckbox from './QuestionTypes/QuestionCheckbox';
 import QuestionSlider from './QuestionTypes/QuestionSlider';
 import {
+  ActionLog,
   Answer,
   ProlificInfo,
   questionGroups,
@@ -19,6 +20,7 @@ import QuestionSubmission from './QuestionTypes/QuestionSubmission';
 import QuestionNumber from './QuestionTypes/QuestionNumber';
 import QuestionFonts from './QuestionTypes/QuestionFonts';
 import QuestionTheme from './QuestionTypes/QuestionTheme';
+import QuestionTextBox from './QuestionTypes/QuestionTextbox';
 
 type Props = {
   prolificInfo: ProlificInfo;
@@ -56,14 +58,17 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [actionLogs, setActionLogs] = useState<ActionLog[]>([]);
 
   const { setCloneDisabled, setHideText } = useCloneContext();
 
   const currentGroup = questionGroups.find((group) => group.id === activeGroup);
-  const allGroupQuestionsAnswered = currentGroup.questions.every((question) => {
-    const answer = answers.find((answer) => answer.id === question.id);
-    return answer?.value !== undefined;
-  });
+  const allGroupQuestionsAnswered = currentGroup.questions
+    .filter((question) => question.mandatory != false)
+    .every((question) => {
+      const answer = answers.find((answer) => answer.id === question.id);
+      return answer?.value !== undefined && answer?.value !== '';
+    });
 
   useEffect(() => {
     setCloneDisabled(currentGroup.displayHidden);
@@ -76,7 +81,10 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
     const key = `question-${question.id}`;
     const answer = answers.find((answer) => answer.id === question.id);
     const updateAnswerProp = (newValue) => updateAnswer(newValue, question.id);
-    const highlight = errorMessage && answer?.value == undefined ? true : false;
+    const highlight =
+      errorMessage && answer?.value == undefined
+        ? true
+        : false || answer.value === '';
 
     switch (question.type) {
       case QuestionType.CHECKBOX:
@@ -96,7 +104,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             question={question}
             answer={answer}
             updateAnswer={updateAnswerProp}
-            highlight={highlight}
           />
         );
       case QuestionType.SLIDER:
@@ -106,7 +113,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             question={question}
             answer={answer}
             updateAnswer={updateAnswerProp}
-            highlight={highlight}
           />
         );
       case QuestionType.LIKERT:
@@ -121,7 +127,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
         );
       case QuestionType.TIMER:
         const { timerStyleType } = currentGroup;
-
         const relevantAnswers = answers.filter(
           (answer) => answer.styleType != null,
         );
@@ -163,7 +168,6 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             question={question}
             answer={answer}
             updateAnswer={updateAnswerProp}
-            highlight={highlight}
           />
         );
       case QuestionType.SUBMISSION:
@@ -171,13 +175,12 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
           <QuestionSubmission
             key={key}
             question={question}
-            answer={answer}
-            updateAnswer={updateAnswerProp}
             answers={answers}
             prolificInfo={prolificInfo}
             startTime={startTime}
             isSubmitted={isSubmitted}
             setIsSubmitted={setIsSubmitted}
+            actionLogs={actionLogs}
           />
         );
       case QuestionType.FONTS:
@@ -187,13 +190,20 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             question={question}
             answer={answer}
             updateAnswer={updateAnswerProp}
-            highlight={highlight}
           />
         );
-
       case QuestionType.THEME:
         return (
           <QuestionTheme
+            key={key}
+            question={question}
+            answer={answer}
+            updateAnswer={updateAnswerProp}
+          />
+        );
+      case QuestionType.TEXTBOX:
+        return (
+          <QuestionTextBox
             key={key}
             question={question}
             answer={answer}
@@ -217,7 +227,16 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
       setErrorMessage('Please stop the timer before switching pages');
       return;
     }
-    setActiveGroup((prevActiveGroup) => prevActiveGroup + 1);
+    const nextGroup = activeGroup + 1;
+    setActionLogs((prev) => [
+      ...prev,
+      {
+        action: 'setActiveGroup',
+        timestamp: new Date(),
+        details: { groupId: nextGroup },
+      },
+    ]);
+    setActiveGroup(nextGroup);
   };
 
   const handleBack = () => {
@@ -225,10 +244,27 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
       setErrorMessage('Please stop the timer before switching pages');
       return;
     }
-    setActiveGroup((prevActiveGroup) => prevActiveGroup - 1);
+    const prevGroup = activeGroup - 1;
+    setActionLogs((prev) => [
+      ...prev,
+      {
+        action: 'setActiveGroup',
+        timestamp: new Date(),
+        details: { groupId: prevGroup },
+      },
+    ]);
+    setActiveGroup(prevGroup);
   };
 
   const updateAnswer = (newValue, questionID) => {
+    setActionLogs((prev) => [
+      ...prev,
+      {
+        action: 'updateAnswer',
+        timestamp: new Date(),
+        details: { questionId: questionID, value: newValue },
+      },
+    ]);
     setAnswers((prevAnswers) =>
       prevAnswers.map((answer) =>
         questionID == answer.id ? { ...answer, value: newValue } : answer,
