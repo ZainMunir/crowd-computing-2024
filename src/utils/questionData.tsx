@@ -200,8 +200,6 @@ const feedbackQuestions = [
     questions: [
       'The layout of the webpage is easy to understand and use.',
       'Navigating to the next chapter or section is simple and straightforward.',
-      'The menu or navigation bar is intuitive and easy to use for accessing content.',
-      'Searching for specific content within the e-book is easy.',
     ],
   },
   {
@@ -210,7 +208,7 @@ const feedbackQuestions = [
       'The color scheme of the webpage is visually appealing.',
       'The font size and style are easy to read.',
       'The amount of text displayed on a single page is appropriate and readable.',
-      "For this question, please select 'Neutral' specifically.",
+      "Are you still paying attention? For this question, please select 'Neutral' specifically.",
     ],
   },
   {
@@ -241,7 +239,7 @@ const feedbackQuestions = [
 ];
 
 var groupID = 2;
-var questionID = 8;
+var questionID = 9;
 
 const returnAndIncrementQuestionID = () => {
   questionID += 1;
@@ -415,6 +413,17 @@ export const questionGroups: Array<QuestionGroup> = [
         questionText: 'I feel comfortable using technology.',
         type: QuestionType.LIKERT,
       },
+      {
+        id: 7,
+        questionText: 'What is your experience with Wattpad?',
+        type: QuestionType.CHECKBOX,
+        options: [
+          "I've never heard of Wattpad",
+          "I've heard of Wattpad but never used it",
+          "I've used Wattpad before",
+          "I'm a regular user of Wattpad",
+        ],
+      },
     ],
   },
   {
@@ -426,12 +435,12 @@ export const questionGroups: Array<QuestionGroup> = [
     timerStyleType: 'default',
     questions: [
       {
-        id: 7,
+        id: 8,
         questionText:
-          "When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click stop when you're finished. The questions will then be revealed. You will not be able to try again.",
+          'When you click start, a stopwatch will begin. Please take your time to read the chapter text at your normal pace. Then click finished when you are done reading. The questions will then be revealed. You will not be able to try again.',
         type: QuestionType.TIMER,
       },
-      getComprehensionQuestion(storyIndex, 8),
+      getComprehensionQuestion(storyIndex, 9),
     ],
   },
   ...feedbackGroups,
