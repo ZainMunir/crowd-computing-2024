@@ -6,6 +6,7 @@ import {
   completionCode,
   prolificRedirectLink,
   ActionLog,
+  storyIndex,
 } from '../utils/questionData';
 import { Button } from '@mui/material';
 import { addResponse, Response } from '../utils/firestore';
@@ -52,6 +53,9 @@ const QuestionSubmission = ({
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
       actionLogs: actionLogs,
+      storyIndex: storyIndex,
+      firstStoryName: storyIndex ? 'KingsMusketeers' : 'TheLostTreasure',
+      secondStoryName: storyIndex ? 'TheLostTreasure' : 'KingsMusketeers',
     };
     const submitted = await addResponse(response);
     setIsSubmitting(false);

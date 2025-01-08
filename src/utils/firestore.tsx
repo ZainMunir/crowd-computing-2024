@@ -32,6 +32,9 @@ export type Response = {
   windowWidth: number;
   windowHeight: number;
   actionLogs: ActionLog[];
+  storyIndex: number;
+  firstStoryName: string;
+  secondStoryName: string;
 };
 
 export const addResponse = async (response: Response) => {
