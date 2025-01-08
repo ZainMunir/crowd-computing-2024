@@ -55,6 +55,8 @@ const QuestionSubmission = ({
       answers: filteredAnswers,
       startTime: startTime,
       endTime: new Date(),
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight,
     };
     const submitted = await addResponse(response);
     setIsSubmitting(false);

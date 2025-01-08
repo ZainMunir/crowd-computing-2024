@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const responseCollection = collection(db, 'responses');
 
@@ -29,6 +29,8 @@ export type Response = {
   answers: Array<Answer>;
   startTime: Date;
   endTime: Date;
+  windowWidth: number;
+  windowHeight: number;
 };
 
 export const addResponse = async (response: Response) => {
