@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { addDoc, collection, getFirestore } from 'firebase/firestore/lite';
-import { Answer, ProlificInfo } from './questionData';
+import { ActionLog, Answer, ProlificInfo } from './questionData';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -31,6 +31,7 @@ export type Response = {
   endTime: Date;
   windowWidth: number;
   windowHeight: number;
+  actionLogs: ActionLog[];
 };
 
 export const addResponse = async (response: Response) => {

@@ -5,6 +5,7 @@ import {
   Question,
   completionCode,
   prolificRedirectLink,
+  ActionLog,
 } from '../utils/questionData';
 import { Button } from '@mui/material';
 import { addResponse, Response } from '../utils/firestore';
@@ -16,6 +17,7 @@ type Props = {
   startTime: Date;
   isSubmitted: boolean;
   setIsSubmitted: (isSubmitted: boolean) => void;
+  actionLogs: ActionLog[];
 };
 
 const QuestionSubmission = ({
@@ -25,6 +27,7 @@ const QuestionSubmission = ({
   startTime,
   isSubmitted,
   setIsSubmitted,
+  actionLogs,
 }: Props) => {
   const { questionText: title } = question;
 
@@ -48,6 +51,7 @@ const QuestionSubmission = ({
       endTime: new Date(),
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
+      actionLogs: actionLogs,
     };
     const submitted = await addResponse(response);
     setIsSubmitting(false);

@@ -6,6 +6,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import QuestionCheckbox from './QuestionTypes/QuestionCheckbox';
 import QuestionSlider from './QuestionTypes/QuestionSlider';
 import {
+  ActionLog,
   Answer,
   ProlificInfo,
   questionGroups,
@@ -57,6 +58,7 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [actionLogs, setActionLogs] = useState<ActionLog[]>([]);
 
   const { setCloneDisabled, setHideText } = useCloneContext();
 
@@ -178,6 +180,7 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
             startTime={startTime}
             isSubmitted={isSubmitted}
             setIsSubmitted={setIsSubmitted}
+            actionLogs={actionLogs}
           />
         );
       case QuestionType.FONTS:
@@ -224,7 +227,16 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
       setErrorMessage('Please stop the timer before switching pages');
       return;
     }
-    setActiveGroup((prevActiveGroup) => prevActiveGroup + 1);
+    const nextGroup = activeGroup + 1;
+    setActionLogs((prev) => [
+      ...prev,
+      {
+        action: 'setActiveGroup',
+        timestamp: new Date(),
+        details: { groupId: nextGroup },
+      },
+    ]);
+    setActiveGroup(nextGroup);
   };
 
   const handleBack = () => {
@@ -232,10 +244,27 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
       setErrorMessage('Please stop the timer before switching pages');
       return;
     }
-    setActiveGroup((prevActiveGroup) => prevActiveGroup - 1);
+    const prevGroup = activeGroup - 1;
+    setActionLogs((prev) => [
+      ...prev,
+      {
+        action: 'setActiveGroup',
+        timestamp: new Date(),
+        details: { groupId: prevGroup },
+      },
+    ]);
+    setActiveGroup(prevGroup);
   };
 
   const updateAnswer = (newValue, questionID) => {
+    setActionLogs((prev) => [
+      ...prev,
+      {
+        action: 'updateAnswer',
+        timestamp: new Date(),
+        details: { questionId: questionID, value: newValue },
+      },
+    ]);
     setAnswers((prevAnswers) =>
       prevAnswers.map((answer) =>
         questionID == answer.id ? { ...answer, value: newValue } : answer,

@@ -591,3 +591,13 @@ export type ProlificInfo = {
   studyId: string | null;
   sessionId: string | null;
 };
+
+export type ActionLog = {
+  action: 'updateAnswer' | 'setActiveGroup';
+  timestamp: Date;
+  details?: {
+    questionId?: number;
+    value?: string | number | EnabledElements;
+    groupId?: number;
+  };
+};
