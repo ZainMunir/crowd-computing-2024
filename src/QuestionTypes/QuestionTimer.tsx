@@ -194,7 +194,7 @@ const QuestionTimer = ({
           onClick={handleStop}
           disabled={!isTimerRunning}
         >
-          Finished Reading
+          Finish
         </Button>
       </div>
     </div>
