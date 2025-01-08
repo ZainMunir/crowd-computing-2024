@@ -26,19 +26,18 @@ const Instructions = ({ onStartTask }: Props) => {
   const theme = useTheme();
 
   const instructions = [
-    [
-      `We're on a mission to make Wattpad a more delightful, intuitive, and enjoyable platform for everyone. 
-      Your input is invaluable to us as we seek to enhance the desktop version of our application.`,
-      `By sharing your insights and feedback, you will play a key role in helping us craft a better reading experience for our entire community.
-      Your thoughtful responses will directly contribute to making Wattpad a more user-friendly and enjoyable space for readers and writers alike.`,
+    [ `We're on a mission to make reading on online platforms a more delightful and enjoyable experience for everyone. 
+      Within the Technical University of Delft, we are conducting a study to identify flaws in a previously launched reading application, Wattpad.`,
+      `By participating in this readability study, you can help identify functionality issues that web designers may have overlooked, providing invaluable insights to enhance the desktop version of Wattpad. 
+      Your feedback will play a key role in creating a better, more user-friendly reading experience for the entire community, making Wattpad, and possibly even other platforms, an enjoyable space for both readers and writers.`,
     ],
     [
+      `To help us obtain the most accurate results, please set the window to full-screen before continuing.`,
       `On the left side of the screen, you will be presented with a demo of a Wattpad book's reading page. Along with this, you will see a series of questions displayed one at a time on the right side.`,
       `Read the prompt and respond to each question based on your own preferences or experience. Throughout the questionnaire, you will be asked to explore and interact with specific aspects of the application, such as analyzing the layout or trying out some customizations.`,
-      ,
     ],
     [
-      `Your honesty is greatly valued. We thank you for your time and contribution to making our webpage more accessible and enjoyable for everyone!`,
+      `Your honesty is greatly valued. We appreciate your time and effort to research that promotes functionality in web design.`,
       `Let's bring people the best space to express their incredible stories!`,
     ],
   ];
