@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Instructions from './Instructions';
 import Questions from './Questions';
@@ -6,6 +6,7 @@ import CloneLayout from './Clone/CloneLayout';
 import CloneContext, { EnabledElements, Styling } from './utils/CloneContext';
 import { defaultEnabledElements, defaultStyling } from './utils/defaults';
 import { ProlificInfo, stories } from './utils/questionData';
+import { getExistingResponse } from './utils/firestore';
 
 const Container = () => {
   const [startTask, setStartTask] = useState(false);
@@ -15,6 +16,8 @@ const Container = () => {
   const [styling, setStyling] = useState<Styling>(defaultStyling);
   const [cloneDisabled, setCloneDisabled] = useState(false);
   const [hideText, setHideText] = useState(true);
+  const [isSnapshot, setIsSnapshot] = useState(false);
+  const [existingResponse, setExistingResponse] = useState(null);
 
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -36,6 +39,22 @@ const Container = () => {
       },
     },
   });
+
+  useEffect(() => {
+    const checkExistingResponse = async () => {
+      if (prolificInfo.prolificPid && prolificInfo.sessionId) {
+        const response = await getExistingResponse(
+          prolificInfo.prolificPid,
+          prolificInfo.sessionId,
+        );
+        if (response) {
+          setIsSnapshot(true);
+          setExistingResponse(response);
+        }
+      }
+    };
+    checkExistingResponse();
+  }, []);
 
   return (
     <div className="grid h-screen w-full grid-cols-[2fr_1fr]">
@@ -70,6 +89,8 @@ const Container = () => {
                 <Questions
                   prolificInfo={prolificInfo}
                   setStoryIndex={setStoryIndex}
+                  isSnapshot={isSnapshot}
+                  existingResponse={existingResponse}
                 />
               )}
             </div>

@@ -21,13 +21,21 @@ import QuestionNumber from './QuestionTypes/QuestionNumber';
 import QuestionFonts from './QuestionTypes/QuestionFonts';
 import QuestionTheme from './QuestionTypes/QuestionTheme';
 import QuestionTextBox from './QuestionTypes/QuestionTextbox';
+import { Response } from './utils/firestore';
 
 type Props = {
   prolificInfo: ProlificInfo;
   setStoryIndex: (index: number) => void;
+  isSnapshot: boolean;
+  existingResponse?: Response | null;
 };
 
-const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
+const Questions = ({
+  prolificInfo,
+  setStoryIndex,
+  isSnapshot,
+  existingResponse,
+}: Props) => {
   const maxGroups = questionGroups.length;
   const [startTime, setStartTime] = useState(new Date());
   const [activeGroup, setActiveGroup] = React.useState(0);
@@ -76,6 +84,23 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
     setErrorMessage(null);
     setHideText(currentGroup.textHidden);
   }, [activeGroup]);
+
+  useEffect(() => {
+    if (isSnapshot && existingResponse) {
+      // Restore answers with styleTypes
+      const restoredAnswers = existingResponse.answers.map((answer) => {
+        const originalQuestion = questionGroups
+          .flatMap((g) => g.questions)
+          .find((q) => q.id === answer.id);
+        return {
+          ...answer,
+          styleType: originalQuestion?.styleType,
+          options: originalQuestion?.options,
+        };
+      });
+      setAnswers(restoredAnswers);
+    }
+  }, [isSnapshot, existingResponse]);
 
   const questionComponents = currentGroup.questions.map((question) => {
     const key = `question-${question.id}`;
@@ -257,6 +282,7 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
   };
 
   const updateAnswer = (newValue, questionID) => {
+    if (isSnapshot) return; // Prevent updates in snapshot mode
     setActionLogs((prev) => [
       ...prev,
       {
@@ -289,6 +315,13 @@ const Questions = ({ prolificInfo, setStoryIndex }: Props) => {
 
   return (
     <div className="pb-10">
+      {isSnapshot && (
+        <div className="mb-4 rounded bg-yellow-100 p-4">
+          You are viewing a snapshot of a previous submission. Changes are
+          disabled. The order of the comprehension questions may differ from
+          expected. This response had {existingResponse.firstStoryName} first.
+        </div>
+      )}
       <MobileStepper
         className="sticky top-0 z-20 py-4"
         style={{

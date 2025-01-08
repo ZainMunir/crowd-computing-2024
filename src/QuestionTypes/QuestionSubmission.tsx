@@ -19,6 +19,7 @@ type Props = {
   isSubmitted: boolean;
   setIsSubmitted: (isSubmitted: boolean) => void;
   actionLogs: ActionLog[];
+  isSnapshot?: boolean;
 };
 
 const QuestionSubmission = ({
@@ -29,6 +30,7 @@ const QuestionSubmission = ({
   isSubmitted,
   setIsSubmitted,
   actionLogs,
+  isSnapshot,
 }: Props) => {
   const { questionText: title } = question;
 
@@ -74,14 +76,20 @@ const QuestionSubmission = ({
       <p className="mb-5 text-xl">{title}</p>
       <div className="flex flex-col gap-10">
         <div className="text-lg">Prolific ID: {prolificInfo.prolificPid}</div>
-        <Button
-          variant="contained"
-          color={isSubmitting ? 'secondary' : 'primary'}
-          onClick={submitData}
-          disabled={isSubmitting || isSubmitted}
-        >
-          {isSubmitting ? 'Submitting...' : 'Submit'}
-        </Button>
+        {isSnapshot ? (
+          <div className="text-lg">
+            This is a snapshot of a previous submission.
+          </div>
+        ) : (
+          <Button
+            variant="contained"
+            color={isSubmitting ? 'secondary' : 'primary'}
+            onClick={submitData}
+            disabled={isSubmitting || isSubmitted}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit'}
+          </Button>
+        )}
         {submissionMessage && (
           <div className="mt-5 text-lg">{submissionMessage}</div>
         )}
