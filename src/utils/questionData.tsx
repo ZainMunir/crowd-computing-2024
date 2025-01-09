@@ -6,7 +6,7 @@ import {
   KingsMusketeers,
 } from './storyData';
 
-export const completionCode = 'CJAHK33A';
+export const completionCode = 'C99F1ZNA';
 export const prolificRedirectLink = `https://app.prolific.com/submissions/complete?cc=${completionCode}`;
 
 export const storyIndex = Math.random() < 0.5 ? 0 : 1;
