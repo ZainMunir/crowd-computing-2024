@@ -22,13 +22,18 @@ const QuestionTheme = ({ question, answer, updateAnswer }: Props) => {
 
   const { defaultStyling } = useCloneContext();
 
-  const styleVar: { var: string; value: string } =
-    defaultStyling.custom_inverted;
+  const styleVars: { var: string; value: string }[] = [
+    defaultStyling.custom_inverted,
+    defaultStyling.custom_grayscale,
+    defaultStyling.custom_sepia,
+  ];
 
   function resetStyling() {
-    document
-      .getElementsByTagName('body')[0]
-      .style.setProperty(styleVar.var, styleVar.value);
+    styleVars.forEach((styleVar) => {
+      document
+        .getElementsByTagName('body')[0]
+        .style.setProperty(styleVar.var, styleVar.value);
+    });
   }
 
   useLayoutEffect(() => {
