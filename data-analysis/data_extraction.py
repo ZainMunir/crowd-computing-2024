@@ -17,7 +17,11 @@ normalized_data = []
 for record in json_data:
     flat_record = {key: record[key] for key in record if key not in ("actionLogs", "answers")}
     for answer in record["answers"]:
-        flat_record[answer["questionText"]] = answer["value"]
+        if answer["id"] == 26:  # Special handling for question ID 26
+            for key, value in answer["value"].items():
+                flat_record["26-"+"Visible("+key+")"] = value  # Add each key-value pair as a separate column
+        else:
+            flat_record[str(answer["id"])+"-"+answer["questionText"]] = answer["value"]  # Add other answers normally
     normalized_data.append(flat_record)
 
 # Convert the normalized JSON data into a DataFrame
