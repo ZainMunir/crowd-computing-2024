@@ -206,6 +206,7 @@ const Questions = ({
             isSubmitted={isSubmitted}
             setIsSubmitted={setIsSubmitted}
             actionLogs={actionLogs}
+            isSnapshot={isSnapshot}
           />
         );
       case QuestionType.FONTS:

@@ -42,14 +42,26 @@ const Container = () => {
 
   useEffect(() => {
     const checkExistingResponse = async () => {
-      if (prolificInfo.prolificPid && prolificInfo.sessionId) {
-        const response = await getExistingResponse(
-          prolificInfo.prolificPid,
-          prolificInfo.sessionId,
-        );
+      if (prolificInfo.prolificPid) {
+        const response = await getExistingResponse(prolificInfo.prolificPid);
         if (response) {
           setIsSnapshot(true);
           setExistingResponse(response);
+          setStartTask(true);
+
+          document
+            .getElementsByTagName('body')[0]
+            .style.setProperty(
+              '--container-height',
+              `${response.windowHeight}px`,
+            );
+
+          document
+            .getElementsByTagName('body')[0]
+            .style.setProperty(
+              '--container-width',
+              `${response.windowWidth}px`,
+            );
         }
       }
     };
@@ -57,7 +69,7 @@ const Container = () => {
   }, []);
 
   return (
-    <div className="grid h-screen w-full grid-cols-[2fr_1fr]">
+    <div className="container-height container-width grid grid-cols-[2fr_1fr]">
       <CloneContext.Provider
         value={{
           enabledElements,

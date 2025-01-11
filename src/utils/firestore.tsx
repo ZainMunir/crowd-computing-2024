@@ -55,15 +55,11 @@ export const addResponse = async (response: Response) => {
   return false;
 };
 
-export const getExistingResponse = async (
-  prolificPid: string,
-  sessionId: string,
-) => {
+export const getExistingResponse = async (prolificPid: string) => {
   try {
     const q = query(
       responseCollection,
       where('prolificInfo.prolificPid', '==', prolificPid),
-      where('prolificInfo.sessionId', '==', sessionId),
     );
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
