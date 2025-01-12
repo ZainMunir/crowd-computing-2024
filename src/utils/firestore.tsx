@@ -1,7 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
-import { addDoc, collection, getFirestore } from 'firebase/firestore/lite';
+import {
+  addDoc,
+  collection,
+  getFirestore,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore/lite';
 import { ActionLog, Answer, ProlificInfo } from './questionData';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -46,4 +53,20 @@ export const addResponse = async (response: Response) => {
     console.error('Error adding document: ', e);
   }
   return false;
+};
+
+export const getExistingResponse = async (prolificPid: string) => {
+  try {
+    const q = query(
+      responseCollection,
+      where('prolificInfo.prolificPid', '==', prolificPid),
+    );
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+      return querySnapshot.docs[0].data() as Response;
+    }
+  } catch (e) {
+    console.error('Error fetching response:', e);
+  }
+  return null;
 };
