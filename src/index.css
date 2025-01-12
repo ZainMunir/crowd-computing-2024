@@ -227,6 +227,10 @@ div:has(> svg) {
     max-width: var(--container-width);
   }
 
+  .clone-width {
+    width: calc(var(--container-width) * 2 / 3);
+  }
+
   .container-height {
     height: var(--container-height);
   }
