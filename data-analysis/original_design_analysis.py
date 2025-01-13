@@ -5,6 +5,8 @@ import numpy as np
 
 df = data_extraction.data_df
 
+# ----------------------------------Figures For Likert Scale Questions---------------------------
+
 original_design_columns = ["10-The layout of the webpage is easy to understand and use.",
                            "11-Navigating to the next chapter or section is simple and straightforward.",
                            "12-The color scheme of the webpage is visually appealing.",
@@ -72,6 +74,7 @@ def plot_pie_chart(df, column_name, category_mapping=None):
 for column in original_design_columns:
     plot_pie_chart(df, column, category_mapping)
 
+# ----------------------------------Figures For Header, and Body---------------------------
 
 header_nav_columns = ["26-Visible(headerNavLogo)",
                       "26-Visible(headerNavBrowse)",
@@ -178,3 +181,83 @@ plot_true_false_ratios_combined(df, header_progress_columns, header_progress_tit
 plot_true_false_ratios_combined(df, body_columns, body_title, body_x_labels)
 
 plot_true_false_ratios_combined(df, footer_columns, footer_title, footer_x_labels)
+
+# ----------------------------------Figures For Font Size, Content Width, Font Line Height, and Letter spacing---------------------------
+
+feature_columns = ["27-Font Size", "28-Content Width", "29-Font Line Height", "30-Letter spacing"]
+
+features = ["Font Size", "Content Width", "Font Line Height", "Letter spacing"]
+
+def plot_category_proportions(df, column_name, x_label):
+    # Calculate the proportion of each category (frequency / total count)
+    category_counts = df[column_name].value_counts(normalize=True)
+
+    # Create a bar plot for the proportions
+    plt.figure(figsize=(8, 6))
+    category_counts.plot(kind='bar', color='skyblue', edgecolor='black')
+
+    # Set the title and labels for the plot
+    plt.title(f"Proportion of User-Selected {x_label} Most Suitable for Reading", fontsize=10)
+    plt.xlabel(x_label + " (px)", fontsize=8)
+    plt.ylabel('Proportion', fontsize=8)
+    plt.xticks(rotation=0)
+    plt.savefig("figures/" + x_label + ".png", format='png')
+    # Display the plot
+    plt.show()
+
+for column in feature_columns:
+    plot_category_proportions(df, column, features[feature_columns.index(column)])
+
+# ----------------------------------Figures For Font Family and Theme---------------------------
+
+other_features_columns = ["31-Font Family", "32-Theme"]
+
+other_features = ["Font Family", "Theme"]
+
+font_family_mapping = {
+    0: "Arial",
+    1: "Georgia",
+    2: "Helvetica",
+    3: "Monospace",
+    4: "OpenDyslexic"
+}
+
+theme_mapping = {
+    0: "Light",
+    1: "Dark",
+    2: "Light Grayscale",
+    3: "Dark Grayscale",
+    4: "Light Sepia",
+    5: "Dark Sepia",
+}
+
+list_of_mappings = [font_family_mapping, theme_mapping]
+
+def plot_category_proportions_with_mapping(df, column_name, x_label, x_mapping=None):
+    # Calculate the proportion of each category (frequency / total count)
+    category_counts = df[column_name].value_counts(normalize=True)
+
+    # If x_mapping is provided, map the x-axis values to new values
+    if x_mapping:
+        category_counts.index = category_counts.index.map(x_mapping)
+
+    # Create a bar plot for the proportions
+    plt.figure(figsize=(8, 6))
+    category_counts.plot(kind='bar', color='skyblue', edgecolor='black')
+
+    # Set the title and labels for the plot
+    plt.title(f"Proportion of User-Selected {x_label} Most Suitable for Reading", fontsize=10)
+    plt.xlabel(x_label, fontsize=8)
+    plt.ylabel('Proportion', fontsize=8)
+    plt.xticks(rotation=0)
+
+    # Save the plot to a file
+    plt.savefig("figures/" + x_label + ".png", format='png')
+
+    # Display the plot
+    plt.show()
+
+for column in other_features_columns:
+    plot_category_proportions_with_mapping(df, column, other_features[other_features_columns.index(column)],
+                                           list_of_mappings[other_features_columns.index(column)])
+
