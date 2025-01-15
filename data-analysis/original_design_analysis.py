@@ -2,7 +2,11 @@ import data_extraction
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
+
+base_dir = os.path.dirname(__file__)
+figures_dir = os.path.join(base_dir, "figures")
 df = data_extraction.data_df
 
 # ----------------------------------Figures For Likert Scale Questions---------------------------
@@ -20,6 +24,8 @@ original_design_columns = ["10-The layout of the webpage is easy to understand a
                            "21-I enjoy spending time browsing or reading on this webpage.",
                            "22-The design keeps me engaged while reading.",
                            "23-The images, icons, or visuals used enhance the reading experience.",
+                           "24-I am satisfied with the overall design of the webpage.",
+                           "25-I would recommend this webpage to others who enjoy reading online.",
                            ]
 
 # Mapping of categories
@@ -68,11 +74,52 @@ def plot_pie_chart(df, column_name, category_mapping=None):
     plt.title(f"Proportion of Answers of Question: '{column_name[3:]}'", fontsize=7)
     plt.ylabel("")
     plt.tight_layout()
-    plt.savefig("figures/" + column_name + ".png", format='png')
-    plt.show()
+    plt.savefig(os.path.join(figures_dir, column_name+"png"), format='png')
+    #plt.show()
+    plt.close()
+    
+def stack_bar_chart(df):
+    question_ids = [f"Q{i+1}" for i in range(len(original_design_columns))]
+    id_to_question = dict(zip(question_ids, original_design_columns))
+    # Map numerical values to categories
+    mapped_data = df[original_design_columns].map(category_mapping.get)
+
+    # Count occurrences of each category for each question
+    response_counts = pd.DataFrame({
+        category: (mapped_data == category).sum(axis=0) for category in category_mapping.values()
+    })
+
+    # Adjust the figure size and add space below
+    plt.figure(figsize=(14, 8))  # Make the figure taller to allow space below
+    plt.subplots_adjust(bottom=0.5)  # Adjust bottom margin to make room for figtext
+
+    # Plot the stacked bar chart
+    bottom = None
+    for category in category_mapping.values():
+        if bottom is None:
+            bottom = response_counts[category]
+            plt.bar(question_ids, response_counts[category], label=category)
+        else:
+            plt.bar(question_ids, response_counts[category], bottom=bottom, label=category)
+            bottom += response_counts[category]
+
+    # Add chart details
+    plt.title("Stacked Bar Chart of Likert Scale Responses", fontsize=16)
+    plt.xlabel("Questions (Refer to Mapping Below)", fontsize=12)
+    plt.ylabel("Frequency of Responses", fontsize=12)
+    plt.xticks(rotation=0)
+    plt.legend(title="Responses", bbox_to_anchor=(0.5, -0.15), loc="upper center", ncol=5, fontsize=10)
+
+        
+    mapping_text = "\n".join([f"{qid}: {question}" for qid, question in id_to_question.items()])
+    plt.figtext(0.3, 0.05, mapping_text, wrap=True, horizontalalignment='left', fontsize=10)
+
+    plt.savefig(os.path.join(figures_dir, "StackBar.png"), format='png')
 
 for column in original_design_columns:
     plot_pie_chart(df, column, category_mapping)
+    
+stack_bar_chart(df)
 
 # ----------------------------------Figures For Header, and Body---------------------------
 
@@ -168,9 +215,9 @@ def plot_true_false_ratios_combined(df, columns, title, x_labels):
     plt.ylim(0, 1)
     plt.legend(fontsize=12)
     plt.tight_layout()
-    plt.savefig("figures/" + title + ".png", format='png')
-    plt.show()
-
+    plt.savefig(os.path.join(figures_dir,title+".png"), format='png')
+    #plt.show()
+    plt.close()
 
 plot_true_false_ratios_combined(df, header_nav_columns, header_nav_title, header_nav_x_labels)
 
@@ -201,9 +248,10 @@ def plot_category_proportions(df, column_name, x_label):
     plt.xlabel(x_label + " (px)", fontsize=8)
     plt.ylabel('Proportion', fontsize=8)
     plt.xticks(rotation=0)
-    plt.savefig("figures/" + x_label + ".png", format='png')
+    plt.savefig(os.path.join(figures_dir,x_label+".png"), format='png')
     # Display the plot
-    plt.show()
+    #plt.show()
+    plt.close()
 
 for column in feature_columns:
     plot_category_proportions(df, column, features[feature_columns.index(column)])
@@ -252,10 +300,11 @@ def plot_category_proportions_with_mapping(df, column_name, x_label, x_mapping=N
     plt.xticks(rotation=0)
 
     # Save the plot to a file
-    plt.savefig("figures/" + x_label + ".png", format='png')
+    plt.savefig(os.path.join(figures_dir,x_label+".png"), format='png')
 
     # Display the plot
-    plt.show()
+    #plt.show()
+    plt.close()
 
 for column in other_features_columns:
     plot_category_proportions_with_mapping(df, column, other_features[other_features_columns.index(column)],
