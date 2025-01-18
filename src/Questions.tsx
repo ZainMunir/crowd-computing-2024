@@ -283,7 +283,7 @@ const Questions = ({
   };
 
   const updateAnswer = (newValue, questionID) => {
-    if (isSnapshot) return; // Prevent updates in snapshot mode
+    // if (isSnapshot) return; // Prevent updates in snapshot mode
     setActionLogs((prev) => [
       ...prev,
       {

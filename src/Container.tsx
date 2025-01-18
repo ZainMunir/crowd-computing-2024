@@ -47,8 +47,8 @@ const Container = () => {
         if (response) {
           setIsSnapshot(true);
           setExistingResponse(response);
-          setStartTask(true);
-
+          // setStartTask(true);
+          return; // ignore the given width and height for now
           document
             .getElementsByTagName('body')[0]
             .style.setProperty(

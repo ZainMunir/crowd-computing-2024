@@ -224,7 +224,7 @@ div:has(> svg) {
   }
 
   .container-width {
-    max-width: var(--container-width);
+    width: var(--container-width);
   }
 
   .clone-width {
