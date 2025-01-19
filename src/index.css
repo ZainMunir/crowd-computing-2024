@@ -62,6 +62,9 @@ body {
   --custom-hue-rotate: 0deg;
   --custom-sepia: 0%;
   --custom-contrast: 100%;
+
+  --container-width: 100%;
+  --container-height: 100vh;
 }
 
 body {
@@ -218,6 +221,18 @@ div:has(> svg) {
   }
   .border-text-area-active {
     border-color: var(--border-text-area-active);
+  }
+
+  .container-width {
+    width: var(--container-width);
+  }
+
+  .clone-width {
+    width: calc(var(--container-width) * 2 / 3);
+  }
+
+  .container-height {
+    height: var(--container-height);
   }
 }
 
