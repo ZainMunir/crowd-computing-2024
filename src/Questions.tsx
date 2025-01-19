@@ -314,9 +314,11 @@ const Questions = ({
     </Button>
   );
 
+  const urlParams = new URLSearchParams(window.location.search);
+
   return (
     <div className="pb-10">
-      {isSnapshot && (
+      {isSnapshot && !(urlParams.get('HIDE_SNAPSHOT_TEXT') == 'true') && (
         <div className="mb-4 rounded bg-yellow-100 p-4">
           You are viewing a snapshot of a previous submission. Changes are
           disabled. The order of the comprehension questions may differ from
